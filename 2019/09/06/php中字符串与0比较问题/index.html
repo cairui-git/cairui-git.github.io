@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="CaiRui的博客">
 <meta property="og:description" content="由于刚转php不久，今天在开发中踩了个比较低级的坑，记录一下。 问题是 在代码中我用一个 字符串和0作比较，结果竟然是 相等。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-06T05:46:43.909Z">
+<meta property="og:updated_time" content="2019-09-06T05:49:52.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php中字符串与0比较问题">
 <meta name="twitter:description" content="由于刚转php不久，今天在开发中踩了个比较低级的坑，记录一下。 问题是 在代码中我用一个 字符串和0作比较，结果竟然是 相等。">
@@ -363,7 +363,7 @@
 <p>最后列出一些可以得到正确结果的写法：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$str = <span class="string">"CaiRui"</span>;</span><br><span class="line"><span class="keyword">if</span>($str===<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"===0成立"</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"===0不成立"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：===<span class="number">0</span>不成立</span><br></pre></td></tr></table></figure>
 
-<p>===：三个等于号的意思是先比较类型，如果类型不同直接返回false，若类型相同在比较两个变量的值。相当于if（is_numeric($str) &amp;&amp; $str==0）</p>
+<p>===：三个等于号的意思是先比较类型，如果类型不同直接返回false，若类型相同在比较两个变量的值。<br>在这个例子中if($str===0)就相当于if（is_numeric($str) &amp;&amp; $str==0）</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$str = <span class="string">"CaiRui"</span>;</span><br><span class="line"><span class="keyword">if</span>($str==<span class="string">"0"</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"==0成立"</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"==0不成立"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：==<span class="number">0</span>不成立</span><br></pre></td></tr></table></figure>
 
 <p>也可以将0改为字符串，这样进行比较的两个变量类型相同，==将会返回预期的结果。<br>这种写法不会影响str值为0时的预期结果。</p>
