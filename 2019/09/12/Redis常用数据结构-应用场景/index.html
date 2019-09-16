@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="String常用命令： get($key) 获取key的值 set($key,$value) 设置key的值 incr($key) 将key的值+1 decr($key) 将key的值-1 mget($key1,$key2,…) 获取多个key的值  实现：String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义">
+<meta name="description" content="String常用命令 get($key) 获取key的值 set($key,$value) 设置key的值 incr($key) 将key的值+1 decr($key) 将key的值-1 mget($key1,$key2,…) 获取多个key的值  实现String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义的结">
 <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis常用数据结构&amp;应用场景">
 <meta property="og:url" content="http://yoursite.com/2019/09/12/Redis常用数据结构-应用场景/index.html">
 <meta property="og:site_name" content="CaiRui的博客">
-<meta property="og:description" content="String常用命令： get($key) 获取key的值 set($key,$value) 设置key的值 incr($key) 将key的值+1 decr($key) 将key的值-1 mget($key1,$key2,…) 获取多个key的值  实现：String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义">
+<meta property="og:description" content="String常用命令 get($key) 获取key的值 set($key,$value) 设置key的值 incr($key) 将key的值+1 decr($key) 将key的值-1 mget($key1,$key2,…) 获取多个key的值  实现String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义的结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-16T06:06:37.876Z">
+<meta property="og:updated_time" content="2019-09-16T06:21:21.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis常用数据结构&amp;应用场景">
-<meta name="twitter:description" content="String常用命令： get($key) 获取key的值 set($key,$value) 设置key的值 incr($key) 将key的值+1 decr($key) 将key的值-1 mget($key1,$key2,…) 获取多个key的值  实现：String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义">
+<meta name="twitter:description" content="String常用命令 get($key) 获取key的值 set($key,$value) 设置key的值 incr($key) 将key的值+1 decr($key) 将key的值-1 mget($key1,$key2,…) 获取多个key的值  实现String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义的结">
 
 
 
@@ -362,25 +362,25 @@
       
 
       
-        <h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><h4 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h4><ul>
+        <h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
 <li>get($key) 获取key的值</li>
 <li>set($key,$value) 设置key的值</li>
 <li>incr($key) 将key的值+1</li>
 <li>decr($key) 将key的值-1</li>
 <li>mget($key1,$key2,…) 获取多个key的值</li>
 </ul>
-<h4 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h4><p>String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义的结构SDS来实现String,详见&lt;&lt;Redis设计与实现&gt;&gt;。</p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义的结构SDS来实现String,详见&lt;&lt;Redis设计与实现&gt;&gt;。</p>
 <a id="more"></a>
 
-<h4 id="应用场景："><a href="#应用场景：" class="headerlink" title="应用场景："></a>应用场景：</h4><p>String用来存储简单的键值信息，用途广泛，例如用户信息、登陆信息、配置信息、使用记录、增减库存等等。在使用时要注意存储的值不要过大，最好不要超过1M。</p>
-<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><h4 id="常用命令：-1"><a href="#常用命令：-1" class="headerlink" title="常用命令："></a>常用命令：</h4><ul>
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>String用来存储简单的键值信息，用途广泛，例如用户信息、登陆信息、配置信息、使用记录、增减库存等等。在使用时要注意存储的值不要过大，最好不要超过1M。</p>
+<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><h4 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
 <li>hget($key,$field) 返回hash表中指定字段的值</li>
 <li>hset($key,$field,$value) 设置hash中指定字段的值</li>
 <li>hgetall($key) 返回指定key下，哈希表中所有字段和值</li>
 </ul>
-<h4 id="实现：-1"><a href="#实现：-1" class="headerlink" title="实现："></a>实现：</h4><p>Redis的Hash的Value内部实际是HashMap，当成员较少时会当成数组存储，当成员数量增大时会转成HashMap存储。</p>
-<h4 id="应用场景：-1"><a href="#应用场景：-1" class="headerlink" title="应用场景："></a>应用场景：</h4><p>当存储用户信息时，信息例如 （user：001 张三 19 2019-11-15）。当使用常用的String类型存储时需要对取出的value做相应的处理才可以使用。这时可以最好用hset来存储用户信息。</p>
-<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><h4 id="常用命令：-2"><a href="#常用命令：-2" class="headerlink" title="常用命令："></a>常用命令：</h4><ul>
+<h4 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h4><p>Redis的Hash的Value内部实际是HashMap，当成员较少时会当成数组存储，当成员数量增大时会转成HashMap存储。</p>
+<h4 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h4><p>当存储用户信息时，信息例如 （user：001 张三 19 2019-11-15）。当使用常用的String类型存储时需要对取出的value做相应的处理才可以使用。这时可以最好用hset来存储用户信息。</p>
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><h4 id="常用命令-2"><a href="#常用命令-2" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
 <li>lpush($key,$value1,($value2),($value3)…) 将一个或多个值插入指定列表的头部</li>
 <li>rpush($key,$value1,($value2),($value3)…) 将一个或多个值插入指定列表的尾部</li>
 <li>lpop($key) 移除指定列表的第一个元素</li>
@@ -388,10 +388,11 @@
 <li>lrange($key,$start,$stop) 获取指定列表指定范围内的元素</li>
 <li>blpop($key,$timeOut) 移除指定列表第一个元素，<strong>如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止</strong></li>
 </ul>
-<h4 id="实现：-2"><a href="#实现：-2" class="headerlink" title="实现："></a>实现：</h4><p>Redis的List实现是一个双向链表，可以支持反向查找和遍历，更方便的操作，也便随着更大的内存开销。Redis内部的很多实现，包括缓冲队列都是用过List实现的。</p>
-<h4 id="应用场景：-2"><a href="#应用场景：-2" class="headerlink" title="应用场景："></a>应用场景：</h4><p>最新消息排行;</p>
+<h4 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h4><p>Redis的List实现是一个双向链表，可以支持反向查找和遍历，更方便的操作，也便随着更大的内存开销。Redis内部的很多实现，包括缓冲队列都是用过List实现的。</p>
+<h4 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h4><p>最新消息排行;</p>
 <p>消息队列：将任务存在list中，然后工作线程利用pop操作将任务取出执行。但要注意Redis的队列是轻量级的，适合处理轻量级的任务，Redis中并没有队列重试、队列重放等机制，消费完的消息相当于在Redis中删除了。</p>
-<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><h4 id="常用命令：-3"><a href="#常用命令：-3" class="headerlink" title="常用命令："></a>常用命令：</h4><ul>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>Set集合的特点是在插入元素时Redis会提供去重的功能</p>
+<h4 id="常用命令-3"><a href="#常用命令-3" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
 <li>sadd($key,$value1,($value2),($value3)…) 将一个或多个元素放入集合中，<strong>已经存在与集合中的元素将被忽略</strong></li>
 <li>spop($key) 移除集合中的一个随机元素</li>
 <li>srem($key,$value1,($value2),($value3)…) 移除集合中一个或多个元素，不存在的元素会忽略</li>
@@ -399,8 +400,18 @@
 <li>sdiff($key1,$key2,($key3),…) 返回给定集合之间的差集，不存在的集合key将视为空集</li>
 <li>sunion($key1,$key2,($key3),…) 返回给定集合之间的并集，不存在的集合key将视为空集</li>
 </ul>
-<h4 id="实现：-3"><a href="#实现：-3" class="headerlink" title="实现："></a>实现：</h4><p>set内部实现是一个value永远为null的HashMap，通过hash的方式进行快速去重</p>
-<h4 id="应用场景：-3"><a href="#应用场景：-3" class="headerlink" title="应用场景："></a>应用场景：</h4><p>用于记录或判断一些不能重复的数据。例如每个用户每天只能投票一次的投票系统，可以用set记录用户的投票情况。</p>
+<h4 id="实现-3"><a href="#实现-3" class="headerlink" title="实现"></a>实现</h4><p>set内部实现是一个value永远为null的HashMap，通过hash的方式进行快速去重</p>
+<h4 id="应用场景-3"><a href="#应用场景-3" class="headerlink" title="应用场景"></a>应用场景</h4><p>用于记录或判断一些不能重复的数据。例如每个用户每天只能投票一次的投票系统，可以用set记录用户的投票情况。</p>
+<h3 id="SortSet"><a href="#SortSet" class="headerlink" title="SortSet"></a>SortSet</h3><p>有序集合，集合中的每个元素除了key和value还有一个score属性，在sortset集合中会将元素按照score排序，SortSet也具备Set集合value值唯一的特点</p>
+<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><ul>
+<li>zadd</li>
+<li>zrange</li>
+<li>zrem</li>
+<li>zcard</li>
+</ul>
+<h4 id="实现-4"><a href="#实现-4" class="headerlink" title="实现"></a>实现</h4><p>sortset的内部使用HashMap和跳跃表(SkipList)来保证数据的存储和有序，HashMap里放的是成员到score的映射，跳跃表里存放的是所有的成员信息，排序依据是HashMap里存的score，在使用跳跃表来实现查找。</p>
+<h4 id="应用场景-4"><a href="#应用场景-4" class="headerlink" title="应用场景"></a>应用场景</h4><p>可以用于需要不重复、有序的场景中。例如各种排行榜</p>
+<p>延迟队列 <strong>(如何实现延迟队列后续详细介绍)</strong></p>
 
       
     </div>
@@ -576,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令："><span class="nav-number">1.1.</span> <span class="nav-text">常用命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现："><span class="nav-number">1.2.</span> <span class="nav-text">实现：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景："><span class="nav-number">1.3.</span> <span class="nav-text">应用场景：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash"><span class="nav-number">2.</span> <span class="nav-text">Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令：-1"><span class="nav-number">2.1.</span> <span class="nav-text">常用命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现：-1"><span class="nav-number">2.2.</span> <span class="nav-text">实现：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景：-1"><span class="nav-number">2.3.</span> <span class="nav-text">应用场景：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">3.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令：-2"><span class="nav-number">3.1.</span> <span class="nav-text">常用命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现：-2"><span class="nav-number">3.2.</span> <span class="nav-text">实现：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景：-2"><span class="nav-number">3.3.</span> <span class="nav-text">应用场景：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">4.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令：-3"><span class="nav-number">4.1.</span> <span class="nav-text">常用命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现：-3"><span class="nav-number">4.2.</span> <span class="nav-text">实现：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景：-3"><span class="nav-number">4.3.</span> <span class="nav-text">应用场景：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令"><span class="nav-number">1.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现"><span class="nav-number">1.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景"><span class="nav-number">1.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash"><span class="nav-number">2.</span> <span class="nav-text">Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令-1"><span class="nav-number">2.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现-1"><span class="nav-number">2.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景-1"><span class="nav-number">2.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">3.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令-2"><span class="nav-number">3.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现-2"><span class="nav-number">3.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景-2"><span class="nav-number">3.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">4.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令-3"><span class="nav-number">4.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现-3"><span class="nav-number">4.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景-3"><span class="nav-number">4.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SortSet"><span class="nav-number">5.</span> <span class="nav-text">SortSet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用方法"><span class="nav-number">5.1.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现-4"><span class="nav-number">5.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景-4"><span class="nav-number">5.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li></ol></div>
             
 
           </div>
