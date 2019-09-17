@@ -5,9 +5,9 @@
   <subtitle>坚持是一种品格</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://blog.cairui99.cn/"/>
   <updated>2019-09-17T07:09:34.998Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://blog.cairui99.cn/</id>
   
   <author>
     <name>CaiRui</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>排序算法-冒泡排序</title>
-    <link href="http://yoursite.com/2019/09/17/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
-    <id>http://yoursite.com/2019/09/17/排序算法-冒泡排序/</id>
+    <link href="http://blog.cairui99.cn/2019/09/17/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
+    <id>http://blog.cairui99.cn/2019/09/17/排序算法-冒泡排序/</id>
     <published>2019-09-17T03:45:02.000Z</published>
     <updated>2019-09-17T07:09:34.998Z</updated>
     
@@ -32,17 +32,17 @@
     </summary>
     
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://blog.cairui99.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+      <category term="排序算法" scheme="http://blog.cairui99.cn/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>Redis常用数据结构&amp;应用场景</title>
-    <link href="http://yoursite.com/2019/09/12/Redis%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
-    <id>http://yoursite.com/2019/09/12/Redis常用数据结构-应用场景/</id>
+    <link href="http://blog.cairui99.cn/2019/09/12/Redis%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
+    <id>http://blog.cairui99.cn/2019/09/12/Redis常用数据结构-应用场景/</id>
     <published>2019-09-12T08:25:12.000Z</published>
     <updated>2019-09-16T06:21:21.765Z</updated>
     
@@ -62,17 +62,17 @@
     </summary>
     
     
-      <category term="知识点整理" scheme="http://yoursite.com/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"/>
+      <category term="知识点整理" scheme="http://blog.cairui99.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"/>
     
     
-      <category term="Redis" scheme="http://yoursite.com/tags/Redis/"/>
+      <category term="Redis" scheme="http://blog.cairui99.cn/tags/Redis/"/>
     
   </entry>
   
   <entry>
     <title>php中字符串与0比较问题</title>
-    <link href="http://yoursite.com/2019/09/06/php%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E0%E6%AF%94%E8%BE%83%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2019/09/06/php中字符串与0比较问题/</id>
+    <link href="http://blog.cairui99.cn/2019/09/06/php%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E0%E6%AF%94%E8%BE%83%E9%97%AE%E9%A2%98/"/>
+    <id>http://blog.cairui99.cn/2019/09/06/php中字符串与0比较问题/</id>
     <published>2019-09-06T03:29:27.000Z</published>
     <updated>2019-09-06T05:49:52.518Z</updated>
     
@@ -86,17 +86,17 @@
     </summary>
     
     
-      <category term="问题整理" scheme="http://yoursite.com/categories/%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/"/>
+      <category term="问题整理" scheme="http://blog.cairui99.cn/categories/%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/"/>
     
     
-      <category term="php" scheme="http://yoursite.com/tags/php/"/>
+      <category term="php" scheme="http://blog.cairui99.cn/tags/php/"/>
     
   </entry>
   
   <entry>
     <title>单一职责原则</title>
-    <link href="http://yoursite.com/2019/09/04/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/"/>
-    <id>http://yoursite.com/2019/09/04/单一职责原则/</id>
+    <link href="http://blog.cairui99.cn/2019/09/04/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/"/>
+    <id>http://blog.cairui99.cn/2019/09/04/单一职责原则/</id>
     <published>2019-09-04T12:18:10.000Z</published>
     <updated>2019-09-06T03:27:17.774Z</updated>
     
@@ -110,19 +110,19 @@
     </summary>
     
     
-      <category term="知识点整理" scheme="http://yoursite.com/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"/>
+      <category term="知识点整理" scheme="http://blog.cairui99.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"/>
     
     
-      <category term="设计模式" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://blog.cairui99.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="设计思想" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3/"/>
+      <category term="设计思想" scheme="http://blog.cairui99.cn/tags/%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3/"/>
     
   </entry>
   
   <entry>
     <title>设计模式开篇</title>
-    <link href="http://yoursite.com/2019/09/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%BC%80%E7%AF%87/"/>
-    <id>http://yoursite.com/2019/09/02/设计模式开篇/</id>
+    <link href="http://blog.cairui99.cn/2019/09/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%BC%80%E7%AF%87/"/>
+    <id>http://blog.cairui99.cn/2019/09/02/设计模式开篇/</id>
     <published>2019-09-02T10:23:46.000Z</published>
     <updated>2019-09-12T09:49:57.553Z</updated>
     
@@ -140,16 +140,16 @@
     
     
     
-      <category term="设计模式" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://blog.cairui99.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
-      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="http://blog.cairui99.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>First Write</title>
-    <link href="http://yoursite.com/2019/08/28/First%20Write/"/>
-    <id>http://yoursite.com/2019/08/28/First Write/</id>
+    <link href="http://blog.cairui99.cn/2019/08/28/First%20Write/"/>
+    <id>http://blog.cairui99.cn/2019/08/28/First Write/</id>
     <published>2019-08-28T06:02:35.984Z</published>
     <updated>2019-09-03T03:12:34.111Z</updated>
     
@@ -169,7 +169,7 @@
     
     
     
-      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://blog.cairui99.cn/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
