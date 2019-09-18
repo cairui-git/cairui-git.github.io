@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.cairui99.cn/"/>
-  <updated>2019-09-17T07:09:34.998Z</updated>
+  <updated>2019-09-18T07:38:59.489Z</updated>
   <id>http://blog.cairui99.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浅谈继承的特点</title>
+    <link href="http://blog.cairui99.cn/2019/09/18/%E6%B5%85%E8%B0%88%E7%BB%A7%E6%89%BF%E7%9A%84%E7%89%B9%E7%82%B9/"/>
+    <id>http://blog.cairui99.cn/2019/09/18/浅谈继承的特点/</id>
+    <published>2019-09-18T06:16:36.000Z</published>
+    <updated>2019-09-18T07:38:59.489Z</updated>
+    
+    <content type="html"><![CDATA[<p>继承是面向对象语言的一大特点，是开发中实现代码复用的主要手段，被继承的类叫做父类，继承父类的叫做子类，子类继承父类之后就自动拥有了父类的方法和属性。</p><a id="more"></a><p><strong>特点</strong>：</p><ul><li>子类继承后自动拥有父类所有的非private属性和方法,父类的构造方法无法被继承</li><li>子类可以拥有自己的属性和方法</li><li>子类可以重写从父类继承过来的方法，但方法的访问权限只能扩大或不变，不能缩小(public&gt;protect&gt;(默认)&gt;private)</li><li>当创建一个子类对象时，会先调用父类的构造方法，再调用子类的构造方法</li><li>被关键字final修饰的类无法被继承</li><li>支持向下转型，例如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过父类创建子类</span></span><br><span class="line">Person person = <span class="keyword">new</span> Teacher();</span><br><span class="line">Teacher teacher = (Teacher)p;</span><br></pre></td></tr></table></figure></li></ul><p><strong>优点</strong>：</p><ul><li>提高代码的复用性，减少工作量</li><li>提高代码的可读性，让层次更清晰</li><li>提高代码的易维护性：所有子类共用父类的方法，方法变更时只需修改父类一处</li><li>提高代码的拓展性：子类可实现特有的方法</li></ul><p><strong>缺点</strong>：</p><ul><li>继承是侵入的，只要继承，子类就必须拥有父类的所有非私有的属性和方法</li><li>继承是高耦合的形式：当父类修改方法时，需要考虑对所有子类的影响，如果有子类重写了该方法，可能会造成非常严重的后果</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;继承是面向对象语言的一大特点，是开发中实现代码复用的主要手段，被继承的类叫做父类，继承父类的叫做子类，子类继承父类之后就自动拥有了父类的方法和属性。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="知识点整理" scheme="http://blog.cairui99.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"/>
+    
+    
+      <category term="基础知识" scheme="http://blog.cairui99.cn/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
   
   <entry>
     <title>排序算法-冒泡排序</title>
@@ -94,11 +117,11 @@
   </entry>
   
   <entry>
-    <title>单一职责原则</title>
-    <link href="http://blog.cairui99.cn/2019/09/04/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/"/>
-    <id>http://blog.cairui99.cn/2019/09/04/单一职责原则/</id>
+    <title>设计原则-单一职责原则</title>
+    <link href="http://blog.cairui99.cn/2019/09/04/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/"/>
+    <id>http://blog.cairui99.cn/2019/09/04/设计原则-单一职责原则/</id>
     <published>2019-09-04T12:18:10.000Z</published>
-    <updated>2019-09-06T03:27:17.774Z</updated>
+    <updated>2019-09-18T02:57:30.614Z</updated>
     
     <content type="html"><![CDATA[<p><strong>There should never be more than one reason for a class to change.</strong></p><p>单一职责原则是指在设计类时需要保证有且仅有一个原因引起类的变更，也就是说这个类有且仅有一个职责。<strong>（单一职责原则同样适用于接口和方法）</strong></p><a id="more"></a><p><strong>看几个例子：</strong></p><p>（1）下图是一个简单的维护用户信息的类图，看看有什么问题（参照《设计模式之禅》）：</p><p><img src="https://s2.ax1x.com/2019/09/05/nnOuRK.png" alt="nnOuRK.png"></p><p><strong><center>图1-1 用户信息类图</center></strong></p><p>问题比较明显，用户的属性和用户的行为没有分开，应该把用户的属性抽去成一个业务对象，用户的抽取成业务逻辑，修改结果如下图：</p><p><img src="https://s2.ax1x.com/2019/09/05/nnjA41.png" alt="nnjA41.png"></p><p><strong><center>图1-2 划分职责后的用户类图</center></strong></p><p>按职责划分，IUserBO的职责就是收集和反馈用户的属性信息，IUserBiz的职责就是负责实现用户的各种行为，进行对用户属性的维护和变更。这种设计更加接近于单一职责原则（有且仅有一个原因引起类的变更）。</p><p>(2)第二个例子,现在我们需求是拍照和播放音乐，代码如下（参照《大话设计模式》）：<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//具有照相的功能的接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IPhotograph</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Photograph</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具有播放音乐功能的接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IPlayMusic</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">PlayMusic</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//实现照相、播放音乐的手机类</span></span><br><span class="line">public class MobilePhone : IPhotograph, IPlayMusic</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//拍照</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Photograph</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"拍照片"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//播放音乐</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PlayMusic</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"播放音乐"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>根据需求，我们设计了一部可以照相、播放音乐的手机类，满足了现有的需求；但有一天我们的需求发生了变化，简单的拍照功能无法满足现有的需求，我们需要能够拍摄高清照片的功能，这时我们需要去直接修改手机，并且不知道修改拍照功能是否会对播放音乐功能产生影响。这是因为手机类有了两个职责，而无论哪一个职责发生变化，我们都要去改变手机。</p><p>所以，为了满足单一职责原则，我们可以把手机中的两种职责抽去出来，变成一台照相机和一台音乐播放器，这样在功能需求变化的时候，我们只需要关心引起变化的原因，不必考虑需求的变化对其他功能的影响。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现播放音乐功能的音乐播放器类</span></span><br><span class="line">class MusicPlayer : IPlayMusic</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PlayMusic</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"播放音乐"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//实现照相功能的摄像机类</span></span><br><span class="line">class Carmera : IPhotograph</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Photograph</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"拍照片"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>好，既然需求是拍照片和播放音乐，我们现在有了一部相机和播放器，如果想要拍照，就调用相机的拍照方法，想要放音乐，就调用播放器的播放方法。之后如果拍照功能发生改变，我们就去改变相机，播放功能改变我们就去改变播放去。我们只需要关心引起变化的功能，而不再需要考虑需求改变后对其他功能的影响。</p><p>我们一定要遵循单一职责原则吗？从上面的例子来看，改动相对简单。但往往许多时候，需求不会在系统设计时就发生改变，而是在上线迭代了一定程度之后，在系统已经有了充分的代码量之后，到时候如果一味的执行单一职责原则来修改成本必定很高，所以我们在改动时需要根据具体情况来选择更合适的改动方案。例如上面的例子，我们不直接拆分手机类，而是让手机类拥有一个相机类和播放器类，然后具体功能调用对应类的方法，这样改动较小，又达到了我们的最终目的。</p><h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>在实际的项目开发中类的“职责”还是需要看情况而定，通常我们会将单一职责原则应用于开发接口或者方法时使用，一味的实现类的单一职责原则，会引起类间的耦合过重、类的数量、开发成本的增加、人为的加大了代码的复杂性，所以在使用时要适度，要看情况而定。</p>]]></content>
     
@@ -113,9 +136,9 @@
       <category term="知识点整理" scheme="http://blog.cairui99.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"/>
     
     
-      <category term="设计模式" scheme="http://blog.cairui99.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计原则" scheme="http://blog.cairui99.cn/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
     
-      <category term="设计思想" scheme="http://blog.cairui99.cn/tags/%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3/"/>
+      <category term="读书笔记" scheme="http://blog.cairui99.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -140,9 +163,9 @@
     
     
     
-      <category term="设计模式" scheme="http://blog.cairui99.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
       <category term="读书笔记" scheme="http://blog.cairui99.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="设计模式" scheme="http://blog.cairui99.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
