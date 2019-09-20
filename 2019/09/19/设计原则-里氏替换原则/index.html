@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="CaiRui的博客">
 <meta property="og:description" content="在学习里氏替换原则之前，可以先简单复习下 继承 一个事物的存在，总是优点和缺点并存的，继承也一样，所以我们要做的就是把它用在最合适的地方，让继承的优点充分的发挥，同时规避缺点带来的影响。 那么如何实现呢？解决方案就是引入里氏替换原则。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-20T02:11:05.351Z">
+<meta property="og:updated_time" content="2019-09-20T05:39:58.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计原则-里氏替换原则">
 <meta name="twitter:description" content="在学习里氏替换原则之前，可以先简单复习下 继承 一个事物的存在，总是优点和缺点并存的，继承也一样，所以我们要做的就是把它用在最合适的地方，让继承的优点充分的发挥，同时规避缺点带来的影响。 那么如何实现呢？解决方案就是引入里氏替换原则。">
@@ -411,7 +411,7 @@
 <li>第一种：If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T,the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.(如果对每一个类型为S的对象o1，都有类型为T的对象o2，,使得以T定义的所有程序P在所有的对象o1都代换成o2时，程序P的行为什么发生变化，那么类型S是类型T的子类型)</li>
 <li>第二种：Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it.(所有引用基类的地方必须能透明的使用其子类的对象)</li>
 </ul>
-<p>第一种是比较官方、正宗的定义，不是很好理解，特别像高数里面的某种概念。我们看第二种，第二种是定义是比较清晰的，解释一下就是：<strong>所有可以使用父类的地方，把父类替换为子类后，程序运行时不会体现出任何的异常，使用者甚至不需要关心使用的是父类和子类。</strong> 但反过来就未必可以，使用子类的地方换成父类就不能保证程序不会出错，因为子类可以有父类没有的属性和方法。</p>
+<p>第一种是比较官方、正宗的定义，不是很好理解，感觉像是高数里面的某种概念。我们看第二种，第二种是定义是比较清晰的，解释一下就是：<strong>所有可以使用父类的地方，把父类替换为子类后，程序运行时不会体现出任何的异常，使用者甚至不需要关心使用的是父类和子类。</strong> 但反过来就未必可以，使用子类的地方换成父类就不能保证程序不会出错，因为子类可以有父类没有的属性和方法。</p>
 <h3 id="继承的使用规范"><a href="#继承的使用规范" class="headerlink" title="继承的使用规范"></a>继承的使用规范</h3><p>知道了什么是里氏替换原则，那么具体应该怎么做呢？</p>
 <p><strong>(1)子类必须完全实现父类的方法：</strong> 如果子类不能完整的实现父类的方法，或者父类的方法不适合该子类，这种情况下继承带来的效果就属于弊大于利，因为子类无法完整地实现父类的业务，此时建议解除继承关系，采用依赖、聚集、组合等关系代替来继承。</p>
 <p><strong>(2)覆盖或实现父类的方法时输入参数可以被放大，不可以被缩小：</strong></p>
@@ -487,6 +487,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/20/对数器/" rel="prev" title="对数器">
+                对数器 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -568,7 +572,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
