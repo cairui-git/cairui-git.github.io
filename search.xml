@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[排序算法-选择排序]]></title>
+    <url>%2F2019%2F09%2F23%2F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[选择排序最稳定的排序算法，任何情况下时间复杂度都是O(n2) 思路 第一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置 然后再从剩余的未排序元素中寻找到最小（大）元素，然后放到已排序的序列的末尾 以此类推，直到全部待排序的数据元素的个数为零 图解 代码12345678910111213141516171819202122public class SelectSort &#123; //选择排序 public static int[] selectSort(int[] arr)&#123; for(int i=0;i&lt;arr.length-1;i++)&#123; int min_index = i; for(int j=i+1;j&lt;arr.length;j++)&#123; min_index = arr[j]&lt;arr[min_index] ? j : min_index; &#125; swap(arr,i,min_index); &#125; return arr; &#125; //交换位置 private static void swap(int[] arr,int n,int m)&#123; int temp = arr[n]; arr[n] = arr[m]; arr[m] = temp; &#125;&#125; 复杂度分析最佳时间复杂度：O(n2) ;最差时间复杂度: O(n2) ;平均时间复杂度: O(n2) 空间复杂度: O(1) 稳定性分析举例： 排序前：3(1号) , 3(2号) , 1 排序后：1 , 3(2号) , 3(1号) 不稳定]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>排序算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[对数器]]></title>
     <url>%2F2019%2F09%2F20%2F%E5%AF%B9%E6%95%B0%E5%99%A8%2F</url>
     <content type="text"><![CDATA[对数器的作用是验证算法的正确性，前提是对该题目你已知一种完全正确的答案，才可以使用对数器。 对数器一般用来 优化算法,利用正确的但效率低下的算法来验证优化之后的算法的正确性。 下面一个例子，是利用系统已有的排序函数(绝对正确的方法)来验证我自己写的排序函数mySort(正确性未知的,我们要验证的方法)的正确性： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879import java.util.Arrays;public class SortTest &#123; /** * 获取一个随机数组 * @param length 数组最大长度,最小为0 * @param min 最小值 * @param max 最大值 */ private static int[] getArray(int length,int min,int max)&#123; int[] arr = new int[(int)(0+Math.random()*(length+1))]; for(int i=0;i&lt;length;i++)&#123; arr[i] = (int)(min+Math.random()*(max-min+1)); &#125; return arr; &#125; //复制数组 private static int[] copyArray(int[] arr)&#123; int[] result = new int[arr.length]; for(int i=0;i&lt;arr.length;i++)&#123; result[i] = arr[i]; &#125; return result; &#125; //比较两个数组是否相等 private static boolean isEqualsArray(int[] arr1,int[] arr2)&#123; if(arr1.length!=arr2.length)&#123; return false; &#125; for(int i=0;i&lt;arr1.length;i++)&#123; if(arr1[i]!=arr2[i])&#123; return false; &#125; &#125; return true; &#125; //输出数组 private static void printArray(int[] arr)&#123; for(int num : arr)&#123; System.out.print(num+" "); &#125; System.out.println(); &#125; public static void main(String[] args) &#123; boolean is_right = true; int[] fail_array = new int[10]; //测试次数 int test_num = 100000; for(int i=0;i&lt;test_num;i++)&#123; //生成一个长度为 0~10，值为 1~20之间的随机数组,并生成两个复制来进行排序 int[] arr = SortTest.getArray(10, 1, 20); int[] arrA = SortTest.copyArray(arr1); int[] arrB = SortTest.copyArray(arr1); //执行排序 Arrays.sort(arrA); MySort.mySort(arrB); //比较结果是否相等 if(!SortTest.isEqualsArray(arrA, arrB))&#123; is_right = false; fail_array = arr; break; &#125; &#125; if(is_right)&#123; System.out.println("Success!"); &#125;else&#123; System.out.println("Fail!"); System.out.println(); System.out.print("Fail Array:"); SortTest.printArray(fail_array); &#125; &#125;&#125; 校验mySort步骤： 生成一个长度随机，值也随机的数组 获取两个刚刚随机生成的数组的复制，分别用正确的sort方法和待验证的mysort方法进行排序 比较排好序的两个数组是否相等 若不相等则说明算法是错的，把排序失败的数组打印出来，方便排查问题出在哪 相等则说明该条测试用例可以通过，继续重复以上步骤，我这里重复了10万次，当然次数越多越好，这样几乎可以涵盖所有的可能，可以说明该算法是正确的 对数器的好处在于测试用例不再需要自己设计了，通过随机生成的庞大样本量，就可以保证算法的正确性，自己想测试用例的话总会出现情况考虑不全的时候，到时程序出bug的话就得不偿失了。]]></content>

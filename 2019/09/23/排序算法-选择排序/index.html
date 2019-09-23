@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="基础知识,">
+  <meta name="keywords" content="排序算法,">
 
 
 
@@ -81,18 +81,20 @@
 
 
 
-<meta name="description" content="继承是面向对象语言的一大特点，是开发中实现代码复用的主要手段，被继承的类叫做父类，继承父类的叫做子类，子类继承父类之后就自动拥有了父类的方法和属性。">
-<meta name="keywords" content="基础知识">
+<meta name="description" content="选择排序最稳定的排序算法，任何情况下时间复杂度都是O(n2)">
+<meta name="keywords" content="排序算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈继承的特点">
-<meta property="og:url" content="http://blog.cairui99.cn/2019/09/18/浅谈继承的特点/index.html">
+<meta property="og:title" content="排序算法-选择排序">
+<meta property="og:url" content="http://blog.cairui99.cn/2019/09/23/排序算法-选择排序/index.html">
 <meta property="og:site_name" content="CaiRui的博客">
-<meta property="og:description" content="继承是面向对象语言的一大特点，是开发中实现代码复用的主要手段，被继承的类叫做父类，继承父类的叫做子类，子类继承父类之后就自动拥有了父类的方法和属性。">
+<meta property="og:description" content="选择排序最稳定的排序算法，任何情况下时间复杂度都是O(n2)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-18T07:38:59.489Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/23/uiJcKx.gif">
+<meta property="og:updated_time" content="2019-09-23T09:38:21.753Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈继承的特点">
-<meta name="twitter:description" content="继承是面向对象语言的一大特点，是开发中实现代码复用的主要手段，被继承的类叫做父类，继承父类的叫做子类，子类继承父类之后就自动拥有了父类的方法和属性。">
+<meta name="twitter:title" content="排序算法-选择排序">
+<meta name="twitter:description" content="选择排序最稳定的排序算法，任何情况下时间复杂度都是O(n2)">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/23/uiJcKx.gif">
 
 
 
@@ -122,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.cairui99.cn/2019/09/18/浅谈继承的特点/">
+  <link rel="canonical" href="http://blog.cairui99.cn/2019/09/23/排序算法-选择排序/">
 
 
 
 
 
-  <title>浅谈继承的特点 | CaiRui的博客</title>
+  <title>排序算法-选择排序 | CaiRui的博客</title>
   
 
 
@@ -297,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2019/09/18/浅谈继承的特点/">
+    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2019/09/23/排序算法-选择排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CaiRui">
@@ -314,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅谈继承的特点</h1>
+          <h1 class="post-title" itemprop="name headline">排序算法-选择排序</h1>
         
 
         <div class="post-meta">
@@ -326,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-18T14:16:36+08:00">
-                2019-09-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-23T16:59:29+08:00">
+                2019-09-23
               </time>
             
 
@@ -349,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识点整理/" itemprop="url" rel="index">
-                    <span itemprop="name">知识点整理</span>
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
                   </a>
                 </span>
 
@@ -367,8 +369,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/18/浅谈继承的特点/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/18/浅谈继承的特点/" itemprop="commentCount"></span>
+                <a href="/2019/09/23/排序算法-选择排序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/23/排序算法-选择排序/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -401,32 +403,25 @@
       
 
       
-        <p>继承是面向对象语言的一大特点，是开发中实现代码复用的主要手段，被继承的类叫做父类，继承父类的叫做子类，子类继承父类之后就自动拥有了父类的方法和属性。</p>
+        <h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>最稳定的排序算法，任何情况下时间复杂度都是O(n2)</p>
 <a id="more"></a>
 
-<p><strong>特点</strong>：</p>
-<ul>
-<li>子类继承后自动拥有父类所有的非private属性和方法,父类的构造方法无法被继承</li>
-<li>子类可以拥有自己的属性和方法</li>
-<li>子类可以重写从父类继承过来的方法，但方法的访问权限只能扩大或不变，不能缩小(public&gt;protect&gt;(默认)&gt;private)</li>
-<li>当创建一个子类对象时，会先调用父类的构造方法，再调用子类的构造方法</li>
-<li>被关键字final修饰的类无法被继承</li>
-<li>支持向下转型，例如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过父类创建子类</span></span><br><span class="line">Person person = <span class="keyword">new</span> Teacher();</span><br><span class="line">Teacher teacher = (Teacher)p;</span><br></pre></td></tr></table></figure>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
+<li>第一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置</li>
+<li>然后再从剩余的未排序元素中寻找到最小（大）元素，然后放到已排序的序列的末尾</li>
+<li>以此类推，直到全部待排序的数据元素的个数为零</li>
+</ul>
+<h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><p><img src="https://s2.ax1x.com/2019/09/23/uiJcKx.gif" alt="uiJcKx.gif"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectSort</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//选择排序</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] selectSort(<span class="keyword">int</span>[] arr)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> min_index = i;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;arr.length;j++)&#123;</span><br><span class="line">				min_index = arr[j]&lt;arr[min_index] ? j : min_index;</span><br><span class="line">			&#125;</span><br><span class="line">			swap(arr,i,min_index);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> arr;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//交换位置</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> temp = arr[n];</span><br><span class="line">		arr[n] = arr[m];</span><br><span class="line">		arr[m] = temp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<p><strong>优点</strong>：</p>
+<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>最佳时间复杂度：<strong>O(n2)</strong> ;<br>最差时间复杂度: <strong>O(n2)</strong> ;<br>平均时间复杂度: <strong>O(n2)</strong></p>
+<p>空间复杂度: <strong>O(1)</strong></p>
+<h4 id="稳定性分析"><a href="#稳定性分析" class="headerlink" title="稳定性分析"></a>稳定性分析</h4><p>举例：</p>
 <ul>
-<li>提高代码的复用性，减少工作量</li>
-<li>提高代码的可读性，让层次更清晰</li>
-<li>提高代码的易维护性：所有子类共用父类的方法，方法变更时只需修改父类一处</li>
-<li>提高代码的拓展性：子类可实现特有的方法</li>
+<li>排序前：3(1号) , 3(2号) , 1</li>
+<li>排序后：1 , 3(2号) , 3(1号)</li>
 </ul>
-<p><strong>缺点</strong>：</p>
-<ul>
-<li>继承是侵入的，只要继承，子类就必须拥有父类的所有非私有的属性和方法</li>
-<li>继承是高耦合的形式：当父类修改方法时，需要考虑对所有子类的影响，如果有子类重写了该方法，可能会造成非常严重的后果</li>
-</ul>
+<p><strong>不稳定</strong></p>
 
       
     </div>
@@ -447,7 +442,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.cairui99.cn/2019/09/18/浅谈继承的特点/" title="浅谈继承的特点">http://blog.cairui99.cn/2019/09/18/浅谈继承的特点/</a>
+    <a href="http://blog.cairui99.cn/2019/09/23/排序算法-选择排序/" title="排序算法-选择排序">http://blog.cairui99.cn/2019/09/23/排序算法-选择排序/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -462,7 +457,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/基础知识/" rel="tag"># 基础知识</a>
+            <a href="/tags/排序算法/" rel="tag"># 排序算法</a>
           
         </div>
       
@@ -475,8 +470,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/17/排序算法-冒泡排序/" rel="next" title="排序算法-冒泡排序">
-                <i class="fa fa-chevron-left"></i> 排序算法-冒泡排序
+              <a href="/2019/09/20/对数器/" rel="next" title="对数器">
+                <i class="fa fa-chevron-left"></i> 对数器
               </a>
             
           </div>
@@ -484,10 +479,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/19/设计原则-里氏替换原则/" rel="prev" title="设计原则-里氏替换原则">
-                设计原则-里氏替换原则 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -542,8 +533,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,6 +612,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择排序"><span class="nav-number">1.</span> <span class="nav-text">选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图解"><span class="nav-number">1.2.</span> <span class="nav-text">图解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复杂度分析"><span class="nav-number">1.4.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#稳定性分析"><span class="nav-number">1.5.</span> <span class="nav-text">稳定性分析</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
