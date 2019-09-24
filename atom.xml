@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.cairui99.cn/"/>
-  <updated>2019-09-23T09:38:21.753Z</updated>
+  <updated>2019-09-24T07:29:34.919Z</updated>
   <id>http://blog.cairui99.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>排序算法-插入排序</title>
+    <link href="http://blog.cairui99.cn/2019/09/24/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"/>
+    <id>http://blog.cairui99.cn/2019/09/24/排序算法-插入排序/</id>
+    <published>2019-09-24T06:59:35.000Z</published>
+    <updated>2019-09-24T07:29:34.919Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>在工程中比较常用的O(n2)的排序算法，特点是越趋近与有序的数组，排序所花费的时间越少</p><a id="more"></a><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul><li>第一个数默认已经排好序</li><li>从第二数开始，依次和前面的数比较，遇到比自己大的就交换，遇到比自己小的或者已经到了数组头部时停止(相当于把自己插入到了正确的位置，比自己大的数往后挪了一位)</li><li>遍历数组，重复以上步骤</li></ul><h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><p><img src="https://s2.ax1x.com/2019/09/24/ukzHPJ.gif" alt="ukzHPJ.gif"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertSort</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//插入排序</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&gt;<span class="number">0</span>;j--)&#123;</span><br><span class="line"><span class="keyword">if</span>(arr[j]&gt;arr[j-<span class="number">1</span>])&#123;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">swap(arr,j,j-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//交换位置</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> temp = arr[n];</span><br><span class="line">arr[n] = arr[m];</span><br><span class="line">arr[m] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>最佳时间复杂度：<strong>O(n)</strong> ;<br>最差时间复杂度: <strong>O(n2)</strong> ;<br>平均时间复杂度: <strong>O(n2)</strong></p><p>空间复杂度: <strong>O(1)</strong></p><h4 id="稳定性分析"><a href="#稳定性分析" class="headerlink" title="稳定性分析"></a>稳定性分析</h4><p><strong>稳定</strong> (保证比较相同数值时不做交换即可)</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;插入排序&quot;&gt;&lt;a href=&quot;#插入排序&quot; class=&quot;headerlink&quot; title=&quot;插入排序&quot;&gt;&lt;/a&gt;插入排序&lt;/h3&gt;&lt;p&gt;在工程中比较常用的O(n2)的排序算法，特点是越趋近与有序的数组，排序所花费的时间越少&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://blog.cairui99.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="排序算法" scheme="http://blog.cairui99.cn/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>排序算法-选择排序</title>
