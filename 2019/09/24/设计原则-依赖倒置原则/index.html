@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Redis,">
+  <meta name="keywords" content="设计原则,读书笔记,">
 
 
 
@@ -81,18 +81,21 @@
 
 
 
-<meta name="description" content="String常用命令 get($key) 获取key的值 set($key,$value) 设置key的值 incr($key) 将key的值+1 decr($key) 将key的值-1 mget($key1,$key2,…) 获取多个key的值  实现String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义的结">
-<meta name="keywords" content="Redis">
+<meta name="description" content="依赖倒置原则简单来说就是我们常说的 面向接口编程——OOD.">
+<meta name="keywords" content="设计原则,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis常用数据结构&amp;应用场景">
-<meta property="og:url" content="http://blog.cairui99.cn/2019/09/12/Redis常用数据结构-应用场景/index.html">
+<meta property="og:title" content="设计原则-依赖倒置原则">
+<meta property="og:url" content="http://blog.cairui99.cn/2019/09/24/设计原则-依赖倒置原则/index.html">
 <meta property="og:site_name" content="CaiRui的博客">
-<meta property="og:description" content="String常用命令 get($key) 获取key的值 set($key,$value) 设置key的值 incr($key) 将key的值+1 decr($key) 将key的值-1 mget($key1,$key2,…) 获取多个key的值  实现String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义的结">
+<meta property="og:description" content="依赖倒置原则简单来说就是我们常说的 面向接口编程——OOD.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-19T03:17:32.614Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/26/umFHPI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/26/umdtij.png">
+<meta property="og:updated_time" content="2019-09-26T07:40:35.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis常用数据结构&amp;应用场景">
-<meta name="twitter:description" content="String常用命令 get($key) 获取key的值 set($key,$value) 设置key的值 incr($key) 将key的值+1 decr($key) 将key的值-1 mget($key1,$key2,…) 获取多个key的值  实现String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义的结">
+<meta name="twitter:title" content="设计原则-依赖倒置原则">
+<meta name="twitter:description" content="依赖倒置原则简单来说就是我们常说的 面向接口编程——OOD.">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/26/umFHPI.png">
 
 
 
@@ -122,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.cairui99.cn/2019/09/12/Redis常用数据结构-应用场景/">
+  <link rel="canonical" href="http://blog.cairui99.cn/2019/09/24/设计原则-依赖倒置原则/">
 
 
 
 
 
-  <title>Redis常用数据结构&应用场景 | CaiRui的博客</title>
+  <title>设计原则-依赖倒置原则 | CaiRui的博客</title>
   
 
 
@@ -297,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2019/09/12/Redis常用数据结构-应用场景/">
+    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2019/09/24/设计原则-依赖倒置原则/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CaiRui">
@@ -314,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Redis常用数据结构&应用场景</h1>
+          <h1 class="post-title" itemprop="name headline">设计原则-依赖倒置原则</h1>
         
 
         <div class="post-meta">
@@ -326,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-12T16:25:12+08:00">
-                2019-09-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-24T19:11:34+08:00">
+                2019-09-24
               </time>
             
 
@@ -367,8 +370,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/12/Redis常用数据结构-应用场景/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/12/Redis常用数据结构-应用场景/" itemprop="commentCount"></span>
+                <a href="/2019/09/24/设计原则-依赖倒置原则/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/24/设计原则-依赖倒置原则/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -401,56 +404,73 @@
       
 
       
-        <h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
-<li>get($key) 获取key的值</li>
-<li>set($key,$value) 设置key的值</li>
-<li>incr($key) 将key的值+1</li>
-<li>decr($key) 将key的值-1</li>
-<li>mget($key1,$key2,…) 获取多个key的值</li>
-</ul>
-<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义的结构SDS来实现String,详见&lt;&lt;Redis设计与实现&gt;&gt;。</p>
+        <p>依赖倒置原则简单来说就是我们常说的 <strong>面向接口编程——OOD</strong>.</p>
 <a id="more"></a>
 
-<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>String用来存储简单的键值信息，用途广泛，例如用户信息、登陆信息、配置信息、使用记录、增减库存等等。在使用时要注意存储的值不要过大，最好不要超过1M。</p>
-<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><h4 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
-<li>hget($key,$field) 返回hash表中指定字段的值</li>
-<li>hset($key,$field,$value) 设置hash中指定字段的值</li>
-<li>hgetall($key) 返回指定key下，哈希表中所有字段和值</li>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>High level modules should not depend upon low level modules.Both should depend upon abstractions.Abstractions should not depend upon details.Details should depend upon abstractions.</strong></p>
+<p>翻译过来就是：</p>
+<ul>
+<li>高层模块不应该依赖低层模块，两者都应该依赖其抽象</li>
+<li>抽象不应该依赖细节</li>
+<li>细节应该依赖抽象</li>
 </ul>
-<h4 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h4><p>Redis的Hash的Value内部实际是HashMap，当成员较少时会当成数组存储，当成员数量增大时会转成HashMap存储。</p>
-<h4 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h4><p>当存储用户信息时，信息例如 （user：001 张三 19 2019-11-15）。当使用常用的String类型存储时需要对取出的value做相应的处理才可以使用。这时可以最好用hset来存储用户信息。</p>
-<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><h4 id="常用命令-2"><a href="#常用命令-2" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
-<li>lpush($key,$value1,($value2),($value3)…) 将一个或多个值插入指定列表的头部</li>
-<li>rpush($key,$value1,($value2),($value3)…) 将一个或多个值插入指定列表的尾部</li>
-<li>lpop($key) 移除指定列表的第一个元素</li>
-<li>rpop($key) 移除指定列表的最后一个元素</li>
-<li>lrange($key,$start,$stop) 获取指定列表指定范围内的元素</li>
-<li>blpop($key,$timeOut) 移除指定列表第一个元素，<strong>如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止</strong></li>
+<p>每一个逻辑的具体实现就是低层模块(一般指方法)，各种逻辑的组装就是高层模块。</p>
+<p>抽象是指接口或者抽象类，属于不能被示例化的；细节就是可以被实例化的实现类，一般指实现接口或继承抽象类的类。</p>
+<p>依赖倒置原则在开发过程中的体现就是：</p>
+<ul>
+<li>模块间的依赖通过抽象发生，实现类之间不直接发生依赖，其依赖关系是通过接口或抽象类产生的</li>
+<li>接口或抽象类不依赖实现类</li>
+<li>实现类依赖接口或抽象类</li>
 </ul>
-<h4 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h4><p>Redis的List实现是一个双向链表，可以支持反向查找和遍历，更方便的操作，也便随着更大的内存开销。Redis内部的很多实现，包括缓冲队列都是用过List实现的。</p>
-<h4 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h4><p>最新消息排行;</p>
-<p>消息队列：将任务存在list中，然后工作线程利用pop操作将任务取出执行。但要注意Redis的队列是轻量级的，适合处理轻量级的任务，Redis中并没有队列重试、队列重放等机制，消费完的消息相当于在Redis中删除了。</p>
-<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>Set集合的特点是在插入元素时Redis会提供去重的功能</p>
-<h4 id="常用命令-3"><a href="#常用命令-3" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
-<li>sadd($key,$value1,($value2),($value3)…) 将一个或多个元素放入集合中，<strong>已经存在与集合中的元素将被忽略</strong></li>
-<li>spop($key) 移除集合中的一个随机元素</li>
-<li>srem($key,$value1,($value2),($value3)…) 移除集合中一个或多个元素，不存在的元素会忽略</li>
-<li>smembers($key) 获取指定集合中的所有元素</li>
-<li>sdiff($key1,$key2,($key3),…) 返回给定集合之间的差集，不存在的集合key将视为空集</li>
-<li>sunion($key1,$key2,($key3),…) 返回给定集合之间的并集，不存在的集合key将视为空集</li>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>看一个应用到依赖倒置原则的例子：</p>
+<p>下图是在不使用依赖倒置原则的情况下，奔驰车和驾车司机的类图设计：<br><img src="https://s2.ax1x.com/2019/09/26/umFHPI.png" alt="umFHPI.png"><br>奔驰车中提供run方法，表示车辆运行：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Benz</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"奔驰汽车开始运行..."</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>司机通过调用奔驰车的run方法来驾驶奔驰车：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Driver</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">(Benz benz)</span></span>&#123;</span><br><span class="line">    benz.run();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>司机驾驶奔驰汽车的场景如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Driver driver = <span class="keyword">new</span> Driver();</span><br><span class="line">    Benz benz = <span class="keyword">new</span> Benz();</span><br><span class="line">    driver.drive(benz);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码实现了司机开动奔驰车的功能，目前为止程序的功能没有任何问题。</p>
+<p>此时如果我们现在不仅有奔驰车，又添加了一辆宝马车，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BMW</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"宝马汽车开始运行..."</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有了宝马车之后，我们发现司机竟然没有办法把宝马车开动起来，这是因为目前的司机和奔驰车是紧耦合的关系，要想让司机开动奔驰车就必须修改司机类的代码，被依赖者的变更竟然需要依赖者来承担修改的代价，可见上面的程序稳定性和可维护性都是非常差的</p>
+<p>在比较大一些项目开发中，团队中每个人都会负责不同的模块，这里假设这个项目的团队中甲负责汽车类的维护，乙负责司机类的维护，如果按照上面的思路开发，那么在甲开发完成之前乙是不能编写drive方法，因为缺少汽车类，所以此时团队的开发工作是无法做到并行开发的，这严重影响了项目的开发效率</p>
+<p>为了解决以上问题，对该项目引入依赖倒置原则后的类图如图所示：<br><img src="https://s2.ax1x.com/2019/09/26/umdtij.png" alt="umdtij.png"></p>
+<p>列出采用依赖倒置原则的三种写法：</p>
+<p>(1)构造函数传入依赖对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IDriver</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Driver</span> <span class="keyword">implements</span> <span class="title">IDriver</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> ICar car;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Driver</span><span class="params">(ICar _car)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.car = _car;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.car.run();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过构造函数来设置驾驶汽车的类型</p>
+<p>(2)set方法传递依赖对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IDriver</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCar</span><span class="params">(ICar car)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Driver</span> <span class="keyword">implements</span> <span class="title">IDriver</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> ICar car;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCar</span><span class="params">(ICar car)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.car = car;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.car.run();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在执行drive方法之前通过setCar方法来指定汽车的类型</p>
+<p>(3)接口声明依赖对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IDriver</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">(ICar car)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Driver</span> <span class="keyword">implements</span> <span class="title">IDriver</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">(ICar car)</span></span>&#123;</span><br><span class="line">    car.run();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ICar</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Benz</span> <span class="keyword">implements</span> <span class="title">ICar</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">      System.out.println(<span class="string">"奔驰汽车开始运行..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BMW</span> <span class="keyword">implements</span> <span class="title">ICar</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"宝马汽车开始运行..."</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>业务场景实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    IDriver zhangSan = <span class="keyword">new</span> Driver();</span><br><span class="line">    ICar benz = <span class="keyword">new</span> Benz();</span><br><span class="line">    zhangSan.drive(benz);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>为什么是依赖“倒置”：以正常人的思维方式，类之间的依赖关系是实现类之间的依赖，例如司机要开奔驰车，就直接依赖奔驰车，这种就属于“正置”；在编写程序中我们要做到的是对现实世界的事物进行抽象，来实现扩展性和维护性更高的代码，抽象就是抽象类和接口，让我们的的系统产生对抽象的依赖，代替正常人们传统的思维方式(对事物的依赖)，这就是“倒置”的含义</p>
+<p>采用依赖倒置原则带来的好处：</p>
+<ul>
+<li>减少类间的耦合性</li>
+<li>提高系统的稳定性</li>
+<li>降低并行开发的风险</li>
+<li>提高代码的可读性和可维护性</li>
 </ul>
-<h4 id="实现-3"><a href="#实现-3" class="headerlink" title="实现"></a>实现</h4><p>set内部实现是一个value永远为null的HashMap，通过hash的方式进行快速去重</p>
-<h4 id="应用场景-3"><a href="#应用场景-3" class="headerlink" title="应用场景"></a>应用场景</h4><p>用于记录或判断一些不能重复的数据。例如每个用户每天只能投票一次的投票系统，可以用set记录用户的投票情况。</p>
-<h3 id="SortSet"><a href="#SortSet" class="headerlink" title="SortSet"></a>SortSet</h3><p>有序集合，集合中的每个元素除了key和value还有一个score属性，在sortset集合中会将元素按照score排序，SortSet也具备Set集合value值唯一的特点</p>
-<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><ul>
-<li>zadd($key,$score,$value) 将一个或多个元素及其分数值加入到有序集合中，重复的元素只更新分数，并按分数重新对集合排序</li>
-<li>zrange($key,$start,$end) 获取有序集合中指定区间内的成员信息</li>
-<li>zrem($key,$member) 移除一个或多个成员，不存在的成员会忽略，不存在的key或key不是有序集合会返回错误</li>
-<li>zcard($key) 获取指定有序集合中元素的数量</li>
+<p>在项目开发中应遵循：</p>
+<ul>
+<li>实体类尽量有接口或抽象类：有抽象才能进行依赖倒置</li>
+<li>变量的表面类型尽量是接口或抽象类</li>
+<li>不要从具体类中派生出子类</li>
+<li>尽量不重写父类的方法：对依赖的稳定性会有影响</li>
 </ul>
-<h4 id="实现-4"><a href="#实现-4" class="headerlink" title="实现"></a>实现</h4><p>sortset的内部使用HashMap和跳跃表(SkipList)来保证数据的存储和有序，HashMap里放的是成员到score的映射，跳跃表里存放的是所有的成员信息，排序依据是HashMap里存的score，在使用跳跃表来实现查找。</p>
-<h4 id="应用场景-4"><a href="#应用场景-4" class="headerlink" title="应用场景"></a>应用场景</h4><p>可以用于需要不重复、有序的场景中。例如各种排行榜</p>
-<p>延迟队列</p>
+<p>采用依赖倒置原则的优势在小型项目中很难体现，一般适用于大中型项目，让项目在后续的扩展和维护中更加方便快捷稳定。</p>
+<p><strong>以上内容参考&lt;&lt;设计模式之禅&gt;&gt;</strong></p>
 
       
     </div>
@@ -471,7 +491,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.cairui99.cn/2019/09/12/Redis常用数据结构-应用场景/" title="Redis常用数据结构&应用场景">http://blog.cairui99.cn/2019/09/12/Redis常用数据结构-应用场景/</a>
+    <a href="http://blog.cairui99.cn/2019/09/24/设计原则-依赖倒置原则/" title="设计原则-依赖倒置原则">http://blog.cairui99.cn/2019/09/24/设计原则-依赖倒置原则/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -486,7 +506,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Redis/" rel="tag"># Redis</a>
+            <a href="/tags/设计原则/" rel="tag"># 设计原则</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
           
         </div>
       
@@ -499,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/06/php中字符串与0比较问题/" rel="next" title="php中字符串与0比较问题">
-                <i class="fa fa-chevron-left"></i> php中字符串与0比较问题
+              <a href="/2019/09/24/排序算法-插入排序/" rel="next" title="排序算法-插入排序">
+                <i class="fa fa-chevron-left"></i> 排序算法-插入排序
               </a>
             
           </div>
@@ -508,10 +530,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/17/排序算法-冒泡排序/" rel="prev" title="排序算法-冒泡排序">
-                排序算法-冒泡排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -655,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令"><span class="nav-number">1.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现"><span class="nav-number">1.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景"><span class="nav-number">1.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash"><span class="nav-number">2.</span> <span class="nav-text">Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令-1"><span class="nav-number">2.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现-1"><span class="nav-number">2.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景-1"><span class="nav-number">2.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">3.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令-2"><span class="nav-number">3.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现-2"><span class="nav-number">3.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景-2"><span class="nav-number">3.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">4.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令-3"><span class="nav-number">4.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现-3"><span class="nav-number">4.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景-3"><span class="nav-number">4.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SortSet"><span class="nav-number">5.</span> <span class="nav-text">SortSet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用方法"><span class="nav-number">5.1.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现-4"><span class="nav-number">5.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景-4"><span class="nav-number">5.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-number">2.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>
