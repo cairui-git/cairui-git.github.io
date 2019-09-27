@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[排序算法-归并排序]]></title>
     <url>%2F2019%2F09%2F26%2F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%2F</url>
-    <content type="text"><![CDATA[归并排序归并排序是一种使用递归操作来实现的排序算法，采用了分治的思想 (将原问题划分为n个规模较小并与原问题结构相同的子问题,然后将子问题的结果合并，从而得到原问题的解)，归并排序是分治法的典型应用。 思路 将数组分解为各含n/2个元素的子数组，递归的拆分数组，当子数组长度为1时，默认子数组是就有序的 将两个有序的数组通过外排合并为一个有序的数组 当全部子数组合并完成时，原数组变为有序 图解 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546/** * 归并排序 * User:Cai Rui * Time:2019-09-27 */class MergeSort &#123; static void mergeSort(int[] arr)&#123; if(arr==null || arr.length&lt;2)&#123; return; &#125; mergeSort(arr,0,arr.length-1); &#125; //递归 private static void mergeSort(int[] arr,int left,int right)&#123; if(left&gt;=right)&#123; return; &#125; int mid = left - (left-right)/2; mergeSort(arr,left,mid); mergeSort(arr,mid+1,right); merge(arr,left,mid,right); &#125; private static void merge(int[] arr,int left,int mid,int right)&#123; int[] merge_arr = new int[arr.length]; int index_merge = left; int index_left = left; int index_right = mid+1; //外排 while (index_left &lt;= mid &amp;&amp; index_right &lt;= right) &#123; merge_arr[index_merge++] = (arr[index_left] &gt; arr[index_right]) ? arr[index_right++] : arr[index_left++]; &#125; int start = index_left&lt;=mid ? index_left : index_right; int end = index_left&lt;=mid ? mid : arr.length-1; for(int i=start;i&lt;=end;i++) &#123; merge_arr[index_merge++] = arr[i]; &#125; //将排好序的结果赋给原数组 System.arraycopy(merge_arr, left, arr, left, right + 1 - left); &#125;&#125; 复杂度分析最佳时间复杂度：O(n*logn) ;最差时间复杂度: O(n*logn) ;平均时间复杂度: O(n*logn) 空间复杂度: O(n) 稳定性分析稳定(在外排过程中，当遇到相等元素先存左边的数，就可以保证排序结果是稳定的)]]></content>
+    <content type="text"><![CDATA[归并排序归并排序是一种使用递归操作来实现的排序算法，采用了分治的思想 (将原问题划分为n个规模较小并与原问题结构相同的子问题,然后将子问题的结果合并，从而得到原问题的解)，归并排序是分治法的典型应用。 思路 将数组分解为各含n/2个元素的子数组，递归的拆分数组，当子数组长度为1时，默认子数组是就有序的 将两个有序的数组通过外排合并为一个有序的数组 当全部子数组合并完成时，原数组变为有序 图解 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546/** * 归并排序 * author:Cai Rui * date:2019-09-27 */class MergeSort &#123; static void mergeSort(int[] arr)&#123; if(arr==null || arr.length&lt;2)&#123; return; &#125; mergeSort(arr,0,arr.length-1); &#125; //递归 private static void mergeSort(int[] arr,int left,int right)&#123; if(left&gt;=right)&#123; return; &#125; int mid = left - (left-right)/2; mergeSort(arr,left,mid); mergeSort(arr,mid+1,right); merge(arr,left,mid,right); &#125; private static void merge(int[] arr,int left,int mid,int right)&#123; int[] merge_arr = new int[arr.length]; int index_merge = left; int index_left = left; int index_right = mid+1; //外排 while (index_left &lt;= mid &amp;&amp; index_right &lt;= right) &#123; merge_arr[index_merge++] = (arr[index_left] &gt; arr[index_right]) ? arr[index_right++] : arr[index_left++]; &#125; int start = index_left&lt;=mid ? index_left : index_right; int end = index_left&lt;=mid ? mid : arr.length-1; for(int i=start;i&lt;=end;i++) &#123; merge_arr[index_merge++] = arr[i]; &#125; //将排好序的结果赋给原数组 System.arraycopy(merge_arr, left, arr, left, right + 1 - left); &#125;&#125; 复杂度分析最佳时间复杂度：O(n*logn) ;最差时间复杂度: O(n*logn) ;平均时间复杂度: O(n*logn) 空间复杂度: O(n) 稳定性分析稳定(在外排过程中，当遇到相等元素先存左边的数，就可以保证排序结果是稳定的)]]></content>
       <categories>
         <category>算法</category>
       </categories>
@@ -19,8 +19,8 @@
         <category>知识点整理</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>设计原则</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -61,8 +61,8 @@
         <category>知识点整理</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>设计原则</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -117,8 +117,8 @@
         <category>知识点整理</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>设计原则</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -126,8 +126,8 @@
     <url>%2F2019%2F09%2F02%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%BC%80%E7%AF%87%2F</url>
     <content type="text"><![CDATA[今天开设一个新的模块-设计模式 学习途径：&lt;&lt;设计模式之禅&gt;&gt;、以及相关内容的博客 其中包括：6大设计原则，以及根据设计原则衍生出的23种设计模式及其使用场景 前言不知道你有没有这样的经历，在一次需求变更中，明明只是在系统中添加或修改一点小小的功能，但当看到代码准备着手开发时，却发现系统现有的架构无法满足我们的需求，有时真的可以说是伤筋动骨，甚至直接重构。 为什么我们只有在需求变更时才想到更好的实现方案呢，如何才能做到让我们的系统持续的拥抱变化呢？ 那就是，设计模式！ What设计模式它是一套理论，是前人们踩过无数坑后，总结出的一套可以反复使用的设计程序的经验。在合适的场景使用它可以提高代码的可重用性，增强系统的可维护性，以及轻松解决复杂的需求。 Why选择设计模式，是因为它具备的广泛适应性，学习设计模式可以让我们设计出更优秀的代码，就算我们在工作中去做了其他业务，甚至更换的编程语言，设计模式的知识依然可以用到。 How对于设计模式，在这次的学习中不求自己可以完全的理解、熟练的掌握它，因为它本身就不是一种工具，和Spring、Yii这种工具类的框架不同，它属于一种指导思想，理解并掌握设计模式需求大量的工作经验做积累。 只求学习过后在开发中，对程序的设计可以有更多的选择，可以偶然想到，这里可以这么做，某种设计模式提供了更好的方法；在遇到之前觉得非常复杂的需求时，可以找到一种优雅的解决方案。 希望在不久的将来，通过对设计模式的理解和工作经验的积累，自己可以站在一个更高的层次来审视、赏析程序代码。]]></content>
       <tags>
-        <tag>设计模式</tag>
         <tag>读书笔记</tag>
+        <tag>设计模式</tag>
       </tags>
   </entry>
   <entry>
