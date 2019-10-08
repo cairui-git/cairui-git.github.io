@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Redis,">
+  <meta name="keywords" content="算法题,">
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="String常用命令 get($key) 获取key的值 set($key,$value) 设置key的值 incr($key) 将key的值+1 decr($key) 将key的值-1 mget($key1,$key2,…) 获取多个key的值  实现String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义的结">
-<meta name="keywords" content="Redis">
+<meta name="description" content="题目在一个数组中，每一个数左边比当前数小的数累加起来，叫做这个数组的小和。求一个数组的小和。">
+<meta name="keywords" content="算法题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis常用数据结构&amp;应用场景">
-<meta property="og:url" content="http://blog.cairui99.cn/2019/09/12/Redis常用数据结构-应用场景/index.html">
+<meta property="og:title" content="小和问题">
+<meta property="og:url" content="http://blog.cairui99.cn/2019/09/27/小和问题/index.html">
 <meta property="og:site_name" content="CaiRui的博客">
-<meta property="og:description" content="String常用命令 get($key) 获取key的值 set($key,$value) 设置key的值 incr($key) 将key的值+1 decr($key) 将key的值-1 mget($key1,$key2,…) 获取多个key的值  实现String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义的结">
+<meta property="og:description" content="题目在一个数组中，每一个数左边比当前数小的数累加起来，叫做这个数组的小和。求一个数组的小和。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-19T03:17:32.614Z">
+<meta property="og:updated_time" content="2019-10-08T08:26:29.651Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis常用数据结构&amp;应用场景">
-<meta name="twitter:description" content="String常用命令 get($key) 获取key的值 set($key,$value) 设置key的值 incr($key) 将key的值+1 decr($key) 将key的值-1 mget($key1,$key2,…) 获取多个key的值  实现String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义的结">
+<meta name="twitter:title" content="小和问题">
+<meta name="twitter:description" content="题目在一个数组中，每一个数左边比当前数小的数累加起来，叫做这个数组的小和。求一个数组的小和。">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.cairui99.cn/2019/09/12/Redis常用数据结构-应用场景/">
+  <link rel="canonical" href="http://blog.cairui99.cn/2019/09/27/小和问题/">
 
 
 
 
 
-  <title>Redis常用数据结构&应用场景 | CaiRui的博客</title>
+  <title>小和问题 | CaiRui的博客</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2019/09/12/Redis常用数据结构-应用场景/">
+    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2019/09/27/小和问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CaiRui">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Redis常用数据结构&应用场景</h1>
+          <h1 class="post-title" itemprop="name headline">小和问题</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-12T16:25:12+08:00">
-                2019-09-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-27T15:35:43+08:00">
+                2019-09-27
               </time>
             
 
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识点整理/" itemprop="url" rel="index">
-                    <span itemprop="name">知识点整理</span>
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
                   </a>
                 </span>
 
@@ -367,8 +367,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/12/Redis常用数据结构-应用场景/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/12/Redis常用数据结构-应用场景/" itemprop="commentCount"></span>
+                <a href="/2019/09/27/小和问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/27/小和问题/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -401,56 +401,24 @@
       
 
       
-        <h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
-<li>get($key) 获取key的值</li>
-<li>set($key,$value) 设置key的值</li>
-<li>incr($key) 将key的值+1</li>
-<li>decr($key) 将key的值-1</li>
-<li>mget($key1,$key2,…) 获取多个key的值</li>
-</ul>
-<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>String是最常用的数据类型，普通的key-value都可归为此类，value除了String也可存储json、数字;Redis使用自己定义的结构SDS来实现String,详见&lt;&lt;Redis设计与实现&gt;&gt;。</p>
+        <h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>在一个数组中，每一个数左边比当前数小的数累加起来，叫做这个数组的小和。求一个数组的小和。</p>
 <a id="more"></a>
 
-<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>String用来存储简单的键值信息，用途广泛，例如用户信息、登陆信息、配置信息、使用记录、增减库存等等。在使用时要注意存储的值不要过大，最好不要超过1M。</p>
-<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><h4 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
-<li>hget($key,$field) 返回hash表中指定字段的值</li>
-<li>hset($key,$field,$value) 设置hash中指定字段的值</li>
-<li>hgetall($key) 返回指定key下，哈希表中所有字段和值</li>
-</ul>
-<h4 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h4><p>Redis的Hash的Value内部实际是HashMap，当成员较少时会当成数组存储，当成员数量增大时会转成HashMap存储。</p>
-<h4 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h4><p>当存储用户信息时，信息例如 （user：001 张三 19 2019-11-15）。当使用常用的String类型存储时需要对取出的value做相应的处理才可以使用。这时可以最好用hset来存储用户信息。</p>
-<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><h4 id="常用命令-2"><a href="#常用命令-2" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
-<li>lpush($key,$value1,($value2),($value3)…) 将一个或多个值插入指定列表的头部</li>
-<li>rpush($key,$value1,($value2),($value3)…) 将一个或多个值插入指定列表的尾部</li>
-<li>lpop($key) 移除指定列表的第一个元素</li>
-<li>rpop($key) 移除指定列表的最后一个元素</li>
-<li>lrange($key,$start,$stop) 获取指定列表指定范围内的元素</li>
-<li>blpop($key,$timeOut) 移除指定列表第一个元素，<strong>如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止</strong></li>
-</ul>
-<h4 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h4><p>Redis的List实现是一个双向链表，可以支持反向查找和遍历，更方便的操作，也便随着更大的内存开销。Redis内部的很多实现，包括缓冲队列都是用过List实现的。</p>
-<h4 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h4><p>最新消息排行;</p>
-<p>消息队列：将任务存在list中，然后工作线程利用pop操作将任务取出执行。但要注意Redis的队列是轻量级的，适合处理轻量级的任务，Redis中并没有队列重试、队列重放等机制，消费完的消息相当于在Redis中删除了。</p>
-<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>Set集合的特点是在插入元素时Redis会提供去重的功能</p>
-<h4 id="常用命令-3"><a href="#常用命令-3" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
-<li>sadd($key,$value1,($value2),($value3)…) 将一个或多个元素放入集合中，<strong>已经存在与集合中的元素将被忽略</strong></li>
-<li>spop($key) 移除集合中的一个随机元素</li>
-<li>srem($key,$value1,($value2),($value3)…) 移除集合中一个或多个元素，不存在的元素会忽略</li>
-<li>smembers($key) 获取指定集合中的所有元素</li>
-<li>sdiff($key1,$key2,($key3),…) 返回给定集合之间的差集，不存在的集合key将视为空集</li>
-<li>sunion($key1,$key2,($key3),…) 返回给定集合之间的并集，不存在的集合key将视为空集</li>
-</ul>
-<h4 id="实现-3"><a href="#实现-3" class="headerlink" title="实现"></a>实现</h4><p>set内部实现是一个value永远为null的HashMap，通过hash的方式进行快速去重</p>
-<h4 id="应用场景-3"><a href="#应用场景-3" class="headerlink" title="应用场景"></a>应用场景</h4><p>用于记录或判断一些不能重复的数据。例如每个用户每天只能投票一次的投票系统，可以用set记录用户的投票情况。</p>
-<h3 id="SortSet"><a href="#SortSet" class="headerlink" title="SortSet"></a>SortSet</h3><p>有序集合，集合中的每个元素除了key和value还有一个score属性，在sortset集合中会将元素按照score排序，SortSet也具备Set集合value值唯一的特点</p>
-<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><ul>
-<li>zadd($key,$score,$value) 将一个或多个元素及其分数值加入到有序集合中，重复的元素只更新分数，并按分数重新对集合排序</li>
-<li>zrange($key,$start,$end) 获取有序集合中指定区间内的成员信息</li>
-<li>zrem($key,$member) 移除一个或多个成员，不存在的成员会忽略，不存在的key或key不是有序集合会返回错误</li>
-<li>zcard($key) 获取指定有序集合中元素的数量</li>
-</ul>
-<h4 id="实现-4"><a href="#实现-4" class="headerlink" title="实现"></a>实现</h4><p>sortset的内部使用HashMap和跳跃表(SkipList)来保证数据的存储和有序，HashMap里放的是成员到score的映射，跳跃表里存放的是所有的成员信息，排序依据是HashMap里存的score，在使用跳跃表来实现查找。</p>
-<h4 id="应用场景-4"><a href="#应用场景-4" class="headerlink" title="应用场景"></a>应用场景</h4><p>可以用于需要不重复、有序的场景中。例如各种排行榜</p>
-<p>延迟队列</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>数组：[1,3,4,2,5]</p>
+<p>1左边比1小的数，没有；</p>
+<p>3左边比3小的数，1；</p>
+<p>4左边比4小的数，1、3；</p>
+<p>2左边比2小的数，1；</p>
+<p>5左边比5小的数，1、3、4、2；</p>
+<p>所以小和为1+1+3+1+1+3+4+2=16</p>
+<h4 id="常见思路"><a href="#常见思路" class="headerlink" title="常见思路"></a>常见思路</h4><p>常见思路当然是遍历数组，将每一个元素前面比它小的数相加并返回。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//常见思路,O(n2)的方法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">badMethod</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> smallSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i-<span class="number">1</span>;j&gt;=<span class="number">0</span>;j--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i]&gt;arr[j]) smallSum += arr[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> smallSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但这样的方法虽然好想、好写，但O(n2)的时间复杂度有些太高了，需要改进</p>
+<h4 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h4><p>在<a href="https://blog.cairui99.cn/2019/09/26/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">归并排序</a>的基础上进行改进，在merge左右两个有序数组时候，<strong>如果左边的数小于右边的数，说明当前左边的这个数是右边数组中所有元素的小和</strong>，此时进行累加小和，累加的小和为(当前小和+左边第一个数*右边数组剩余元素的个数)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用分治思想,O(n*logn)的方法</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getSmallSum</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr==<span class="keyword">null</span> || arr.length&lt;<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> getSmallSum(arr,<span class="number">0</span>,arr.length-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//递归</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getSmallSum</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(left&gt;=right)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid = left - (left-right)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> getSmallSum(arr,left,mid) + getSmallSum(arr,mid+<span class="number">1</span>,right) + merge(arr,left,mid,right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> left,<span class="keyword">int</span> mid,<span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> smallSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[] merge_arr = <span class="keyword">new</span> <span class="keyword">int</span>[arr.length];</span><br><span class="line">    <span class="keyword">int</span> index_merge = left;</span><br><span class="line">    <span class="keyword">int</span> index_left = left;</span><br><span class="line">    <span class="keyword">int</span> index_right = mid+<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//外排</span></span><br><span class="line">    <span class="keyword">while</span> (index_left &lt;= mid &amp;&amp; index_right &lt;= right) &#123;</span><br><span class="line">        <span class="comment">//左边数比右边数小,累加小和(小和为当前左边的数*右边待排序的个数)</span></span><br><span class="line">        smallSum += (arr[index_left] &lt; arr[index_right]) ? (right-index_right+<span class="number">1</span>) * arr[index_left] : <span class="number">0</span>;</span><br><span class="line">        merge_arr[index_merge++] = (arr[index_left] &gt;= arr[index_right]) ? arr[index_right++] : arr[index_left++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> start = index_left&lt;=mid ? index_left : index_right;</span><br><span class="line">    <span class="keyword">int</span> end = index_left&lt;=mid ? mid : arr.length-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=start;i&lt;=end;i++) &#123;</span><br><span class="line">        merge_arr[index_merge++] = arr[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将排好序的结果赋给原数组</span></span><br><span class="line">    System.arraycopy(merge_arr, left, arr, left, right + <span class="number">1</span> - left);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> smallSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时算法的时间复杂度就提升到了O(n*logn)的级别</p>
 
       
     </div>
@@ -471,7 +439,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.cairui99.cn/2019/09/12/Redis常用数据结构-应用场景/" title="Redis常用数据结构&应用场景">http://blog.cairui99.cn/2019/09/12/Redis常用数据结构-应用场景/</a>
+    <a href="http://blog.cairui99.cn/2019/09/27/小和问题/" title="小和问题">http://blog.cairui99.cn/2019/09/27/小和问题/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -486,7 +454,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Redis/" rel="tag"># Redis</a>
+            <a href="/tags/算法题/" rel="tag"># 算法题</a>
           
         </div>
       
@@ -499,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/06/php中字符串与0比较问题/" rel="next" title="php中字符串与0比较问题">
-                <i class="fa fa-chevron-left"></i> php中字符串与0比较问题
+              <a href="/2019/09/26/排序算法-归并排序/" rel="next" title="排序算法-归并排序">
+                <i class="fa fa-chevron-left"></i> 排序算法-归并排序
               </a>
             
           </div>
@@ -508,10 +476,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/17/排序算法-冒泡排序/" rel="prev" title="排序算法-冒泡排序">
-                排序算法-冒泡排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -655,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令"><span class="nav-number">1.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现"><span class="nav-number">1.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景"><span class="nav-number">1.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash"><span class="nav-number">2.</span> <span class="nav-text">Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令-1"><span class="nav-number">2.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现-1"><span class="nav-number">2.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景-1"><span class="nav-number">2.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">3.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令-2"><span class="nav-number">3.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现-2"><span class="nav-number">3.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景-2"><span class="nav-number">3.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">4.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令-3"><span class="nav-number">4.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现-3"><span class="nav-number">4.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景-3"><span class="nav-number">4.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SortSet"><span class="nav-number">5.</span> <span class="nav-text">SortSet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用方法"><span class="nav-number">5.1.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现-4"><span class="nav-number">5.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用场景-4"><span class="nav-number">5.3.</span> <span class="nav-text">应用场景</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例子"><span class="nav-number">2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见思路"><span class="nav-number">3.</span> <span class="nav-text">常见思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改进"><span class="nav-number">4.</span> <span class="nav-text">改进</span></a></li></ol></div>
             
 
           </div>
