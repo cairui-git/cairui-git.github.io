@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.cairui99.cn/"/>
-  <updated>2019-10-08T08:53:48.698Z</updated>
+  <updated>2019-10-11T05:49:08.470Z</updated>
   <id>http://blog.cairui99.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IDEA-批量修改变量名</title>
+    <link href="http://blog.cairui99.cn/2019/10/11/IDEA-%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E5%8F%98%E9%87%8F%E5%90%8D/"/>
+    <id>http://blog.cairui99.cn/2019/10/11/IDEA-批量修改变量名/</id>
+    <published>2019-10-11T05:44:15.000Z</published>
+    <updated>2019-10-11T05:49:08.470Z</updated>
+    
+    <content type="html"><![CDATA[<p>双击选中修改对象后： <strong>Shift+F6</strong></p><p>变量名填写完成后按回车执行修改</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;双击选中修改对象后： &lt;strong&gt;Shift+F6&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;变量名填写完成后按回车执行修改&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+    
+      <category term="IDEA快捷键" scheme="http://blog.cairui99.cn/tags/IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>小和问题</title>
