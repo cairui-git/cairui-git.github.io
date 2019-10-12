@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[排序算法-快速排序]]></title>
+    <url>%2F2019%2F10%2F12%2F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[快速排序快排的基本思想是：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。 思路 选取数组中的中的一个数作为基准数，然后将数组调整为两部分：左部分的数全部小于等于基准数、右部分的数全部大于基准数(子序列中内部不需要有序) 递归的对数组两个部分继续执行上述步骤，直至数组有序 改进 将数组划分为三个部分，小于、等于、大于区域 (具体实现) 这时等于区域的数就已经位于理想的位置，因此只需要递归小于区域和大于区域 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960/** * 快速排序 * @author cairui * @time 2019-10-11 */public class QuickSort &#123; public static void quickSort(int[] arr) &#123; if (arr == null || arr.length &lt; 2) &#123; return; &#125; quickSort(arr, 0, arr.length-1); &#125; //递归函数 private static void quickSort(int[] arr,int left,int right) &#123; if (left &gt;= right) &#123; return; &#125; int[] index = grouping(arr,left,right); //递归小于区域和大于区域 quickSort(arr,left,index[0]); quickSort(arr,index[1],right); &#125; //划分出小于、等于、大于区域 private static int[] grouping(int[] arr, int left, int right) &#123; int indexFront = left; int indexMid = left; int indexRear = right; int num = arr[right]; while (true) &#123; if (arr[indexMid] &lt; num) &#123; swap(arr, indexMid, indexFront); if (indexMid + 1 &gt; indexRear) break; indexMid++; indexFront++; &#125; else if (arr[indexMid] == num) &#123; if (indexMid + 1 &gt; indexRear) break; indexMid++; &#125; else &#123; if (indexMid &gt; indexRear - 1) break; swap(arr, indexMid, indexRear); indexRear--; &#125; &#125; //返回临界值坐标 int[] index = new int[2]; index[0] = (arr[indexFront] == num) ? (indexFront - 1) : indexFront; index[1] = (arr[indexRear] == num) ? (indexRear + 1) : indexRear; return index; &#125; private static void swap(int[] arr, int x, int y)&#123; int temp = arr[x]; arr[x] = arr[y]; arr[y] = temp; &#125;&#125; 复杂度分析最佳时间复杂度：O(n*logn) ; 最差时间复杂度: O(n2); (快排在最差情况下会退化为冒泡) 平均时间复杂度: O(n*logn) 空间复杂度: O(logn) 稳定性分析不稳定]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>排序算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hexo-向git推送更新失败]]></title>
     <url>%2F2019%2F10%2F11%2FHexo-%E5%90%91git%E6%8E%A8%E9%80%81%E6%9B%B4%E6%96%B0%E5%A4%B1%E8%B4%A5%2F</url>
     <content type="text"><![CDATA[今天在更新博客时发生了 hexo d 时推送失败的情况。 报错信息: 12Connection reset by 52.74.223.119 port 22fatal: Could not read from remote repository. 这表示git客户端无法连接至github，原因大概是防火墙禁止了ip为52.74.223.119端口22的ssh连接 解决方法： (1) 我的解决的方法是切换网络，将wifi切成手机热点就提交成功了。 (2) 如果条件不允许或者切换网络依旧不成功，需要手动将防火墙中的 22端口设置为允许连接 具体操作请参考]]></content>
