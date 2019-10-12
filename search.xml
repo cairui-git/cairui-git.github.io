@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[算法题-荷兰国旗问题]]></title>
+    <title><![CDATA[Hexo-向git推送更新失败]]></title>
+    <url>%2F2019%2F10%2F11%2FHexo-%E5%90%91git%E6%8E%A8%E9%80%81%E6%9B%B4%E6%96%B0%E5%A4%B1%E8%B4%A5%2F</url>
+    <content type="text"><![CDATA[今天在更新博客时发生了 hexo d 时推送失败的情况。 报错信息: 12Connection reset by 52.74.223.119 port 22fatal: Could not read from remote repository. 这表示git客户端无法连接至github，原因大概是防火墙禁止了ip为52.74.223.119端口22的ssh连接 解决方法： (1) 我的解决的方法是切换网络，将wifi切成手机热点就提交成功了。 (2) 如果条件不允许或者切换网络依旧不成功，需要手动将防火墙中的 22端口设置为允许连接 具体操作请参考]]></content>
+      <categories>
+        <category>问题整理</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[荷兰国旗问题]]></title>
     <url>%2F2019%2F10%2F11%2F%E7%AE%97%E6%B3%95%E9%A2%98-%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[题目给定一个数组arr和一个数num,要求调整数组，把小于num的数放在数组左边，等于num的数放在数组中间，大于num的数放在数组右边。 常见思路常见思路为使用三个辅助数组，分别存储小于、等于和大于num的数，最后再依次赋值给原数组。 代码： 1234567891011121314151617181920212223242526//常见思路 时间复杂度(n) 空间复杂度O(n)private static void badMethod(@NotNull int[] arr, int num)&#123; int index = 0; List&lt;Integer&gt; alist = new ArrayList&lt;&gt;(); List&lt;Integer&gt; blist = new ArrayList&lt;&gt;(); List&lt;Integer&gt; clist = new ArrayList&lt;&gt;(); for (int n : arr) &#123; if (n&lt;num) &#123; alist.add(n); &#125; else if (n==num) &#123; blist.add(n); &#125; else &#123; clist.add(n); &#125; &#125; index = setArray(arr,index,alist); index = setArray(arr,index,blist); setArray(arr,index,clist);&#125;private static int setArray(int[] arr, int index, @NotNull List&lt;Integer&gt; list)&#123; for (Integer integer : list) &#123; arr[index++] = integer; &#125; return index;&#125; 改进上面的算法空间、时间复杂度都为O(n)，下面把空间复杂度优化为O(1)的等级： 123456789101112131415161718192021222324//空间复杂度改进为O(1)的方法private static void dutchFlag(@NotNull int[] arr, int num)&#123; int indexFront = 0; int indexMid = 0; int indexRear = arr.length-1; while (indexMid &lt;= indexRear) &#123; if (arr[indexMid] &lt; num) &#123; swap(arr,indexMid,indexFront); indexMid++; indexFront++; &#125; else if (arr[indexMid] == num) &#123; indexMid++; &#125; else &#123; swap(arr,indexMid,indexRear); indexRear--; &#125; &#125;&#125;private static void swap(@NotNull int[] arr, int x, int y)&#123; int temp = arr[x]; arr[x] = arr[y]; arr[y] = temp;&#125; 使用三个指针，交换全部在数组内部进行，三个指针的含义为： indexFront : 指针前面的所有数都满足小于num indexMid : 指针前面所有的数都满足小于等于num indexRear : 指针后面所有的数都满足大于num 终止条件为indexMid&gt;indexRear，当两个指针相遇时，代表数组中所有的数已经处于正确的位置]]></content>
       <categories>
