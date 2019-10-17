@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="CaiRui的博客">
 <meta property="og:description" content="快速排序快排的基本思想是：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-12T07:23:07.703Z">
+<meta property="og:updated_time" content="2019-10-12T07:55:25.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法-快速排序">
 <meta name="twitter:description" content="快速排序快排的基本思想是：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。">
@@ -410,7 +410,7 @@
 </ul>
 <h4 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h4><ul>
 <li>将数组划分为三个部分，小于、等于、大于区域 (<a href="https://blog.cairui99.cn/2019/10/11/%E7%AE%97%E6%B3%95%E9%A2%98-%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98/">具体实现</a>)</li>
-<li>这时等于区域的数就已经位于理想的位置，因此只需要递归小于区域和大于区域</li>
+<li>这时等于区域的数就已经位于理想的位置，因此只需要递归小于区域和大于区域 <strong>(在有很多重复数字的情况下效率提升会很明显)</strong></li>
 </ul>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 快速排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> cairui</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@time</span> 2019-10-11</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (arr == <span class="keyword">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        quickSort(arr, <span class="number">0</span>, arr.length-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//递归函数</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt;= right) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] index = grouping(arr,left,right);</span><br><span class="line">        <span class="comment">//递归小于区域和大于区域</span></span><br><span class="line">        quickSort(arr,left,index[<span class="number">0</span>]);</span><br><span class="line">        quickSort(arr,index[<span class="number">1</span>],right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//划分出小于、等于、大于区域</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] grouping(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right) &#123;</span><br><span class="line">        <span class="keyword">int</span> indexFront = left;</span><br><span class="line">        <span class="keyword">int</span> indexMid = left;</span><br><span class="line">        <span class="keyword">int</span> indexRear = right;</span><br><span class="line">        <span class="keyword">int</span> num = arr[right];</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[indexMid] &lt; num) &#123;</span><br><span class="line">                swap(arr, indexMid, indexFront);</span><br><span class="line">                <span class="keyword">if</span> (indexMid + <span class="number">1</span> &gt; indexRear) <span class="keyword">break</span>;</span><br><span class="line">                indexMid++;</span><br><span class="line">                indexFront++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[indexMid] == num) &#123;</span><br><span class="line">                <span class="keyword">if</span> (indexMid + <span class="number">1</span> &gt; indexRear) <span class="keyword">break</span>;</span><br><span class="line">                indexMid++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (indexMid &gt; indexRear - <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">                swap(arr, indexMid, indexRear);</span><br><span class="line">                indexRear--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//返回临界值坐标</span></span><br><span class="line">        <span class="keyword">int</span>[] index = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        index[<span class="number">0</span>] = (arr[indexFront] == num) ? (indexFront - <span class="number">1</span>) : indexFront;</span><br><span class="line">        index[<span class="number">1</span>] = (arr[indexRear] == num) ? (indexRear + <span class="number">1</span>) : indexRear;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = arr[x];</span><br><span class="line">        arr[x] = arr[y];</span><br><span class="line">        arr[y] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -476,6 +476,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/16/数据结构-堆/" rel="prev" title="数据结构-堆">
+                数据结构-堆 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -557,7 +561,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -579,7 +583,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1190,5 +1194,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":275,"height":550},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+</body>
 </html>
