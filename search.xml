@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[设计原则-接口隔离原则]]></title>
-    <url>%2F2019%2F10%2F25%2F%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99%2F</url>
-    <content type="text"></content>
+    <title><![CDATA[算法题-数组实现队列]]></title>
+    <url>%2F2019%2F10%2F28%2F%E7%AE%97%E6%B3%95%E9%A2%98-%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97%2F</url>
+    <content type="text"><![CDATA[题目使用数组实现队列结构，实现方法： add(向队尾添加元素) poll(返回队首元素，并移除) peek(返回队首元素) 思路 创建两个指针start、end和一个变量size，初始值都为0 start表示队首元素的位置 end表示下一个元素入队时要添加的位置 size表示队列大小 start和end如果到了数组尾部，则下次移动到数组头部，循环利用数组 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667/** * 使用数组实现队列 * @author CaiRui * @time 2019-10-23 */public class ArrayBecomeQueue &#123; private int[] arr; private int start = 0; private int end = 0; private int size = 0; public ArrayBecomeQueue() &#123; arr = new int[50]; &#125; public ArrayBecomeQueue(int initSize) &#123; arr = new int[initSize]; &#125; //添加一个元素到队尾 public boolean add(int num) &#123; if (size == arr.length) &#123; throw new ArrayIndexOutOfBoundsException("队列已满"); &#125; size++; arr[end] = num; end = (end == arr.length - 1) ? 0 : ++end; return true; &#125; //获取队首元素，并移除 public int poll() &#123; if (size == 0) &#123; throw new ArrayIndexOutOfBoundsException("队列为空"); &#125; size--; int result = arr[start]; start = start == arr.length - 1 ? 0 : ++start; return result; &#125; //获取队首元素 public int peek() &#123; if (size == 0) &#123; throw new ArrayIndexOutOfBoundsException("队列为空"); &#125; return arr[start]; &#125; public static void main(String[] args) &#123; //预计输出：1 1 2 3 3 ArrayBecomeQueue queue = new ArrayBecomeQueue(5); queue.add(1); queue.add(2); queue.add(3); System.out.println(queue.peek()); queue.add(4); System.out.println(queue.poll()); System.out.println(queue.poll()); queue.add(5); queue.add(6); System.out.println(queue.peek()); System.out.println(queue.poll()); &#125;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法题</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[相邻两数最大差值]]></title>
