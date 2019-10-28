@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="基础知识,">
+  <meta name="keywords" content="算法题,">
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="继承是面向对象语言的一大特点，是开发中实现代码复用的主要手段，被继承的类叫做父类，继承父类的叫做子类，子类继承父类之后就自动拥有了父类的方法和属性。">
-<meta name="keywords" content="基础知识">
+<meta name="description" content="题目实现一个特殊的栈，在实现栈的基本功能的基础上，再实现返回栈中最小元素的操作。要求：  1．pop、push、peek、getMin操作的时间复杂度都是O(1)。 2．设计的栈类型可以使用现成的栈结构。">
+<meta name="keywords" content="算法题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈继承的特点">
-<meta property="og:url" content="http://blog.cairui99.cn/2019/09/18/浅谈继承的特点/index.html">
+<meta property="og:title" content="Min栈的实现">
+<meta property="og:url" content="http://blog.cairui99.cn/2019/10/28/算法题-Min栈的实现/index.html">
 <meta property="og:site_name" content="CaiRui的博客">
-<meta property="og:description" content="继承是面向对象语言的一大特点，是开发中实现代码复用的主要手段，被继承的类叫做父类，继承父类的叫做子类，子类继承父类之后就自动拥有了父类的方法和属性。">
+<meta property="og:description" content="题目实现一个特殊的栈，在实现栈的基本功能的基础上，再实现返回栈中最小元素的操作。要求：  1．pop、push、peek、getMin操作的时间复杂度都是O(1)。 2．设计的栈类型可以使用现成的栈结构。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-18T07:38:59.489Z">
+<meta property="og:updated_time" content="2019-10-28T06:55:15.497Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈继承的特点">
-<meta name="twitter:description" content="继承是面向对象语言的一大特点，是开发中实现代码复用的主要手段，被继承的类叫做父类，继承父类的叫做子类，子类继承父类之后就自动拥有了父类的方法和属性。">
+<meta name="twitter:title" content="Min栈的实现">
+<meta name="twitter:description" content="题目实现一个特殊的栈，在实现栈的基本功能的基础上，再实现返回栈中最小元素的操作。要求：  1．pop、push、peek、getMin操作的时间复杂度都是O(1)。 2．设计的栈类型可以使用现成的栈结构。">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.cairui99.cn/2019/09/18/浅谈继承的特点/">
+  <link rel="canonical" href="http://blog.cairui99.cn/2019/10/28/算法题-Min栈的实现/">
 
 
 
 
 
-  <title>浅谈继承的特点 | CaiRui的博客</title>
+  <title>Min栈的实现 | CaiRui的博客</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2019/09/18/浅谈继承的特点/">
+    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2019/10/28/算法题-Min栈的实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CaiRui">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅谈继承的特点</h1>
+          <h1 class="post-title" itemprop="name headline">Min栈的实现</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-18T14:16:36+08:00">
-                2019-09-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-28T14:46:05+08:00">
+                2019-10-28
               </time>
             
 
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识点整理/" itemprop="url" rel="index">
-                    <span itemprop="name">知识点整理</span>
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
                   </a>
                 </span>
 
@@ -367,8 +367,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/18/浅谈继承的特点/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/18/浅谈继承的特点/" itemprop="commentCount"></span>
+                <a href="/2019/10/28/算法题-Min栈的实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/28/算法题-Min栈的实现/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -401,32 +401,21 @@
       
 
       
-        <p>继承是面向对象语言的一大特点，是开发中实现代码复用的主要手段，被继承的类叫做父类，继承父类的叫做子类，子类继承父类之后就自动拥有了父类的方法和属性。</p>
+        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>实现一个特殊的栈，在实现栈的基本功能的基础上，再实现返回栈中最小元素的操作。要求：</p>
+<ul>
+<li>1．pop、push、peek、getMin操作的时间复杂度都是O(1)。</li>
+<li>2．设计的栈类型可以使用现成的栈结构。</li>
+</ul>
 <a id="more"></a>
 
-<p><strong>特点</strong>：</p>
-<ul>
-<li>子类继承后自动拥有父类所有的非private属性和方法,父类的构造方法无法被继承</li>
-<li>子类可以拥有自己的属性和方法</li>
-<li>子类可以重写从父类继承过来的方法，但方法的访问权限只能扩大或不变，不能缩小(public&gt;protect&gt;(默认)&gt;private)</li>
-<li>当创建一个子类对象时，会先调用父类的构造方法，再调用子类的构造方法</li>
-<li>被关键字final修饰的类无法被继承</li>
-<li>支持向下转型，例如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过父类创建子类</span></span><br><span class="line">Person person = <span class="keyword">new</span> Teacher();</span><br><span class="line">Teacher teacher = (Teacher)p;</span><br></pre></td></tr></table></figure>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
+<li>内部创建两个栈，data栈和min栈</li>
+<li>元素num入栈时data栈正常入栈，min栈将自己的栈顶元素和num比较，较小的元素入min栈,做到的感觉是<strong>(min栈的栈顶存的永远是data栈中的最小值)</strong></li>
+<li>出栈时data栈和min栈一起正常出栈</li>
+<li>getMin()方法只需要返回min栈的栈顶元素</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现一个特殊的栈，在实现栈的基本功能的基础上，再实现返回栈中最小元素的操作。</span></span><br><span class="line"><span class="comment"> * 【要求】 1．pop、push、getMin操作的时间复杂度都是O(1)。</span></span><br><span class="line"><span class="comment"> *         2．设计的栈类型可以使用现成的栈结构。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> CaiRui</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@time</span> 2019-10-22</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; data = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; min = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        data.push(num);</span><br><span class="line">        min.push((min.peek() &gt; num) ? num : min.peek());</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        min.pop();</span><br><span class="line">        <span class="keyword">return</span> data.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> data.peek();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> min.peek();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<p><strong>优点</strong>：</p>
-<ul>
-<li>提高代码的复用性，减少工作量</li>
-<li>提高代码的可读性，让层次更清晰</li>
-<li>提高代码的易维护性：所有子类共用父类的方法，方法变更时只需修改父类一处</li>
-<li>提高代码的拓展性：子类可实现特有的方法</li>
-</ul>
-<p><strong>缺点</strong>：</p>
-<ul>
-<li>继承是侵入的，只要继承，子类就必须拥有父类的所有非私有的属性和方法</li>
-<li>继承是高耦合的形式：当父类修改方法时，需要考虑对所有子类的影响，如果有子类重写了该方法，可能会造成非常严重的后果</li>
-</ul>
 
       
     </div>
@@ -447,7 +436,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.cairui99.cn/2019/09/18/浅谈继承的特点/" title="浅谈继承的特点">http://blog.cairui99.cn/2019/09/18/浅谈继承的特点/</a>
+    <a href="http://blog.cairui99.cn/2019/10/28/算法题-Min栈的实现/" title="Min栈的实现">http://blog.cairui99.cn/2019/10/28/算法题-Min栈的实现/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -462,7 +451,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/基础知识/" rel="tag"># 基础知识</a>
+            <a href="/tags/算法题/" rel="tag"># 算法题</a>
           
         </div>
       
@@ -475,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/17/排序算法-冒泡排序/" rel="next" title="冒泡排序">
-                <i class="fa fa-chevron-left"></i> 冒泡排序
+              <a href="/2019/10/28/算法题-更快的获取中位数/" rel="next" title="更快的获取中位数">
+                <i class="fa fa-chevron-left"></i> 更快的获取中位数
               </a>
             
           </div>
@@ -484,10 +473,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/19/设计原则-里氏替换原则/" rel="prev" title="里氏替换原则">
-                里氏替换原则 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -542,8 +527,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,6 +606,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">1.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

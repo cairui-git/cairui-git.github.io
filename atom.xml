@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.cairui99.cn/"/>
-  <updated>2019-10-28T06:38:52.222Z</updated>
+  <updated>2019-10-28T06:55:15.497Z</updated>
   <id>http://blog.cairui99.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Min栈的实现</title>
+    <link href="http://blog.cairui99.cn/2019/10/28/%E7%AE%97%E6%B3%95%E9%A2%98-Min%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://blog.cairui99.cn/2019/10/28/算法题-Min栈的实现/</id>
+    <published>2019-10-28T06:46:05.000Z</published>
+    <updated>2019-10-28T06:55:15.497Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>实现一个特殊的栈，在实现栈的基本功能的基础上，再实现返回栈中最小元素的操作。要求：</p><ul><li>1．pop、push、peek、getMin操作的时间复杂度都是O(1)。</li><li>2．设计的栈类型可以使用现成的栈结构。</li></ul><a id="more"></a><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul><li>内部创建两个栈，data栈和min栈</li><li>元素num入栈时data栈正常入栈，min栈将自己的栈顶元素和num比较，较小的元素入min栈,做到的感觉是<strong>(min栈的栈顶存的永远是data栈中的最小值)</strong></li><li>出栈时data栈和min栈一起正常出栈</li><li>getMin()方法只需要返回min栈的栈顶元素</li></ul><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现一个特殊的栈，在实现栈的基本功能的基础上，再实现返回栈中最小元素的操作。</span></span><br><span class="line"><span class="comment"> * 【要求】 1．pop、push、getMin操作的时间复杂度都是O(1)。</span></span><br><span class="line"><span class="comment"> *         2．设计的栈类型可以使用现成的栈结构。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> CaiRui</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@time</span> 2019-10-22</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; data = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; min = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        data.push(num);</span><br><span class="line">        min.push((min.peek() &gt; num) ? num : min.peek());</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        min.pop();</span><br><span class="line">        <span class="keyword">return</span> data.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> data.peek();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> min.peek();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;实现一个特殊的栈，在实现栈的基本功能的基础上，再实现返回栈中最小元素的操作。要求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1．pop、push、peek、getMin操作的时间复杂度都是O(1)。&lt;/li&gt;
+&lt;li&gt;2．设计的栈类型可以使用现成的栈结构。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://blog.cairui99.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法题" scheme="http://blog.cairui99.cn/tags/%E7%AE%97%E6%B3%95%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>更快的获取中位数</title>
@@ -473,30 +500,6 @@
     
     
       <category term="Redis" scheme="http://blog.cairui99.cn/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php中字符串与0比较问题</title>
-    <link href="http://blog.cairui99.cn/2019/09/06/php%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E0%E6%AF%94%E8%BE%83%E9%97%AE%E9%A2%98/"/>
-    <id>http://blog.cairui99.cn/2019/09/06/php中字符串与0比较问题/</id>
-    <published>2019-09-06T03:29:27.000Z</published>
-    <updated>2019-09-06T05:49:52.518Z</updated>
-    
-    <content type="html"><![CDATA[<p>由于刚转php不久，今天在开发中踩了个比较低级的坑，记录一下。</p><p>问题是 在代码中我用一个 <strong>字符串和0作比较</strong>，结果竟然是 <strong>相等</strong>。</p><a id="more"></a><p>后来自己写了一个例子验证：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$str = <span class="string">"CaiRui"</span>;</span><br><span class="line"><span class="keyword">if</span>($str==<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"==0成立"</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"==0不成立"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：==<span class="number">0</span>成立</span><br></pre></td></tr></table></figure><p>发现问题后上网查了一下，原因是由于php是弱类型语言，在比较之前php的内部会把进行比较的两个变量转换为相同的类型，这里应该是把str强转成了int型，导致结果变成了true。</p><p>最后列出一些可以得到正确结果的写法：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$str = <span class="string">"CaiRui"</span>;</span><br><span class="line"><span class="keyword">if</span>($str===<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"===0成立"</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"===0不成立"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：===<span class="number">0</span>不成立</span><br></pre></td></tr></table></figure><p>===：三个等于号的意思是先比较类型，如果类型不同直接返回false，若类型相同在比较两个变量的值。<br>在这个例子中if($str===0)就相当于if（is_numeric($str) &amp;&amp; $str==0）</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$str = <span class="string">"CaiRui"</span>;</span><br><span class="line"><span class="keyword">if</span>($str==<span class="string">"0"</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"==0成立"</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"==0不成立"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：==<span class="number">0</span>不成立</span><br></pre></td></tr></table></figure><p>也可以将0改为字符串，这样进行比较的两个变量类型相同，==将会返回预期的结果。<br>这种写法不会影响str值为0时的预期结果。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;由于刚转php不久，今天在开发中踩了个比较低级的坑，记录一下。&lt;/p&gt;
-&lt;p&gt;问题是 在代码中我用一个 &lt;strong&gt;字符串和0作比较&lt;/strong&gt;，结果竟然是 &lt;strong&gt;相等&lt;/strong&gt;。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="问题整理" scheme="http://blog.cairui99.cn/categories/%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/"/>
-    
-    
-      <category term="php" scheme="http://blog.cairui99.cn/tags/php/"/>
     
   </entry>
   
