@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[设计原则-接口隔离原则]]></title>
+    <url>%2F2019%2F10%2F30%2F%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99%2F</url>
+    <content type="text"><![CDATA[定义Clients should not be forced to depend upon interfaces that they don’t use. “客户端不应该依赖它不需要的接口”，另一种含义就是客户端应该只依赖它需要的接口，把不需要的接口剔除掉，保证接口的纯洁性，这就是接口隔离原则。 实践实现接口时尽量做到以下规范： 接口要做到高内聚：尽量少的公布public方法，降低变更的风险 定制服务：对于每个独立的模块，只提供给每个访问者它们需要的方法，不暴露出它们不需要的方法 有限度的拆分接口：接口的设计粒度越小，系统越灵活，但也同时带来了系统结构的复杂化，加大开发和维护成本，所以在设计时要适度拆分接口 已经被污染的接口，尽量去修改，如果修改风险较大则用适配器模式进行转化处理 接口的设计没有通用的完美的的方案，请深入了解业务逻辑，自己设计出最适合的接口！]]></content>
+      <categories>
+        <category>知识点整理</category>
+      </categories>
+      <tags>
+        <tag>设计原则</tag>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[顺时针打印矩阵]]></title>
     <url>%2F2019%2F10%2F30%2F%E7%AE%97%E6%B3%95%E9%A2%98-%E9%A1%BA%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5%2F</url>
     <content type="text"><![CDATA[题目输入一个矩阵，按照从外向里以顺时针打印出每一个数字，例如下图矩阵 打印结果为：1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10 思路大体思想是将矩阵由外到内一圈一圈的打印，直至所有数字都打印完毕，具体思路如下： 在不考虑打印矩阵内圈的情况下，此时只需要两个点的坐标就可以遍历完整的矩阵，我们取左上角的坐标和右下角的坐标,最外圈的矩阵坐标就是(0,0)和(arr.length-1,arr[0].arr.length-1) 完整打印了外圈矩阵后，只需要将左上角的坐标向右下方移动一格、右下角坐标向左上方移动一格，此时就得到了可以打印内圈矩阵的两个坐标 重复执行上述步骤，直至得到的坐标无法构成矩阵为止 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253/** * 顺时针打印矩阵 * @author CaiRui * @time 2019-10-24 */public class PrintMatrix &#123; private static void printMatrix(int[][] arr) &#123; if (arr == null) &#123; return; &#125; int a = 0; int b = 0; int c = arr.length - 1; int d = arr[0].length - 1; while (c &gt;= a &amp;&amp; d &gt;= b) &#123; print(arr,a++,b++,c--,d--); &#125; &#125; /** * 左上角坐标(a,b) * 右下角坐标(c,d) */ private static void print(int[][] arr, int a, int b, int c, int d) &#123; // (a, b) -&gt; (a, d) int index = b; while (index &lt; d) &#123; System.out.print(arr[a][index++] + " "); &#125; // (a, d) -&gt; (c, d) index = a; while (index &lt; c) &#123; System.out.print(arr[index++][d] + " "); &#125; // (c, d) -&gt; (c, b) index = d; while (index &gt; b) &#123; System.out.print(arr[c][index--] + " "); &#125; // (c, b) -&gt; (a, b) index = c; while (index &gt; a) &#123; System.out.print(arr[index--][b]+" "); &#125; &#125; public static void main(String[] args) &#123; int[][] matrix = &#123; &#123; 1, 2, 3, 4 &#125;, &#123; 5, 6, 7, 8 &#125;, &#123; 9, 10, 11, 12 &#125;, &#123; 13, 14, 15, 16 &#125; &#125;; PrintMatrix.printMatrix(matrix); &#125;&#125;]]></content>

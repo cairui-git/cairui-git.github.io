@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.cairui99.cn/"/>
-  <updated>2019-10-30T06:32:01.866Z</updated>
+  <updated>2019-10-31T12:16:35.442Z</updated>
   <id>http://blog.cairui99.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计原则-接口隔离原则</title>
+    <link href="http://blog.cairui99.cn/2019/10/30/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99/"/>
+    <id>http://blog.cairui99.cn/2019/10/30/设计原则-接口隔离原则/</id>
+    <published>2019-10-30T07:25:09.000Z</published>
+    <updated>2019-10-31T12:16:35.442Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>Clients should not be forced to depend upon interfaces that they don’t use.</strong></p><p><strong>“客户端不应该依赖它不需要的接口”</strong>，另一种含义就是客户端应该只依赖它需要的接口，把不需要的接口剔除掉，保证接口的纯洁性，这就是接口隔离原则。</p><a id="more"></a><h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><p>实现接口时尽量做到以下规范：</p><ul><li>接口要做到高内聚：尽量少的公布public方法，降低变更的风险</li><li>定制服务：对于每个独立的模块，只提供给每个访问者它们需要的方法，不暴露出它们不需要的方法</li><li>有限度的拆分接口：接口的设计粒度越小，系统越灵活，但也同时带来了系统结构的复杂化，加大开发和维护成本，所以在设计时要适度拆分接口</li><li>已经被污染的接口，尽量去修改，如果修改风险较大则用适配器模式进行转化处理</li><li>接口的设计没有通用的完美的的方案，请深入了解业务逻辑，自己设计出最适合的接口！</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Clients should not be forced to depend upon interfaces that they don’t use.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;“客户端不应该依赖它不需要的接口”&lt;/strong&gt;，另一种含义就是客户端应该只依赖它需要的接口，把不需要的接口剔除掉，保证接口的纯洁性，这就是接口隔离原则。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="知识点整理" scheme="http://blog.cairui99.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"/>
+    
+    
+      <category term="设计原则" scheme="http://blog.cairui99.cn/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
+    
+      <category term="读书笔记" scheme="http://blog.cairui99.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>顺时针打印矩阵</title>
@@ -477,29 +503,6 @@
       <category term="设计原则" scheme="http://blog.cairui99.cn/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
     
       <category term="读书笔记" scheme="http://blog.cairui99.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈继承的特点</title>
-    <link href="http://blog.cairui99.cn/2019/09/18/%E6%B5%85%E8%B0%88%E7%BB%A7%E6%89%BF%E7%9A%84%E7%89%B9%E7%82%B9/"/>
-    <id>http://blog.cairui99.cn/2019/09/18/浅谈继承的特点/</id>
-    <published>2019-09-18T06:16:36.000Z</published>
-    <updated>2019-09-18T07:38:59.489Z</updated>
-    
-    <content type="html"><![CDATA[<p>继承是面向对象语言的一大特点，是开发中实现代码复用的主要手段，被继承的类叫做父类，继承父类的叫做子类，子类继承父类之后就自动拥有了父类的方法和属性。</p><a id="more"></a><p><strong>特点</strong>：</p><ul><li>子类继承后自动拥有父类所有的非private属性和方法,父类的构造方法无法被继承</li><li>子类可以拥有自己的属性和方法</li><li>子类可以重写从父类继承过来的方法，但方法的访问权限只能扩大或不变，不能缩小(public&gt;protect&gt;(默认)&gt;private)</li><li>当创建一个子类对象时，会先调用父类的构造方法，再调用子类的构造方法</li><li>被关键字final修饰的类无法被继承</li><li>支持向下转型，例如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过父类创建子类</span></span><br><span class="line">Person person = <span class="keyword">new</span> Teacher();</span><br><span class="line">Teacher teacher = (Teacher)p;</span><br></pre></td></tr></table></figure></li></ul><p><strong>优点</strong>：</p><ul><li>提高代码的复用性，减少工作量</li><li>提高代码的可读性，让层次更清晰</li><li>提高代码的易维护性：所有子类共用父类的方法，方法变更时只需修改父类一处</li><li>提高代码的拓展性：子类可实现特有的方法</li></ul><p><strong>缺点</strong>：</p><ul><li>继承是侵入的，只要继承，子类就必须拥有父类的所有非私有的属性和方法</li><li>继承是高耦合的形式：当父类修改方法时，需要考虑对所有子类的影响，如果有子类重写了该方法，可能会造成非常严重的后果</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;继承是面向对象语言的一大特点，是开发中实现代码复用的主要手段，被继承的类叫做父类，继承父类的叫做子类，子类继承父类之后就自动拥有了父类的方法和属性。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="知识点整理" scheme="http://blog.cairui99.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"/>
-    
-    
-      <category term="基础知识" scheme="http://blog.cairui99.cn/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   
