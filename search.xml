@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[go语言学习笔记]]></title>
+    <url>%2F2019%2F11%2F01%2Fgo-go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[从零开始，持续更新 参考书籍：《Go程序设计语言》 一、环境部署1.前往官网下载源码点击此处官网(可能需要翻墙) 根据你的系统选择对应的源码包，我的环境是Centos7，选择linux的 2.解压并安装1$ tar -zxvf go1.13.4.linux-amd64.tar.gz 3.配置环境变量123456789101112131415161.创建workspace$ mkdir -p workspace/src2.配置环境变量$ vi ~/.bashrc将以下配置添加进bashrc中export GOROOT=$HOME/goexport GOPATH=$HOME/workspaceexport PATH=$GOROOT/bin:$GOPATH/bin:$PATH使配置生效$ source ~/.bashrc3.验证是否成功$ go version 二、入门体验用Go编写一些你在已经使用其他编程语言编写过的一些经典程序，对有其他编程语言经验的程序员来说，这是学习Go语言更高效的方式。 1.HelloWorld创建一个 HelloWorld.go 文件 1234567package mainimport "fmt"func main() &#123; fmt.Println("Hello World")&#125; go是编译性语言，使用run命令来将一个或多个.go来进行编译、链接，然后运行生成的可执行文件： 1234$ go run HelloWorld.go输出：Hello World 如果你的程序不是一次性实验，那么每次运行时都将.go进行编译显然是多余的，我们可以手动编译出来一个可直接执行的程序，使用go build实现： 1$ go build HelloWorld.go 此时会在目录下生成一个名为HelloWorld的二进制程序，该文件可直接不做处理直接执行： 1234$ ./HelloWorld输出：Hello World 下面说一下代码：Go代码使用包(package)来组织，一个包由多个.go文件组成，放在一个文件夹中，文件夹的名字也就是包名描述了包的作用，类似于其他语言的库或模块。 每个.go文件都需要在开头声明文件所在的包名，HelloWorld中是package main，main包是一个特殊的包，它用来定义一个可执行的程序，而不是函数库，在任何程序中main总是程序最开始执行的地方。 package声明后面需要紧跟import，它表示程序导入其他包的列表。HelloWorld例子中导入了fmt包，fmt包中的函数用来格式化输出和扫描输入，比如程序中使用的fmt.Println,是fmt中的一个基本输出函数。Go语言要求你必须精确的导入你所需要的包，在缺失import包或者import进了不需要的包，会编译失败，这样严格的要求保证了Go程序不不会导入多余的包。 在import之后，包含了组成程序常量、变量、类型、函数的声明，此时声明的顺序是严格要求了，在示例中只声明了一个main函数。 Go不需要在语句的末尾添加”;”,除非多个语句放在同一行，此时”;”用来区分不同的语句 Go语言同时还对程序的格式有着严格的要求，例如函数声明中，”{“必须和关键字fun在同一行，不允许单独换行。从语言层面就限制了格式，保证了在你的项目中不会出现各种各样的编码风格，同时可以省去大量对程序本身无关紧要的代码风格的辩论。]]></content>
+      <categories>
+        <category>知识点整理</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[设计原则-最少知识原则]]></title>
     <url>%2F2019%2F11%2F01%2F%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-%E6%9C%80%E5%B0%91%E7%9F%A5%E8%AF%86%E6%B3%95%E5%88%99%2F</url>
     <content type="text"><![CDATA[定义最少知识法则也称为迪米特原则，定义为：一个对象应该对其他对象有最少的了解。 实践迪米特法则对实现类的低耦合提出了明确的要求，规则如下： 1.只和直接的朋友通信直接朋友指和该对象存在直接耦合关系的类，例如组合、聚合、依赖等。 类与类之间的联系是建立在类间的，而不是方法间，不要出现getA().getB()这种情况出现。以此来降低系统间的耦合，提高系统的健壮性。 2.朋友间也需要有距离一个类对外公布的public属性或方法越多，变更引起的风险就越大。因此在设计时尽量减少public方法和属性，方法和属性访问权限收缩的越小对后续维护就越容易。 3.是自己的就是自己的如果一个方法可以放在本类中，既不增加类间关系耦合，也对本类没有负面影响，那么不要把该方法放到其他类中，并与之建立联系，请把该方法放置在本类中]]></content>
