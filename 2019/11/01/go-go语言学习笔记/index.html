@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/01/K7h5QA.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/01/K7XWYn.md.png">
-<meta property="og:updated_time" content="2019-11-01T10:10:10.817Z">
+<meta property="og:updated_time" content="2019-11-01T10:25:12.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go语言学习笔记">
 <meta name="twitter:description" content="从零开始，持续更新">
@@ -423,7 +423,7 @@
 <h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1.创建workspace</span><br><span class="line">$ mkdir -p workspace/src</span><br><span class="line"></span><br><span class="line">2.配置环境变量</span><br><span class="line">$ vi ~/.bashrc</span><br><span class="line"></span><br><span class="line">将以下配置添加进bashrc中</span><br><span class="line">export GOROOT=$HOME/go</span><br><span class="line">export GOPATH=$HOME/workspace</span><br><span class="line">export PATH=$GOROOT/bin:$GOPATH/bin:$PATH</span><br><span class="line"></span><br><span class="line">使配置生效</span><br><span class="line">$ source ~/.bashrc</span><br><span class="line"></span><br><span class="line">3.验证是否成功</span><br><span class="line">$ go version</span><br></pre></td></tr></table></figure>
 
 <h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><p>体验用Go编写一些你在已经使用其他编程语言编写过的一些经典程序，对有其他编程语言经验的程序员来说，这是学习Go语言更高效的方式。</p>
-<h4 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h4><p>创建一个 HelloWorld.go 文件</p>
+<h4 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h4><p>创建一个 HelloWorld.go 文件 <strong>(注意创建在你的GOPATH目录下)</strong></p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"Hello World"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>go是编译性语言，使用run命令来将一个或多个.go来进行编译、链接，然后运行生成的可执行文件：</p>
