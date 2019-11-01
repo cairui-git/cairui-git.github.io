@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.cairui99.cn/"/>
-  <updated>2019-10-31T12:16:35.442Z</updated>
+  <updated>2019-11-01T06:00:02.589Z</updated>
   <id>http://blog.cairui99.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计原则-最少知识原则</title>
+    <link href="http://blog.cairui99.cn/2019/11/01/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-%E6%9C%80%E5%B0%91%E7%9F%A5%E8%AF%86%E6%B3%95%E5%88%99/"/>
+    <id>http://blog.cairui99.cn/2019/11/01/设计原则-最少知识法则/</id>
+    <published>2019-11-01T03:31:11.000Z</published>
+    <updated>2019-11-01T06:00:02.589Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>最少知识法则也称为迪米特原则，定义为：<strong>一个对象应该对其他对象有最少的了解。</strong></p><a id="more"></a><h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><p>迪米特法则对实现类的低耦合提出了明确的要求，规则如下：</p><h5 id="1-只和直接的朋友通信"><a href="#1-只和直接的朋友通信" class="headerlink" title="1.只和直接的朋友通信"></a>1.只和直接的朋友通信</h5><p>直接朋友指和该对象存在直接耦合关系的类，例如组合、聚合、依赖等。</p><p>类与类之间的联系是建立在类间的，而不是方法间，不要出现getA().getB()这种情况出现。以此来降低系统间的耦合，提高系统的健壮性。</p><h5 id="2-朋友间也需要有距离"><a href="#2-朋友间也需要有距离" class="headerlink" title="2.朋友间也需要有距离"></a>2.朋友间也需要有距离</h5><p>一个类对外公布的public属性或方法越多，变更引起的风险就越大。因此在设计时尽量减少public方法和属性，方法和属性访问权限收缩的越小对后续维护就越容易。</p><h5 id="3-是自己的就是自己的"><a href="#3-是自己的就是自己的" class="headerlink" title="3.是自己的就是自己的"></a>3.是自己的就是自己的</h5><p>如果一个方法可以放在本类中，既不增加类间关系耦合，也对本类没有负面影响，那么不要把该方法放到其他类中，并与之建立联系，请把该方法放置在本类中</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;p&gt;最少知识法则也称为迪米特原则，定义为：&lt;strong&gt;一个对象应该对其他对象有最少的了解。&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="知识点整理" scheme="http://blog.cairui99.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"/>
+    
+    
+      <category term="设计原则" scheme="http://blog.cairui99.cn/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
+    
+      <category term="读书笔记" scheme="http://blog.cairui99.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>设计原则-接口隔离原则</title>
@@ -476,33 +501,6 @@
     
       <category term="算法" scheme="http://blog.cairui99.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>里氏替换原则</title>
-    <link href="http://blog.cairui99.cn/2019/09/19/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99/"/>
-    <id>http://blog.cairui99.cn/2019/09/19/设计原则-里氏替换原则/</id>
-    <published>2019-09-19T03:07:34.000Z</published>
-    <updated>2019-10-08T08:46:55.593Z</updated>
-    
-    <content type="html"><![CDATA[<p>在学习里氏替换原则之前，可以先简单复习下 <a href="https://blog.cairui99.cn/2019/09/18/%E6%B5%85%E8%B0%88%E7%BB%A7%E6%89%BF%E7%9A%84%E7%89%B9%E7%82%B9/">继承</a></p><p>一个事物的存在，总是优点和缺点并存的，继承也一样，所以我们要做的就是把它用在最合适的地方，让继承的优点充分的发挥，同时规避缺点带来的影响。</p><p>那么如何实现呢？解决方案就是引入<strong>里氏替换原则</strong>。</p><a id="more"></a><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>那什么是里氏替换原则呢？它有两种定义：</p><ul><li>第一种：If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T,the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.(如果对每一个类型为S的对象o1，都有类型为T的对象o2，,使得以T定义的所有程序P在所有的对象o1都代换成o2时，程序P的行为什么发生变化，那么类型S是类型T的子类型)</li><li>第二种：Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it.(所有引用基类的地方必须能透明的使用其子类的对象)</li></ul><p>第一种是比较官方、正宗的定义，不是很好理解，感觉像是高数里面的某种概念。我们看第二种，第二种是定义是比较清晰的，解释一下就是：<strong>所有可以使用父类的地方，把父类替换为子类后，程序运行时不会体现出任何的异常，使用者甚至不需要关心使用的是父类和子类。</strong> 但反过来就未必可以，使用子类的地方换成父类就不能保证程序不会出错，因为子类可以有父类没有的属性和方法。</p><h3 id="继承的使用规范"><a href="#继承的使用规范" class="headerlink" title="继承的使用规范"></a>继承的使用规范</h3><p>知道了什么是里氏替换原则，那么具体应该怎么做呢？</p><p><strong>(1)子类必须完全实现父类的方法：</strong> 如果子类不能完整的实现父类的方法，或者父类的方法不适合该子类，这种情况下继承带来的效果就属于弊大于利，因为子类无法完整地实现父类的业务，此时建议解除继承关系，采用依赖、聚集、组合等关系代替来继承。</p><p><strong>(2)覆盖或实现父类的方法时输入参数可以被放大，不可以被缩小：</strong></p><p>例如：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(HashMap map)</span></span>&#123;     </span><br><span class="line">     System.out.println(<span class="string">"父类被执行"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(Map map)</span></span>&#123;</span><br><span class="line">     System.out.println(<span class="string">"子类被执行"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>子类实现了一个和父类同名的方法，虽然方法名相同，但方法的输入参数不同，这样的方式就保证了子类对父类的方法进行了 <strong>重载</strong> 而非 <strong>重写</strong> ，看具体的场景：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       Father f = <span class="keyword">new</span> Father();</span><br><span class="line">       Son s = <span class="keyword">new</span> Son();</span><br><span class="line">       HashMap hashmap = <span class="keyword">new</span> HashMap();</span><br><span class="line">       f.doSomething(hashmap);</span><br><span class="line">       s.doSomething(hashmap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>执行结果：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">父类被执行</span><br><span class="line">父类被执行</span><br></pre></td></tr></table></figure><p>可以看到我们把调用父类的地方换成了子类，结果依然调用了父类的方法，对程序和业务逻辑没有造成影响，这样就符合了里氏替换原则。</p><p>如果子类的参数范围缩小的话，在引用里氏替换原则后执行结果就会变为 <strong>子类被执行</strong>，这样就会引起物业逻辑混乱，因为父类已经抽象好了方法，而子类“曲解”了父类的意图。</p><p>所以子类的覆写父类的方法时，只能让输入参数的范围扩大或相同，不能缩小。</p><p><strong>(3)重写父类的方法时输出结果可以被缩小，不能扩大</strong></p><h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>采用里氏替换原则的目的就是增强程序的健壮性，在版本升级时也可以保持非常好的兼容性。保证即使增加子类，原有的子类也可以正常运行。在实际项目中每个子类在同的业务中，使用父类作为参数来实现不同的业务逻辑。</p><p><strong>以上内容参考&lt;&lt;设计模式之禅&gt;&gt;</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在学习里氏替换原则之前，可以先简单复习下 &lt;a href=&quot;https://blog.cairui99.cn/2019/09/18/%E6%B5%85%E8%B0%88%E7%BB%A7%E6%89%BF%E7%9A%84%E7%89%B9%E7%82%B9/&quot;&gt;继承&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;一个事物的存在，总是优点和缺点并存的，继承也一样，所以我们要做的就是把它用在最合适的地方，让继承的优点充分的发挥，同时规避缺点带来的影响。&lt;/p&gt;
-&lt;p&gt;那么如何实现呢？解决方案就是引入&lt;strong&gt;里氏替换原则&lt;/strong&gt;。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="知识点整理" scheme="http://blog.cairui99.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"/>
-    
-    
-      <category term="设计原则" scheme="http://blog.cairui99.cn/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
-    
-      <category term="读书笔记" scheme="http://blog.cairui99.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
