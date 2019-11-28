@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[复制含有随机指针的链表]]></title>
+    <url>%2F2019%2F11%2F28%2F%E7%AE%97%E6%B3%95%E9%A2%98-%E5%A4%8D%E5%88%B6%E5%90%AB%E6%9C%89%E9%9A%8F%E6%9C%BA%E6%8C%87%E9%92%88%E7%9A%84%E9%93%BE%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[题目复制含有随机指针节点的链表 Node类中的value是节点值，next指针和正常单链表中next指针的意义 一 样，都指向下一个节点，rand指针是Node类中新增的指针，这个指针可能指向链表中的任意一个节点，也可能指向null，Node类结构如下： 12345678910111213public class RandNode &#123; public RandNode next; public RandNode rand; public int value; public RandNode(int value) &#123; this.value = value; this.next = null; this.rand = null; &#125;&#125; 给定一个由 Node节点类型组成的无环单链表的头节点head，请实现一个 函数完成 这个链表中所有结构的复制，并返回复制的新链表的头节点。 进阶： 不使用额外的数据结构，只用有限几个变量，且在时间复杂度为 O(N) 内完成原问题要实现的函数。 HashMap实现使用辅助结构HashMap实现： 创建一个HashMap，key、value都是RandNode类型 遍历链表，将原节点作为key存入map中，每次都新建一个RandNode节点作为value存入map中 遍历完成后，map中所有的key都是原节点，每个key对应的value代表着复制的链表节点 重新遍历原链表，将map中所有的value的next、rand指针进行连接 返回复制后链表的头节点 代码： 1234567891011121314151617181920212223242526272829/** * 使用HashMap实现 * @param head 原链表头节点 * @return 复制后的链表头节点 */public static RandNode hashMapMethod(RandNode head) &#123; if (head == null) &#123; return null; &#125; else if (head.next == null) &#123; return new RandNode(head.value); &#125; HashMap&lt;RandNode, RandNode&gt; map = new HashMap&lt;&gt;(); RandNode node = head; while (node != null) &#123; RandNode copy_node = new RandNode(node.value); map.put(node, copy_node); node = node.next; &#125; node = head; while (node != null) &#123; RandNode copy_node = map.get(node); copy_node.next = map.get(node.next); copy_node.rand = map.get(node.rand); node = node.next; &#125; return map.get(head);&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法题</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[检查是否安装某种php扩展]]></title>
+    <url>%2F2019%2F11%2F27%2Fphp-%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%9F%90%E7%A7%8Dphp%E6%89%A9%E5%B1%95%2F</url>
+    <content type="text"><![CDATA[1、linux下使用命令：php -m 可列出已安装的php扩展 2、使用phpInfo()函数，可展示已安装的php扩展 3、使用如下代码验证： 1234567&lt;?php$extension= ''; //需要验证的某种扩展if (extension_loaded($extension)) &#123; echo '开启了扩展';&#125; else &#123; echo '没有开启扩展';&#125;]]></content>
+      <categories>
+        <category>操作</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[荷兰国旗问题-单向链表版]]></title>
     <url>%2F2019%2F11%2F27%2F%E7%AE%97%E6%B3%95%E9%A2%98-%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98-%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%89%88%2F</url>
     <content type="text"><![CDATA[题目将给定一个标准数，一个单向链表的头节点，实现将链表中小于标准数的放左边，等于的放中间，大于的放右边。 进阶：左、中、右三个部分内部需要与原链表顺序一致 思路一使用辅助数组实现： 创建一个辅助数组，遍历链表将节点放入数组中 在数组中调整元素的位置，具体操作可见荷兰国旗问题 在数组中调整好顺序后再将值赋给原链表 代码： 12345678910public class ListNode &#123; public ListNode next = null; public int value; public ListNode(int value) &#123; this.value = value; &#125;&#125; 1234567891011121314151617181920212223242526272829303132333435363738/** * 使用辅助数组 * 空间复杂度O(n) */public static void arrayMethod(ListNode head, int num) &#123; List&lt;Integer&gt; list = new ArrayList&lt;&gt;(); ListNode node = head; while (node != null) &#123; list.add(node.value); node = node.next; &#125; int indexFront = 0; int indexMid = 0; int indexRear = list.size() - 1; while (indexMid &lt;= indexRear) &#123; if (list.get(indexMid) &lt; num) &#123; swap(list,indexMid,indexFront); indexMid++; indexFront++; &#125; else if (list.get(indexMid) == num) &#123; indexMid++; &#125; else &#123; swap(list,indexMid,indexRear); indexRear--; &#125; &#125; node = head; for (Integer integer : list) &#123; node.value = integer; node = node.next; &#125;&#125;private static void swap(List&lt;Integer&gt; list, int x, int y)&#123; int temp = list.get(x); list.set(x, list.get(y)); list.set(y, temp);&#125; 思路二为了实现进阶的要求，同时降低空间复杂度，只能在链表内部进行操作： 遍历链表，将链表拆分为小于、等于、大于三条子链表：只需创建6个变量，分别表示小于、等于、大于部分子链表的头尾节点 将三条子链表头尾连接，变为一条完整的链表返回即可 代码： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970/** * 进阶版 * 保证稳定性，同时空间复杂度达到O(1) */public static void dutchFlagListNode(ListNode head, int num) &#123; if (head == null || head.next == null) &#123; return; &#125; ListNode less_head = null; ListNode less_tail = null; ListNode eq_head = null; ListNode eq_tail = null; ListNode more_head = null; ListNode more_tail = null; while (head != null) &#123; if (head.value &lt; num) &#123; if (less_head == null) &#123; less_head = head; less_tail = head; &#125; else &#123; less_tail.next = head; less_tail = less_tail.next; &#125; &#125; else if (head.value == num) &#123; if (eq_head == null) &#123; eq_head = head; eq_tail = head; &#125; else &#123; eq_tail.next = head; eq_tail = eq_tail.next; &#125; &#125; else &#123; if (more_head == null) &#123; more_head = head; more_tail = head; &#125; else &#123; more_tail.next = head; more_tail = more_tail.next; &#125; &#125; head = head.next; &#125; //连接小于、等于、大于部分 head = null; ListNode tail = null; if (less_head != null) &#123; head = less_head; tail = less_tail; &#125; if (eq_head != null) &#123; if (head != null) &#123; tail.next = eq_head; &#125; else &#123; head = eq_head; &#125; tail = eq_tail; &#125; if (more_head != null) &#123; if (head != null) &#123; tail.next = more_head; &#125; else &#123; head = more_head; &#125; tail = more_tail; &#125; //尾部至空，防止链表成环 if (tail != null &amp;&amp; tail.next != null) tail.next = null;&#125;]]></content>
@@ -9,6 +32,7 @@
       </categories>
       <tags>
         <tag>算法题</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -20,6 +44,7 @@
       </categories>
       <tags>
         <tag>算法题</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -53,6 +78,7 @@
       </categories>
       <tags>
         <tag>算法题</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -64,6 +90,7 @@
       </categories>
       <tags>
         <tag>算法题</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -75,12 +102,13 @@
       </categories>
       <tags>
         <tag>算法题</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[go语言学习笔记]]></title>
     <url>%2F2019%2F11%2F01%2Fgo-go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[从零开始，持续更新 参考书籍：《Go程序设计语言》 环境部署前往官网下载源码点击此处官网(可能需要翻墙) 根据你的系统选择对应的源码包，我的环境是Centos7，选择linux的 解压并安装1$ tar -zxvf go1.13.4.linux-amd64.tar.gz 配置环境变量123456789101112131415161.创建workspace$ mkdir -p workspace/src2.配置环境变量$ vi ~/.bashrc将以下配置添加进bashrc中export GOROOT=$HOME/goexport GOPATH=$HOME/workspaceexport PATH=$GOROOT/bin:$GOPATH/bin:$PATH使配置生效$ source ~/.bashrc3.验证是否成功$ go version 入门体验用Go编写一些你在已经使用其他编程语言编写过的一些经典程序，对有其他编程语言经验的程序员来说，这是学习Go语言更高效的方式。 HelloWorld创建一个 HelloWorld.go 文件 (注意创建在你的GOPATH目录下) 1234567package mainimport "fmt"func main() &#123; fmt.Println("Hello World")&#125; go是编译性语言，使用run命令来将一个或多个.go来进行编译、链接，然后运行生成的可执行文件： 1234$ go run HelloWorld.go输出：Hello World 如果你的程序不是一次性实验，那么每次运行时都将.go进行编译显然是多余的，我们可以手动编译出来一个可直接执行的程序，使用go build实现： 1$ go build HelloWorld.go 此时会在目录下生成一个名为HelloWorld的二进制程序，该文件可直接不做处理直接执行： 1234$ ./HelloWorld输出：Hello World 下面说一下代码：Go代码使用包(package)来组织，一个包由多个.go文件组成，放在一个文件夹中，文件夹的名字也就是包名描述了包的作用，类似于其他语言的库或模块。 每个.go文件都需要在开头声明文件所在的包名，HelloWorld中是package main，main包是一个特殊的包，它用来定义一个可执行的程序，而不是函数库，在任何程序中main总是程序最开始执行的地方。 package声明后面需要紧跟import，它表示程序导入其他包的列表。HelloWorld例子中导入了fmt包，fmt包中的函数用来格式化输出和扫描输入，比如程序中使用的fmt.Println,是fmt中的一个基本输出函数。Go语言要求你必须精确的导入你所需要的包，在缺失import包或者import进了不需要的包，会编译失败，这样严格的要求保证了Go程序不不会导入多余的包。 在import之后，包含了组成程序常量、变量、类型、函数的声明，此时声明的顺序是严格要求了，在示例中只声明了一个main函数。 Go不需要在语句的末尾添加”;”,除非多个语句放在同一行，此时”;”用来区分不同的语句 Go语言同时还对程序的格式有着严格的要求，例如函数声明中，”{“必须和关键字fun在同一行，不允许单独换行。从语言层面就限制了格式，保证了在你的项目中不会出现各种各样的编码风格，同时可以省去大量对程序本身无关紧要的代码风格的辩论。 输出命令行参数123456789101112131415package mainimport ( "os" "fmt")func main() &#123; var s, sep string for i := 1; i &lt; len(os.Args); i++ &#123; s += sep + os.Args[i] sep = " " &#125; fmt.Println(s)&#125; os包提供了一些函数和变量，以与平台无关的方式和操作系统打交道，上面程序使用了os包中的Args变量，来获取程序运行时从外部获得的参数。 运行结果如下： 1234$ go run echo.go 1 3 -X ?输出：1 3 -X ? 使用var声明两个string类型的变量s、sep，没有对变量进行初始化，此时两个string类型的变量就被隐式的初始化为空字符串 循环变量i在for循环的开始处声明，使用 := 进行短变量声明，此时go会根据初始化的值来给变量赋予合适的类型；因为在Args中，Args[0]中存储的值为该程序本身的执行语句，所以这里将变量i初始化为1。 注意go中的for循环的循环条件不需要使用小括号，但循环内部的语句必须使用大括号括起来，而且左大括号不能独立成行，必须和前置语句在同一行 for是go中唯一的循环语句，有好几种形式，上面的程序是其中一种，格式为： 1234//传统的for循环for initialization; condition; post &#123; // ...&#125; 其中三个部分都是可以省略的，例如： 123456789//传统的while循环for condition &#123; // ...&#125;//无限循环 while(true)for &#123; //...&#125; 无限循环这种形式可以通过如break、return等语句进行终止 还有一种形式的for循环是在字符串或者数组上迭代，现在给出echo.go的另一版写法来辅助说明： 123456789101112131415package mainimport ( "os" "fmt")func main() &#123; s, sep := "", "" for _, arg := range os.Args[1:] &#123; s += sep + arg sep = " " &#125; fmt.Println(s)&#125; 首先使用了另外一种方式定义了变量s和sep，go语言中共有4种定义变量的方式如下： 12345678//定义简洁方便，通常在函数内部使用，不适用于包级别的变量s := ""//使用默认初始化值时的定义方式var s string//很少使用，除非定义多个变量时使用var s = ""//在类型不一致时，强调类型使用var s string = "" 在for循环中，使用了range关键字来迭代数组，range在每一次迭代中会产生一对值：索引和这个索引对应的值，但此时range产生的索引我们是不需要的，但在go语言中不允许出现无用的变量，编译会出错，所以这里我们将无用的索引赋值给 _ 这个变量，_ 在go语言中表示 空标识符 ，空标识符可以用在任何语法需要给变量赋值但程序逻辑不需要的地方。 如果有大量的数据需要处理，以上两种写法代价会比较大，使用string包中的join函数是一种简单又高效的方法： 1234567891011package mainimport ( "fmt" "strings" "os")func main() &#123; fmt.Println(strings.Join(os.Args[1:], ""))&#125; 最后，如果不关心格式或者只是调试程序时，可以直接使用Println： 12345678910package mainimport ( "fmt" "os")func main() &#123; fmt.Println(os.Args[1:])&#125; 结果和预期很像，只是两边有括号： 123$ go run echo4.go 1 2 s d ?[1 2 s d ?] 找出重复行从控制台输入下面的程序用来找出在控制台输入时出现次数大于1的行，我们将出现次数和内容打印出来，代码如下： 1234567891011121314151617181920212223package mainimport ( "bufio" "os" "fmt")func main() &#123; counts := make(map[string]int) input := bufio.NewScanner(os.Stdin) for input.Scan() &#123; if input.Text() == "end" &#123; break &#125; counts[input.Text()]++ &#125; for line, n := range counts &#123; if n &gt; 1 &#123; fmt.Printf("%d\t%s\n",n,line) &#125; &#125;&#125; 程序运行结果如下： 123456789101112$ go run dup1.go112333end2 13 3 在程序使用变量count来记录重复行出现的次数，结构map存储一个键/值对，其中键的类型必须是可以进行相等(==)比较的类型，值可以存储任意类型，在例子中键使用string类型来存储行的内容，值为int类型用来存储出现的数量，使用go语言内置函数make()来创建一个新的map。 接下来引入了bufio包，使用它可以简便和高效地处理输入和输出。其中一个最有用的特性是成为扫描器(Scanner)的类型，它可以读取输入，以行或者单词为单位断开，这是处理以行为单位的输入内容最简单的方式。 在程序中我们新建了一个bufio.Scanner类型的input变量来读取来自控制台的输入。在每次调用input.Scan()时读取下一行，通过input.Text()来读取该行的内容，通过读取map中该行的出现次数，若没有出现过的话由于是int类型则初始值为0，在每次输入后将次数+1，这里设置了终止条件，当键盘输入了”end”时停止输入，开始打印重复行。 为了方便输出结果，依然使用基于range的for循环，遍历map输出值大于1的键与值。需要注意的是迭代输出map时顺序不是固定的，通常每次运行都不一致，所以该程序无法对输出顺序做任何保证。 下面说一下Printf，fmt.Printf()通过一个表达式列表生成格式化的输出。它的第一个参数格式化的指示字符串，由它指定最终的输出格式，其中可以包含转义字符或者(%+字符)。后面的参数表示需要格式化输出的变量。 例如程序中的 “%d\t%s\n”含义为： %d 为将一个整数格式化为十进制形式、 \t 制表符、 %s 把参数输入为字符串、 \n 换行符。 下面给出一些常用的Printf转义字符，Go程序员将其称为verb： verb 描述 %d 十进制整数 %x, %o, %b 十六进制、八进制、二进制整数 %f, %g, %e 浮点型 %t 布尔型 %c 字符 %s 字符串 %q 带引号的字符串(“abc”或者’c’) %v 内置格式的任何值 %T 任何值的类型 %% 百分号本身 流式读取文件下面的dup程序支持从文件中读取并查找出重复行，在命令行中传入文件路径，使用os.Open函数来打开文件： 1234567891011121314151617181920212223242526272829303132333435363738394041package mainimport ( "os" "fmt" "bufio")func main() &#123; counts := make(map[string]int) files := os.Args[1:] if len(files) == 0 &#123; countLines(os.Stdin, counts) &#125; else &#123; for _, arg := range files &#123; f, err := os.Open(arg) if err != nil &#123; fmt.Fprintf(os.Stderr, "dup2: %v\n", err) continue &#125; countLines(f, counts) f.Close() &#125; &#125; for line, n := range counts &#123; if n &gt; 1 &#123; fmt.Printf("%d\t%s\n", n, line) &#125; &#125;&#125;func countLines(f *os.File, counts map[string]int) &#123; input := bufio.NewScanner(f) for input.Scan() &#123; if input.Text() == "end" &#123; break &#125; counts[input.Text()]++ &#125;&#125; for test： 首先创建一个测试文件，名为test.txt： 1234567112121231231231234 运行结果如下： 1234$ go run dup2.go test.txt3 1232 12 os.Open()函数用来打开一个文件，它有两个返回值：第一个返回值是打开的文件(* os.File),该文件随后使用Scanner进行读取，然后使用Close函数关闭文件，关闭后释放相应的资源(内存等)；第二个返回值是一个内置的error类型的值，在error等于内置nil值时，表示文件打开成功，如果error不等于nil，说明文件打开失败，error的值描述着错误原因。 可以看出 在go中函数的声明次序是任意的，包括main函数。 在示例中counts是一个由make创建的引用类型的map结构，所以在countLines函数中修改的值，返回main中依然有效。 一次性读取文件上面的dup2示例采用流式模式读取文件，然后按需拆分为行，该方法更适用于处理海量数据的情况。 下面提供一种方式是一次性的读取文件到内存、一次性地分割所有行，然后进行按需处理： 123456789101112131415161718192021222324252627package mainimport ( "os" "io/ioutil" "fmt" "strings")func main() &#123; counts := make(map[string]int) for _, filename := range os.Args[1:] &#123; data, err := ioutil.ReadFile(filename) if err != nil &#123; fmt.Fprintf(os.Stderr, "dup3: %v\n", err) continue &#125; for _, line := range strings.Split(string(data), "\n") &#123; counts[line]++ &#125; &#125; for line, n := range counts &#123; if n &gt; 1 &#123; fmt.Printf("%d\t%s\n", n, line) &#125; &#125;&#125; 运行方式与结果同dup2.go ioutil.ReadFile()方法返回的第一个参数是一个可以转化为字符串的slice，这样在后面的for循环中可以把它转换为string，然后将它按行(\n)分割，实现查找重复行；返回的第二参数与os.Open函数的error相同，值为nil时表示成功，失败时值为失败信息。 获取URL的内容程序fetch通过命令行来读取url，通过net包下面的方法来获取指定url的内容，然后不加解析地输出： 12345678910111213141516171819202122232425package mainimport ( "os" "net/http" "fmt" "io/ioutil")func main() &#123; for _, url := range os.Args[1:] &#123; resp, err := http.Get(url) if err != nil &#123; fmt.Fprintf(os.Stderr, "fetch: %v\n", err) os.Exit(1) &#125; b, err := ioutil.ReadAll(resp.Body) resp.Body.Close() if err != nil &#123; fmt.Fprintf(os.Stderr, "fetch: reading %s: %v\n", url, err) os.Exit(1) &#125; fmt.Printf("%s", b) &#125;&#125; 上面程序使用net/http包的http.Get函数来产生一个HTTP请求，在没有出错的情况下返回结果会保存到resp中，其中resp.Body为一个可读数据流，通过ioutil.ReadAll来读取整个响应结果并存入b，随后关闭Body数据流来避免起源泄露。 并发获取多个URL的内容Go语言的特点之一就是支持并发编程，我们通过下面程序的程序简单了解下go的主要并发机制、goroutine和通道(channel)。下面程序用来从命令行读取很多个URL，并发的获取这些URL的内容，并返回获取每个URL的时间与程序执行的总时间 123456789101112131415161718192021222324252627282930313233343536373839package mainimport ( "time" "os" "fmt" "net/http" "io" "io/ioutil")func fetch(url string, ch chan&lt;- string) &#123; start := time.Now() resp, err := http.Get(url) if err != nil &#123; ch &lt;- fmt.Sprint(err) //发送到通道ch return &#125; nbytes, err := io.Copy(ioutil.Discard, resp.Body) resp.Body.Close() if err != nil &#123; ch &lt;- fmt.Sprintf("while reading %s: %v", url, err) return &#125; secs := time.Since(start).Seconds() ch &lt;- fmt.Sprintf("%.2fs %7d %s", secs, nbytes, url)&#125;func main() &#123; start := time.Now() ch := make(chan string) for _, url := range os.Args[1:] &#123; go fetch(url, ch) //启动一个goroutine &#125; for range os.Args[1:] &#123; fmt.Println(&lt;-ch) //从通道ch接收 &#125; fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())&#125; 运行结果如下： 1234567$ go run fetchall.go http://www.rong360.com http://www.jd.com http://www.weibo.com http://www.baidu.com0.03s 156218 http://www.baidu.com0.14s 106674 http://www.jd.com0.15s 611 http://www.weibo.com0.17s 110858 http://www.rong360.com0.17s elapsed goroutin是一个并发执行的函数，本质是协程。main函数就是在一个goroutine中执行的，在main中可以使用 go 关键字来创建额外的goroutine。goroutine之前可以使用channel来进行通信或者说是数据共享。 go语言中使用 chan 关键字来声明channel，在上面的程序中使用了make创建了一个字符串通道ch，接下来在for循环中每次循环都创建一个新的goroutine，可以实现异步的调用fetch()方法来获取URL内容，在fetch中将读取到的信息传入channel中，在main函数的第二个for循环中依次接收。 持续更新中…]]></content>
+    <content type="text"><![CDATA[从零开始，持续更新 参考书籍：《Go程序设计语言》 环境部署前往官网下载源码点击此处官网(可能需要翻墙) 根据你的系统选择对应的源码包，我的环境是Centos7，选择linux的 解压并安装1$ tar -zxvf go1.13.4.linux-amd64.tar.gz 配置环境变量123456789101112131415161.创建workspace$ mkdir -p workspace/src2.配置环境变量$ vi ~/.bashrc将以下配置添加进bashrc中export GOROOT=$HOME/goexport GOPATH=$HOME/workspaceexport PATH=$GOROOT/bin:$GOPATH/bin:$PATH使配置生效$ source ~/.bashrc3.验证是否成功$ go version 入门体验用Go编写一些你在已经使用其他编程语言编写过的一些经典程序，对有其他编程语言经验的程序员来说，这是学习Go语言更高效的方式。 HelloWorld创建一个 HelloWorld.go 文件 (注意创建在你的GOPATH目录下) 1234567package mainimport "fmt"func main() &#123; fmt.Println("Hello World")&#125; go是编译性语言，使用run命令来将一个或多个.go来进行编译、链接，然后运行生成的可执行文件： 1234$ go run HelloWorld.go输出：Hello World 如果你的程序不是一次性实验，那么每次运行时都将.go进行编译显然是多余的，我们可以手动编译出来一个可直接执行的程序，使用go build实现： 1$ go build HelloWorld.go 此时会在目录下生成一个名为HelloWorld的二进制程序，该文件可直接不做处理直接执行： 1234$ ./HelloWorld输出：Hello World 下面说一下代码：Go代码使用包(package)来组织，一个包由多个.go文件组成，放在一个文件夹中，文件夹的名字也就是包名描述了包的作用，类似于其他语言的库或模块。 每个.go文件都需要在开头声明文件所在的包名，HelloWorld中是package main，main包是一个特殊的包，它用来定义一个可执行的程序，而不是函数库，在任何程序中main总是程序最开始执行的地方。 package声明后面需要紧跟import，它表示程序导入其他包的列表。HelloWorld例子中导入了fmt包，fmt包中的函数用来格式化输出和扫描输入，比如程序中使用的fmt.Println,是fmt中的一个基本输出函数。Go语言要求你必须精确的导入你所需要的包，在缺失import包或者import进了不需要的包，会编译失败，这样严格的要求保证了Go程序不不会导入多余的包。 在import之后，包含了组成程序常量、变量、类型、函数的声明，此时声明的顺序是严格要求了，在示例中只声明了一个main函数。 Go不需要在语句的末尾添加”;”,除非多个语句放在同一行，此时”;”用来区分不同的语句 Go语言同时还对程序的格式有着严格的要求，例如函数声明中，”{“必须和关键字fun在同一行，不允许单独换行。从语言层面就限制了格式，保证了在你的项目中不会出现各种各样的编码风格，同时可以省去大量对程序本身无关紧要的代码风格的辩论。 输出命令行参数123456789101112131415package mainimport ( "os" "fmt")func main() &#123; var s, sep string for i := 1; i &lt; len(os.Args); i++ &#123; s += sep + os.Args[i] sep = " " &#125; fmt.Println(s)&#125; os包提供了一些函数和变量，以与平台无关的方式和操作系统打交道，上面程序使用了os包中的Args变量，来获取程序运行时从外部获得的参数。 运行结果如下： 1234$ go run echo.go 1 3 -X ?输出：1 3 -X ? 使用var声明两个string类型的变量s、sep，没有对变量进行初始化，此时两个string类型的变量就被隐式的初始化为空字符串 循环变量i在for循环的开始处声明，使用 := 进行短变量声明，此时go会根据初始化的值来给变量赋予合适的类型；因为在Args中，Args[0]中存储的值为该程序本身的执行语句，所以这里将变量i初始化为1。 注意go中的for循环的循环条件不需要使用小括号，但循环内部的语句必须使用大括号括起来，而且左大括号不能独立成行，必须和前置语句在同一行 for是go中唯一的循环语句，有好几种形式，上面的程序是其中一种，格式为： 1234//传统的for循环for initialization; condition; post &#123; // ...&#125; 其中三个部分都是可以省略的，例如： 123456789//传统的while循环for condition &#123; // ...&#125;//无限循环 while(true)for &#123; //...&#125; 无限循环这种形式可以通过如break、return等语句进行终止 还有一种形式的for循环是在字符串或者数组上迭代，现在给出echo.go的另一版写法来辅助说明： 123456789101112131415package mainimport ( "os" "fmt")func main() &#123; s, sep := "", "" for _, arg := range os.Args[1:] &#123; s += sep + arg sep = " " &#125; fmt.Println(s)&#125; 首先使用了另外一种方式定义了变量s和sep，go语言中共有4种定义变量的方式如下： 12345678//定义简洁方便，通常在函数内部使用，不适用于包级别的变量s := ""//使用默认初始化值时的定义方式var s string//很少使用，除非定义多个变量时使用var s = ""//在类型不一致时，强调类型使用var s string = "" 在for循环中，使用了range关键字来迭代数组，range在每一次迭代中会产生一对值：索引和这个索引对应的值，但此时range产生的索引我们是不需要的，但在go语言中不允许出现无用的变量，编译会出错，所以这里我们将无用的索引赋值给 _ 这个变量，_ 在go语言中表示 空标识符 ，空标识符可以用在任何语法需要给变量赋值但程序逻辑不需要的地方。 如果有大量的数据需要处理，以上两种写法代价会比较大，使用string包中的join函数是一种简单又高效的方法： 1234567891011package mainimport ( "fmt" "strings" "os")func main() &#123; fmt.Println(strings.Join(os.Args[1:], ""))&#125; 最后，如果不关心格式或者只是调试程序时，可以直接使用Println： 12345678910package mainimport ( "fmt" "os")func main() &#123; fmt.Println(os.Args[1:])&#125; 结果和预期很像，只是两边有括号： 123$ go run echo4.go 1 2 s d ?[1 2 s d ?] 找出重复行从控制台输入下面的程序用来找出在控制台输入时出现次数大于1的行，我们将出现次数和内容打印出来，代码如下： 1234567891011121314151617181920212223package mainimport ( "bufio" "os" "fmt")func main() &#123; counts := make(map[string]int) input := bufio.NewScanner(os.Stdin) for input.Scan() &#123; if input.Text() == "end" &#123; break &#125; counts[input.Text()]++ &#125; for line, n := range counts &#123; if n &gt; 1 &#123; fmt.Printf("%d\t%s\n",n,line) &#125; &#125;&#125; 程序运行结果如下： 123456789101112$ go run dup1.go112333end2 13 3 在程序使用变量count来记录重复行出现的次数，结构map存储一个键/值对，其中键的类型必须是可以进行相等(==)比较的类型，值可以存储任意类型，在例子中键使用string类型来存储行的内容，值为int类型用来存储出现的数量，使用go语言内置函数make()来创建一个新的map。 接下来引入了bufio包，使用它可以简便和高效地处理输入和输出。其中一个最有用的特性是成为扫描器(Scanner)的类型，它可以读取输入，以行或者单词为单位断开，这是处理以行为单位的输入内容最简单的方式。 在程序中我们新建了一个bufio.Scanner类型的input变量来读取来自控制台的输入。在每次调用input.Scan()时读取下一行，通过input.Text()来读取该行的内容，通过读取map中该行的出现次数，若没有出现过的话由于是int类型则初始值为0，在每次输入后将次数+1，这里设置了终止条件，当键盘输入了”end”时停止输入，开始打印重复行。 为了方便输出结果，依然使用基于range的for循环，遍历map输出值大于1的键与值。需要注意的是迭代输出map时顺序不是固定的，通常每次运行都不一致，所以该程序无法对输出顺序做任何保证。 下面说一下Printf，fmt.Printf()通过一个表达式列表生成格式化的输出。它的第一个参数格式化的指示字符串，由它指定最终的输出格式，其中可以包含转义字符或者(%+字符)。后面的参数表示需要格式化输出的变量。 例如程序中的 “%d\t%s\n”含义为： %d 为将一个整数格式化为十进制形式、 \t 制表符、 %s 把参数输入为字符串、 \n 换行符。 下面给出一些常用的Printf转义字符，Go程序员将其称为verb： verb 描述 %d 十进制整数 %x, %o, %b 十六进制、八进制、二进制整数 %f, %g, %e 浮点型 %t 布尔型 %c 字符 %s 字符串 %q 带引号的字符串(“abc”或者’c’) %v 内置格式的任何值 %T 任何值的类型 %% 百分号本身 流式读取文件下面的dup程序支持从文件中读取并查找出重复行，在命令行中传入文件路径，使用os.Open函数来打开文件： 1234567891011121314151617181920212223242526272829303132333435363738394041package mainimport ( "os" "fmt" "bufio")func main() &#123; counts := make(map[string]int) files := os.Args[1:] if len(files) == 0 &#123; countLines(os.Stdin, counts) &#125; else &#123; for _, arg := range files &#123; f, err := os.Open(arg) if err != nil &#123; fmt.Fprintf(os.Stderr, "dup2: %v\n", err) continue &#125; countLines(f, counts) f.Close() &#125; &#125; for line, n := range counts &#123; if n &gt; 1 &#123; fmt.Printf("%d\t%s\n", n, line) &#125; &#125;&#125;func countLines(f *os.File, counts map[string]int) &#123; input := bufio.NewScanner(f) for input.Scan() &#123; if input.Text() == "end" &#123; break &#125; counts[input.Text()]++ &#125;&#125; for test： 首先创建一个测试文件，名为test.txt： 1234567112121231231231234 运行结果如下： 1234$ go run dup2.go test.txt3 1232 12 os.Open()函数用来打开一个文件，它有两个返回值：第一个返回值是打开的文件(* os.File),该文件随后使用Scanner进行读取，然后使用Close函数关闭文件，关闭后释放相应的资源(内存等)；第二个返回值是一个内置的error类型的值，在error等于内置nil值时，表示文件打开成功，如果error不等于nil，说明文件打开失败，error的值描述着错误原因。 可以看出 在go中函数的声明次序是任意的，包括main函数。 在示例中counts是一个由make创建的引用类型的map结构，所以在countLines函数中修改的值，返回main中依然有效。 一次性读取文件上面的dup2示例采用流式模式读取文件，然后按需拆分为行，该方法更适用于处理海量数据的情况。 下面提供一种方式是一次性的读取文件到内存、一次性地分割所有行，然后进行按需处理： 123456789101112131415161718192021222324252627package mainimport ( "os" "io/ioutil" "fmt" "strings")func main() &#123; counts := make(map[string]int) for _, filename := range os.Args[1:] &#123; data, err := ioutil.ReadFile(filename) if err != nil &#123; fmt.Fprintf(os.Stderr, "dup3: %v\n", err) continue &#125; for _, line := range strings.Split(string(data), "\n") &#123; counts[line]++ &#125; &#125; for line, n := range counts &#123; if n &gt; 1 &#123; fmt.Printf("%d\t%s\n", n, line) &#125; &#125;&#125; 运行方式与结果同dup2.go ioutil.ReadFile()方法返回的第一个参数是一个可以转化为字符串的slice，这样在后面的for循环中可以把它转换为string，然后将它按行(\n)分割，实现查找重复行；返回的第二参数与os.Open函数的error相同，值为nil时表示成功，失败时值为失败信息。 获取URL的内容程序fetch通过命令行来读取url，通过net包下面的方法来获取指定url的内容，然后不加解析地输出： 12345678910111213141516171819202122232425package mainimport ( "os" "net/http" "fmt" "io/ioutil")func main() &#123; for _, url := range os.Args[1:] &#123; resp, err := http.Get(url) if err != nil &#123; fmt.Fprintf(os.Stderr, "fetch: %v\n", err) os.Exit(1) &#125; b, err := ioutil.ReadAll(resp.Body) resp.Body.Close() if err != nil &#123; fmt.Fprintf(os.Stderr, "fetch: reading %s: %v\n", url, err) os.Exit(1) &#125; fmt.Printf("%s", b) &#125;&#125; 上面程序使用net/http包的http.Get函数来产生一个HTTP请求，在没有出错的情况下返回结果会保存到resp中，其中resp.Body为一个可读数据流，通过ioutil.ReadAll来读取整个响应结果并存入b，随后关闭Body数据流来避免起源泄露。 并发获取多个URL的内容Go语言的特点之一就是支持并发编程，我们通过下面程序的程序简单了解下go的主要并发机制、goroutine和通道(channel)。下面程序用来从命令行读取很多个URL，并发的获取这些URL的内容，并返回获取每个URL的时间与程序执行的总时间 123456789101112131415161718192021222324252627282930313233343536373839package mainimport ( "time" "os" "fmt" "net/http" "io" "io/ioutil")func fetch(url string, ch chan&lt;- string) &#123; start := time.Now() resp, err := http.Get(url) if err != nil &#123; ch &lt;- fmt.Sprint(err) //发送到通道ch return &#125; nbytes, err := io.Copy(ioutil.Discard, resp.Body) resp.Body.Close() if err != nil &#123; ch &lt;- fmt.Sprintf("while reading %s: %v", url, err) return &#125; secs := time.Since(start).Seconds() ch &lt;- fmt.Sprintf("%.2fs %7d %s", secs, nbytes, url)&#125;func main() &#123; start := time.Now() ch := make(chan string) for _, url := range os.Args[1:] &#123; go fetch(url, ch) //启动一个goroutine &#125; for range os.Args[1:] &#123; fmt.Println(&lt;-ch) //从通道ch接收 &#125; fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())&#125; 运行结果如下： 1234567$ go run fetchall.go http://www.rong360.com http://www.jd.com http://www.weibo.com http://www.baidu.com0.03s 156218 http://www.baidu.com0.14s 106674 http://www.jd.com0.15s 611 http://www.weibo.com0.17s 110858 http://www.rong360.com0.17s elapsed goroutin是一个并发执行的函数，本质是协程。main函数就是在一个goroutine中执行的，在main中可以使用 go 关键字来创建额外的goroutine。goroutine之前可以使用channel来进行通信或者说是数据共享。 go语言中使用 chan 关键字来声明channel，在上面的程序中使用了make创建了一个字符串通道ch，接下来在for循环中每次循环都创建一个新的goroutine，可以实现异步的调用fetch()方法来获取URL内容，在fetch中将读取到的信息传入channel中，在main函数的第二个for循环中依次接收。 一个Web服务器使用Go的库将很容易实现一个Web服务器，用来响应像fetch那样的客户端请求，下面实现一个迷你服务器，它将展示出访问服务器的URL路径部分。 1234567891011121314151617package mainimport ( "net/http" "fmt" "log")func main() &#123; http.HandleFunc("/", handler) log.Fatal(http.ListenAndServe("localhost:4000", nil))&#125;//处理回显请求部分func handler(w http.ResponseWriter, r *http.Request) &#123; fmt.Fprintf(w, "URL.PATH = %q\n", r.URL.Path)&#125; 运行服务器： 1$ go run server1.go 效果如下： 待更新…]]></content>
       <categories>
         <category>Go</category>
         <category>知识点整理</category>
@@ -122,6 +150,7 @@
       </categories>
       <tags>
         <tag>算法题</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -133,6 +162,8 @@
       </categories>
       <tags>
         <tag>算法题</tag>
+        <tag>栈</tag>
+        <tag>队列</tag>
       </tags>
   </entry>
   <entry>
@@ -144,6 +175,7 @@
       </categories>
       <tags>
         <tag>算法题</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -155,6 +187,7 @@
       </categories>
       <tags>
         <tag>算法题</tag>
+        <tag>堆</tag>
       </tags>
   </entry>
   <entry>
@@ -166,6 +199,7 @@
       </categories>
       <tags>
         <tag>算法题</tag>
+        <tag>队列</tag>
       </tags>
   </entry>
   <entry>
@@ -177,6 +211,7 @@
       </categories>
       <tags>
         <tag>算法题</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -232,12 +267,16 @@
       </categories>
       <tags>
         <tag>算法题</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[IDEA-批量修改变量名]]></title>
     <url>%2F2019%2F10%2F11%2FIDEA-%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E5%8F%98%E9%87%8F%E5%90%8D%2F</url>
     <content type="text"><![CDATA[双击选中修改对象后： Shift+F6 变量名填写完成后按回车执行修改]]></content>
+      <categories>
+        <category>操作</category>
+      </categories>
       <tags>
         <tag>IDEA快捷键</tag>
       </tags>
@@ -251,6 +290,7 @@
       </categories>
       <tags>
         <tag>算法题</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>

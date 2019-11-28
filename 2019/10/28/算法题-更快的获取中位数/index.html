@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="算法题,">
+  <meta name="keywords" content="算法题,堆,">
 
 
 
@@ -82,14 +82,14 @@
 
 
 <meta name="description" content="题目一个流不断的吐出无序的数，你可以收集并操作这些数，要求提供一个接口，可以在任何时刻获取到目前为止流中吐出的所有数的中位数">
-<meta name="keywords" content="算法题">
+<meta name="keywords" content="算法题,堆">
 <meta property="og:type" content="article">
 <meta property="og:title" content="更快的获取中位数">
 <meta property="og:url" content="http://blog.cairui99.cn/2019/10/28/算法题-更快的获取中位数/index.html">
 <meta property="og:site_name" content="CaiRui的博客">
 <meta property="og:description" content="题目一个流不断的吐出无序的数，你可以收集并操作这些数，要求提供一个接口，可以在任何时刻获取到目前为止流中吐出的所有数的中位数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-25T09:50:36.657Z">
+<meta property="og:updated_time" content="2019-11-28T03:50:24.105Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="更快的获取中位数">
 <meta name="twitter:description" content="题目一个流不断的吐出无序的数，你可以收集并操作这些数，要求提供一个接口，可以在任何时刻获取到目前为止流中吐出的所有数的中位数">
@@ -404,6 +404,7 @@
       
         <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>一个流不断的吐出无序的数，你可以收集并操作这些数，要求提供一个接口，可以在任何时刻获取到目前为止流中吐出的所有数的中位数</p>
 <a id="more"></a>
+
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这道题，如果只是简单的收集流中吐出的数的话，当别人调获取中位数接口时，这时需要把收集的数进行一次排序，从而获取中位数。</p>
 <p>此时收集数的操作是 <strong>O(1)</strong>，获取中位数的操作是 <strong>O(n*logn)</strong></p>
 <p>如果接口被频繁调用，排序的代价就太高了，下面利用<a href="https://blog.cairui99.cn/2019/10/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86/">堆结构</a>的特点来进行优化：</p>
@@ -459,6 +460,8 @@
         <div class="post-tags">
           
             <a href="/tags/算法题/" rel="tag"># 算法题</a>
+          
+            <a href="/tags/堆/" rel="tag"># 堆</a>
           
         </div>
       
@@ -565,7 +568,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -576,7 +579,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -587,7 +590,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
