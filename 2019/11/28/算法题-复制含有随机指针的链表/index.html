@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="CaiRui的博客">
 <meta property="og:description" content="题目复制含有随机指针节点的链表 Node类中的value是节点值，next指针和正常单链表中next指针的意义 一 样，都指向下一个节点，rand指针是Node类中新增的指针，这个指针可能指向链表中的任意一个节点，也可能指向null，Node类结构如下：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-29T11:32:34.978Z">
+<meta property="og:updated_time" content="2019-11-29T11:35:35.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="复制含有随机指针的链表">
 <meta name="twitter:description" content="题目复制含有随机指针节点的链表 Node类中的value是节点值，next指针和正常单链表中next指针的意义 一 样，都指向下一个节点，rand指针是Node类中新增的指针，这个指针可能指向链表中的任意一个节点，也可能指向null，Node类结构如下：">
@@ -424,7 +424,7 @@
 <h3 id="使用有限变量实现"><a href="#使用有限变量实现" class="headerlink" title="使用有限变量实现"></a>使用有限变量实现</h3><p>借用HashMap无法实现进阶中空间复杂度O(1)的要求，下面使用有限的几个变量实现复制链表：</p>
 <ul>
 <li>遍历原链表，每次遍历都创建一个新的Node类型的变量作为该节点的复制，然后将复制的节点连接到原节点的后面，复制节点的next指针指向原节点之前的next节点(例如:原链表为 1-&gt;2-&gt;3-&gt;null，在遍历后链表将变为 1-&gt;1’-&gt;2-&gt;2’-&gt;3-&gt;3’-&gt;null)</li>
-<li>此时的链表结构其实可以做到和HashMap相同的效果：可以遍历原节点并且可以根据原节点可以找到对应的复制节点</li>
+<li>此时的链表结构其实可以做到和HashMap相同的效果：可以遍历原链表并且可以根据原节点可以找到对应的复制节点</li>
 <li>下面遍历链表，将所有复制节点的rand指针指向正确的位置</li>
 <li>最后将复制的节点从链表中分离出来，形成原链表和复制的链表，返回复制链表的头节点</li>
 </ul>
