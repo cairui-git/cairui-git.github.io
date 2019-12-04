@@ -95,7 +95,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/03/QM7800.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/04/QlsVF1.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/04/QlsGFI.png">
-<meta property="og:updated_time" content="2019-12-04T12:19:51.538Z">
+<meta property="og:updated_time" content="2019-12-04T12:22:36.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go语言学习笔记">
 <meta name="twitter:description" content="从零开始，持续更新">
@@ -604,6 +604,7 @@
 <p>下面的程序封装了温度转换的方法fToC，在其他函数中可以进行多次调用：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//两次华氏-摄氏温度的转换</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">const</span> freezingF, boilingF = <span class="number">32.0</span>, <span class="number">212.0</span></span><br><span class="line">	fmt.Printf(<span class="string">"%g°F = %g°C\n"</span>,freezingF, fToC(freezingF))</span><br><span class="line">	fmt.Printf(<span class="string">"%g°F = %g°C\n"</span>,boilingF,  fToC(boilingF))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fToC</span><span class="params">(f <span class="keyword">float64</span>)</span> <span class="title">float64</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> (f - <span class="number">32</span>) * <span class="number">5</span> / <span class="number">9</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>待更新…</p>
 
       
     </div>
