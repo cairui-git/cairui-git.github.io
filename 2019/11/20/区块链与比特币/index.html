@@ -90,7 +90,10 @@
 <meta property="og:description" content="区块链2008年11月1日， 中本聪（真实身份未知）在网络上发布了一篇名为《Bitcoin: A Peer-to-Peer Electronic Cash System》（比特币：一种点对点式的电子现金系统），论文中描述了一种被他称为“比特币”的电子货币及其算法，其中实现比特币的底层技术：chain of blocks 在最早的比特币白皮书中文翻译版中，将 chain of blocks 翻译成">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/21/M5LtMt.png">
-<meta property="og:updated_time" content="2019-11-29T11:18:41.009Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/06/QJuHDf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/06/QJDmzq.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/09/QwoRoT.png">
+<meta property="og:updated_time" content="2019-12-09T10:00:29.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="区块链与比特币">
 <meta name="twitter:description" content="区块链2008年11月1日， 中本聪（真实身份未知）在网络上发布了一篇名为《Bitcoin: A Peer-to-Peer Electronic Cash System》（比特币：一种点对点式的电子现金系统），论文中描述了一种被他称为“比特币”的电子货币及其算法，其中实现比特币的底层技术：chain of blocks 在最早的比特币白皮书中文翻译版中，将 chain of blocks 翻译成">
@@ -426,6 +429,21 @@
 <p>是的， <strong>区块链</strong> 就是这个问题的答案，区块链被很多人定义为 <strong>加密的分布式记账技术</strong>,它是一种在我们中间维护账簿而非依赖第三方来为我们代劳的方法。</p>
 <p>下面就来介绍一下这个分散式账簿是如何实现的。</p>
 <h4 id="区块链是如何工作的？"><a href="#区块链是如何工作的？" class="headerlink" title="区块链是如何工作的？"></a>区块链是如何工作的？</h4><p>使用区块链维护账簿的要求是： <strong>必修有足够的人不想依赖第三方，</strong> 至少要三个。</p>
+<p>一个简单的例子，假设有10个人打算使用区块链来维护彼此之间的账簿：</p>
+<p><img src="https://s2.ax1x.com/2019/12/06/QJuHDf.png" alt="QJuHDf.png"></p>
+<p>这10个人一直拥有着彼此的账号信息，但不知道真实身份。</p>
+<h5 id="一个空的文件夹"><a href="#一个空的文件夹" class="headerlink" title="一个空的文件夹"></a>一个空的文件夹</h5><p>一开始的时候，每个人都拥有一个空的文件夹和一些空的纸张。</p>
+<h5 id="一笔交易发生的时候"><a href="#一笔交易发生的时候" class="headerlink" title="一笔交易发生的时候"></a>一笔交易发生的时候</h5><p>在这个网络中的每个人都纸笔在手，随时准备记录下每时每刻发生的任何交易。</p>
+<p>现在假设2号想要给9号转10块钱，于是2号将这个信息广播给所有人，我想转10元钱给9号，大家都记录下来！</p>
+<p><img src="https://s2.ax1x.com/2019/12/06/QJDmzq.png" alt="QJDmzq.png"></p>
+<p>这时收到通知的人都通过历史的交易记录来确认2号是否有足够的余额转账，如果确认2号有足够的钱，每个人都在自己维护的账簿上记录下这笔交易。</p>
+<p><img src="https://s2.ax1x.com/2019/12/09/QwoRoT.png" alt="QwoRoT.png"></p>
+<p>时间过的很快，在这个网络中随时都在发生着交易，为了保证交易的成立，我们需要每隔一段时间更换新的纸张记录新的交易信息，并将上一份交易记录保存起来。</p>
+<p>我将交易记录保存之前，我们需要使用该网络中每个人都同意的唯一一把钥匙来密封它。 <strong>密封过后没人能够对这份大家都认同的交易记录做出更改，直至永远。</strong></p>
+<p>如果可以做到这点，那么大家就都可以信任被密封过的交易记录。</p>
+<p><strong>(在比特币中一般把将用来密封交易记录的东西称之为“矿”或者“工作量证明”)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第三方/中介给予我们信任，其形式是：交易发生后账簿不可更改。</span><br><span class="line"></span><br><span class="line">在区块链这样的分散式、去中心化的系统中，这把唯一的钥匙将提供信任替代。</span><br></pre></td></tr></table></figure>
+
 <p>待更新…</p>
 <h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><ul>
 <li><a href="https://hackernoon.com/wtf-is-the-blockchain-1da89ba19348" target="_blank" rel="noopener">https://hackernoon.com/wtf-is-the-blockchain-1da89ba19348</a></li>
@@ -634,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#区块链"><span class="nav-number">1.</span> <span class="nav-text">区块链</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#想要解决的问题"><span class="nav-number">1.1.</span> <span class="nav-text">想要解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区块链是如何工作的？"><span class="nav-number">1.2.</span> <span class="nav-text">区块链是如何工作的？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">2.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#区块链"><span class="nav-number">1.</span> <span class="nav-text">区块链</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#想要解决的问题"><span class="nav-number">1.1.</span> <span class="nav-text">想要解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区块链是如何工作的？"><span class="nav-number">1.2.</span> <span class="nav-text">区块链是如何工作的？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一个空的文件夹"><span class="nav-number">1.2.1.</span> <span class="nav-text">一个空的文件夹</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一笔交易发生的时候"><span class="nav-number">1.2.2.</span> <span class="nav-text">一笔交易发生的时候</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">2.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
             
 
           </div>
