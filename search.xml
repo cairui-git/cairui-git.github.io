@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[两条单链表相交的问题]]></title>
+    <url>%2F2019%2F12%2F16%2F%E7%AE%97%E6%B3%95%E9%A2%98-%E4%B8%A4%E6%9D%A1%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[题目给定两个单链表的头节点，单链表可能有环也可能无环，判断是否相交，如果相交返回相交的节点，不相交返回null 思路首先判断两条单链表是否成环，如果有环则获取到入环节点，然后分情况讨论： 两条非环单链表：遍历两条链表获取链表的长度，将较长的那条的头节点向后移动两条链表头部的差值，然后两条单链表从头节点同时向后移动： 如果产生交点则两条链表相交，返回该节点 抵达尾部时都没有产生交点则不相交，返回null 一条单链表成环，一条单链表非环：必无交点 两条成环单链表： 入环节点相同，必相交：将入环节点视为终点，此时两条链表可以视为非环单链表，寻找两条单链表的交点时则可以使用两条非环单链表的判断方法找到交点 入环节点不同，需要判断是否相交：选择其中一条链表的入环节点开始遍历，如果遍历过程中遇到了另一条链表的入环节点，则两条链表相交；如果遍历一整圈都没有相遇则两条链表无交点 代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101/** * 给定两个单链表的头节点,判断是否相交,如果相交返回相交的节点,不相交返回null * @author CaiRui * @time 2019-12-06 */public class IntersectNode &#123; public static ListNode isIntersect(ListNode head1, ListNode head2) &#123; if (head1 == null || head2 == null) &#123; return null; &#125; ListNode isCyclization1 = isCyclization(head1); ListNode isCyclization2 = isCyclization(head2); if (isCyclization1 == null &amp;&amp; isCyclization2 == null) &#123; //两条非环单链表 return getIntersect(head1, head2); &#125; else if (isCyclization1 != null &amp;&amp; isCyclization2 != null) &#123; //两条成环单链表 if (isCyclization1 == isCyclization2) &#123; //入环节点相同,必相交 ListNode tempNode = isCyclization1.next; isCyclization1.next = null; ListNode resultNode = getIntersect(head1, head2); isCyclization1.next = tempNode; return resultNode; &#125; else &#123; //入环节点不同需要判断是否相交 ListNode node = isCyclization1.next; while (node != isCyclization1) &#123; if (node == isCyclization2) &#123; //在环中遇到了另一个链表的入环节点,说明两条链表相交 return isCyclization1; &#125; node = node.next; &#125; &#125; &#125; return null; &#125; /** * 单链表是否成环 * @param head 头节点 * @return 入环节点,不成环则返回null */ private static ListNode isCyclization(ListNode head) &#123; if (head == null || head.next == null) &#123; return null; &#125; //使用快慢指针判断是否成环 ListNode fast = head; ListNode slow = head; do &#123; if (fast.next == null || fast.next.next == null) &#123; return null; &#125; slow = slow.next; fast = fast.next.next; &#125; while (slow != fast); //返回入环节点 fast = head; while (fast != slow) &#123; fast = fast.next; slow = slow.next; &#125; return fast; &#125; /** * 返回两条非环单链表的交点 */ private static ListNode getIntersect(ListNode head1, ListNode head2) &#123; int node1Length = getNodeLength(head1); int node2Length = getNodeLength(head2); ListNode longerNode = node1Length &gt; node2Length ? head1 : head2; ListNode shortNode = node1Length &gt; node2Length ? head2 : head1; for (int i = 0; i &lt; Math.abs(node1Length - node2Length); i++) &#123; longerNode = longerNode.next; &#125; while (shortNode != null) &#123; if (shortNode == longerNode) &#123; return shortNode; &#125; shortNode = shortNode.next; longerNode = longerNode.next; &#125; return null; &#125; /** * 获取非环单链表长度 */ private static int getNodeLength(ListNode head) &#123; int length = 0; while (head != null) &#123; length++; head = head.next; &#125; return length; &#125;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法题</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[linux-使用natapp实现内网穿透功能]]></title>
+    <url>%2F2019%2F12%2F12%2Flinux-%E4%BD%BF%E7%94%A8natapp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%8A%9F%E8%83%BD%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[linux后台运行php常驻进程]]></title>
     <url>%2F2019%2F12%2F11%2Fphp-linux%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8Cphp%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[在linux下执行普通的php命名，在关闭窗口或者ctrl+c时程序就会停止运行，这时需要把脚本放在后台常驻运行 &amp;加在一个命令的最后，可以把这个命令放在后台执行 nohup使用 &amp; 命令使程序在后台执行，当终端关闭时程序会被终止，这时需要使用nohup命令，可以在你退出账户/关闭终端之后继续运行相应的进程。 例如： 1$ nohub 命令 &gt; /home/user/log/xxx.log &amp; 在使用nohup命令时，该程序所有的输出默认会被重定向到一个名为nohup.out的文件中，除非指定了输出文件，比如上面的/home/user/log/xxx.log 查看进程&amp;杀死进程使用命令ps查看进程运行状态： 1$ ps -aux | grep xxx xxx代表命令的关键字，如果命令在运行则可以得到进程的pid 使用命令kill，杀死进程： 1$ kill pid]]></content>
