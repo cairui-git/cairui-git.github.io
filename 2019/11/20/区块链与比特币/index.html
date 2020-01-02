@@ -93,7 +93,13 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/06/QJuHDf.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/06/QJDmzq.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/09/QwoRoT.png">
-<meta property="og:updated_time" content="2019-12-10T07:08:53.887Z">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/02/lYZGff.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/02/lYyjNd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/02/lY6m3q.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/02/lYc3sf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/02/lYWEpd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/02/lYfra8.png">
+<meta property="og:updated_time" content="2020-01-02T09:16:21.493Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="区块链与比特币">
 <meta name="twitter:description" content="区块链2008年11月1日， 中本聪（真实身份未知）在网络上发布了一篇名为《Bitcoin: A Peer-to-Peer Electronic Cash System》（比特币：一种点对点式的电子现金系统），论文中描述了一种被他称为“比特币”的电子货币及其算法，其中实现比特币的底层技术：chain of blocks 在最早的比特币白皮书中文翻译版中，将 chain of blocks 翻译成">
@@ -444,6 +450,39 @@
 <p><strong>(在比特币中一般把将用来密封交易记录的东西称之为“矿”或者“工作量证明”)</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第三方/中介给予我们信任，其形式是：交易发生后账簿不可更改。</span><br><span class="line"></span><br><span class="line">在区块链这样的分散式、去中心化的系统中，这把唯一的钥匙将提供信任替代。</span><br></pre></td></tr></table></figure>
 
+<h5 id="密封"><a href="#密封" class="headerlink" title="密封"></a>密封</h5><p>为了让每个人都信任密封过的交易记录无法被更改，那么这一封存手法，就是区块链中交易成立的关键。</p>
+<p>使用到的加密算法： <strong>SHA256加密算法</strong></p>
+<p>sha256简单来说是一种不可逆的加密算法，对于给定的任意长度的输入，sha256都会产生一个256bit长的哈希值，说白了就是一个hash函数。</p>
+<p><strong>请看下面这个问题：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">你能不能告诉我，要想在机器右边得到三个 0 开头的一串字符</span><br><span class="line"></span><br><span class="line">我该从左边输入什么东西进去呢？比如000ab，或者00098，或者000fa</span><br><span class="line"></span><br><span class="line">或者其它情况中的任何一个。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2020/01/02/lYZGff.png" alt="lYZGff.png"></p>
+<p>貌似只有这样一个办法，穷尽宇宙中所有的数字，直到我得到了数字经过sha256之后的值为一个三个0开头的一串字符。</p>
+<p>得到输入值是极端困难的，但是，如果其他人想要验证你的答案是否正确，却是非常容易的。</p>
+<h6 id="如何加密账单？"><a href="#如何加密账单？" class="headerlink" title="如何加密账单？"></a>如何加密账单？</h6><p>能不能找到一个数字，让它加上这张账单中的内容以后的加密输出是一个以三个0开头的字符？为了简化问题，假设20893就是账单的内容：</p>
+<p><img src="https://s2.ax1x.com/2020/01/02/lYyjNd.png" alt="lYyjNd.png"></p>
+<p>在花费许多时间和电力后，我们会偶然发现一个数字，比如21191，符合了我们的要求：</p>
+<p><img src="https://s2.ax1x.com/2020/01/02/lY6m3q.png" alt="lY6m3q.png"></p>
+<p>此时，数字21191就可以作为账单20893的封条，但在此之前，我们还需要区块链网络中大部分人的认可：在网络中，每个人都会进行这个计算，而最早算出密封数字的那个人会向其他所有人宣布这个数字。</p>
+<p><img src="https://s2.ax1x.com/2020/01/02/lYc3sf.png" alt="lYc3sf.png"></p>
+<p>当有人发布了这个数字之后，每个人都立即验证它是否能产生要求的输出值， <strong>如果大部分人都同意这个密封数字，无论这个数字是什么，都会成为那个可信的密封数字。</strong></p>
+<p>但是，如果对于某人，例如#7，那个被宣布的数字无法产生要求的输出值，此时大部分都同意了这个密封数字，无论错误的原因是什么，#7只有一个选择： <strong>放弃他记录的账单，从其他人处获得拷贝，使他可以用该数字正常密封账单。</strong> 否则他将无法在该网络中继续交易。</p>
+<h6 id="防止对密封数字的修改"><a href="#防止对密封数字的修改" class="headerlink" title="防止对密封数字的修改"></a>防止对密封数字的修改</h6><p>想象现在已经加密好了5份历史账单，而非1份。如果我回溯到第二页纸，改动交易记录企图作弊，会怎么样？</p>
+<p>在我企图花这笔钱的时候，密封数字+账单内容的hash值会让任何人察觉到交易记录的矛盾。那假如我更新一步、在修改完交易记录之后重新计算出了新的密封数字、让其他人无法察觉到我做了修改呢？</p>
+<p>为了防止这个问题的发生，即有人回溯到历史区块修改了其中内容和密封数字，其实除了初始区块，正确的密封数字是这样计算出来的：</p>
+<p>事实上，在计算密封数字时，除了需要加上该区块的转账记录，还需要加上 <strong>前一个区块的sha256输出值。</strong></p>
+<p><img src="https://s2.ax1x.com/2020/01/02/lYWEpd.png" alt="lYWEpd.png"></p>
+<p>此时可以保证每一个区块都依赖于它的上一个区块，如果有人想要修改一个区块历史记录，那个他将必须改变该区块之后的所有区块的内容以保证链条的一致。但与此同时，在网络中每个人的努力下，新的区块也在不断的增加，作弊者一个人的速度永远无法赶上所有人的速度，导致此次作弊他将无法成功。</p>
+<p>将会发生的事情是，从他可以尝试作弊的那一刻开始，他将要在这个网络中创造出另一条区块链，那它创造的区块链无法赶上可信的区块链，所以在区块链网络中：<strong>最长的链就是可信的链，每一笔交易只允许发生在最长的链上</strong></p>
+<p><img src="https://s2.ax1x.com/2020/01/02/lYfra8.png" alt="lYfra8.png"></p>
+<p><strong>如果，不是一个人在作弊，而是大部分的人一起作弊呢？</strong></p>
+<p>这种情况下，区块链将会被攻陷，协议将会落空流于表面。</p>
+<p>这种行为被称为 <strong>51%攻击</strong>.</p>
+<h6 id="奖励机制"><a href="#奖励机制" class="headerlink" title="奖励机制"></a>奖励机制</h6><p>我们都知道会有人算出密封数字并公布它，为什么每个人还要耗费资源来进行计算呢？为什么不坐视不理，等着抱大腿呢？</p>
+<p>问题的答案就是激励人们加入到区块链这幅图景的地方：第一个计算出密封数字的人将得到免费的金钱作为对他的努力的奖励。</p>
+<p>这就是比特币变为现实的方式。他是在区块链上被用来交易的第一种货币。当足够的人持有比特币，比特币会升值，升值会使更多人想要得到比特币，这使比特币进一步升值：如此循环往复。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">“只让人们在比特币带来的交易中获取比特币，或许是有意义的。</span><br><span class="line"></span><br><span class="line">一旦有足够的人这样想，它就会变成一个自我实现的预言。”——中本聪，2009*</span><br></pre></td></tr></table></figure>
+
 <p>待更新…</p>
 <h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><ul>
 <li><a href="https://hackernoon.com/wtf-is-the-blockchain-1da89ba19348" target="_blank" rel="noopener">https://hackernoon.com/wtf-is-the-blockchain-1da89ba19348</a></li>
@@ -652,7 +691,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#区块链"><span class="nav-number">1.</span> <span class="nav-text">区块链</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#想要解决的问题"><span class="nav-number">1.1.</span> <span class="nav-text">想要解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区块链是如何工作的？"><span class="nav-number">1.2.</span> <span class="nav-text">区块链是如何工作的？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一个空的文件夹"><span class="nav-number">1.2.1.</span> <span class="nav-text">一个空的文件夹</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一笔交易发生的时候"><span class="nav-number">1.2.2.</span> <span class="nav-text">一笔交易发生的时候</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">2.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#区块链"><span class="nav-number">1.</span> <span class="nav-text">区块链</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#想要解决的问题"><span class="nav-number">1.1.</span> <span class="nav-text">想要解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区块链是如何工作的？"><span class="nav-number">1.2.</span> <span class="nav-text">区块链是如何工作的？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一个空的文件夹"><span class="nav-number">1.2.1.</span> <span class="nav-text">一个空的文件夹</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一笔交易发生的时候"><span class="nav-number">1.2.2.</span> <span class="nav-text">一笔交易发生的时候</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#密封"><span class="nav-number">1.2.3.</span> <span class="nav-text">密封</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#如何加密账单？"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">如何加密账单？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#防止对密封数字的修改"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">防止对密封数字的修改</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#奖励机制"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">奖励机制</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">2.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
             
 
           </div>
@@ -672,7 +711,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
