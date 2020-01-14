@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="算法题,数组,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -81,18 +81,14 @@
 
 
 
-<meta name="description" content="题目给定一个数组arr和一个数num,要求调整数组，把小于num的数放在数组左边，等于num的数放在数组中间，大于num的数放在数组右边。">
-<meta name="keywords" content="算法题,数组">
 <meta property="og:type" content="article">
-<meta property="og:title" content="荷兰国旗问题">
-<meta property="og:url" content="http://blog.cairui99.cn/2019/10/11/算法题-荷兰国旗问题/index.html">
+<meta property="og:title" content="ssr服务器搭建">
+<meta property="og:url" content="http://blog.cairui99.cn/2020/01/03/ssr服务器搭建/index.html">
 <meta property="og:site_name" content="CaiRui的博客">
-<meta property="og:description" content="题目给定一个数组arr和一个数num,要求调整数组，把小于num的数放在数组左边，等于num的数放在数组中间，大于num的数放在数组右边。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-28T02:33:01.934Z">
+<meta property="og:updated_time" content="2020-01-03T07:28:52.621Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="荷兰国旗问题">
-<meta name="twitter:description" content="题目给定一个数组arr和一个数num,要求调整数组，把小于num的数放在数组左边，等于num的数放在数组中间，大于num的数放在数组右边。">
+<meta name="twitter:title" content="ssr服务器搭建">
 
 
 
@@ -122,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.cairui99.cn/2019/10/11/算法题-荷兰国旗问题/">
+  <link rel="canonical" href="http://blog.cairui99.cn/2020/01/03/ssr服务器搭建/">
 
 
 
 
 
-  <title>荷兰国旗问题 | CaiRui的博客</title>
+  <title>ssr服务器搭建 | CaiRui的博客</title>
   
 
 
@@ -297,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2019/10/11/算法题-荷兰国旗问题/">
+    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2020/01/03/ssr服务器搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CaiRui">
@@ -314,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">荷兰国旗问题</h1>
+          <h1 class="post-title" itemprop="name headline">ssr服务器搭建</h1>
         
 
         <div class="post-meta">
@@ -327,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-11T14:44:37+08:00">
-                2019-10-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-03T15:28:52+08:00">
+                2020-01-03
               </time>
             
 
@@ -338,28 +334,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -368,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/10/11/算法题-荷兰国旗问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/11/算法题-荷兰国旗问题/" itemprop="commentCount"></span>
+                <a href="/2020/01/03/ssr服务器搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/01/03/ssr服务器搭建/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -402,24 +376,7 @@
       
 
       
-        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个数组arr和一个数num,要求调整数组，把小于num的数放在数组左边，等于num的数放在数组中间，大于num的数放在数组右边。</p>
-<a id="more"></a>
-
-<h3 id="常见思路"><a href="#常见思路" class="headerlink" title="常见思路"></a>常见思路</h3><p>常见思路为使用三个辅助数组，分别存储小于、等于和大于num的数，最后再依次赋值给原数组。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//常见思路 时间复杂度(n) 空间复杂度O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">badMethod</span><span class="params">(@NotNull <span class="keyword">int</span>[] arr, <span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    List&lt;Integer&gt; alist = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    List&lt;Integer&gt; blist = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    List&lt;Integer&gt; clist = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> n : arr) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n&lt;num) &#123;</span><br><span class="line">            alist.add(n);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (n==num) &#123;</span><br><span class="line">            blist.add(n);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            clist.add(n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    index = setArray(arr,index,alist);</span><br><span class="line">    index = setArray(arr,index,blist);</span><br><span class="line">    setArray(arr,index,clist);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">setArray</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> index, @NotNull List&lt;Integer&gt; list)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (Integer integer : list) &#123;</span><br><span class="line">        arr[index++] = integer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><p>上面的算法空间、时间复杂度都为O(n)，下面把空间复杂度优化为O(1)的等级：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//空间复杂度改进为O(1)的方法</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dutchFlag</span><span class="params">(@NotNull <span class="keyword">int</span>[] arr, <span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> indexFront = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> indexMid = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> indexRear = arr.length-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (indexMid &lt;= indexRear) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[indexMid] &lt; num) &#123;</span><br><span class="line">            swap(arr,indexMid,indexFront);</span><br><span class="line">            indexMid++;</span><br><span class="line">            indexFront++;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[indexMid] == num) &#123;</span><br><span class="line">            indexMid++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            swap(arr,indexMid,indexRear);</span><br><span class="line">            indexRear--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(@NotNull <span class="keyword">int</span>[] arr, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = arr[x];</span><br><span class="line">    arr[x] = arr[y];</span><br><span class="line">    arr[y] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用三个指针，交换全部在数组内部进行，三个指针的含义为：</p>
-<ul>
-<li>indexFront : 指针前面的所有数都满足小于num</li>
-<li>indexMid : 指针前面所有的数都满足小于等于num</li>
-<li>indexRear : 指针后面所有的数都满足大于num</li>
-</ul>
-<p>终止条件为indexMid&gt;indexRear，当两个指针相遇时，代表数组中所有的数已经处于正确的位置</p>
-
+        
       
     </div>
     
@@ -439,7 +396,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.cairui99.cn/2019/10/11/算法题-荷兰国旗问题/" title="荷兰国旗问题">http://blog.cairui99.cn/2019/10/11/算法题-荷兰国旗问题/</a>
+    <a href="http://blog.cairui99.cn/2020/01/03/ssr服务器搭建/" title="ssr服务器搭建">http://blog.cairui99.cn/2020/01/03/ssr服务器搭建/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -452,14 +409,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/算法题/" rel="tag"># 算法题</a>
-          
-            <a href="/tags/数组/" rel="tag"># 数组</a>
-          
-        </div>
-      
 
       
       
@@ -469,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/11/IDEA-批量修改变量名/" rel="next" title="IDEA-批量修改变量名">
-                <i class="fa fa-chevron-left"></i> IDEA-批量修改变量名
+              <a href="/2019/12/16/算法题-两条单链表相交的问题/" rel="next" title="两条单链表相交的问题">
+                <i class="fa fa-chevron-left"></i> 两条单链表相交的问题
               </a>
             
           </div>
@@ -478,10 +427,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/11/Hexo-向git推送更新失败/" rel="prev" title="Hexo-向git推送更新失败">
-                Hexo-向git推送更新失败 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -536,17 +481,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -615,22 +551,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见思路"><span class="nav-number">2.</span> <span class="nav-text">常见思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改进"><span class="nav-number">3.</span> <span class="nav-text">改进</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
