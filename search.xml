@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[ssr服务器搭建]]></title>
     <url>%2F2020%2F01%2F03%2Fssr%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[搭建代理服务器前首先要有一台自己的机器，我是在这里办的 https://my.vultr.com/ ，优点是可以随时注销、随时办理，按小时收费。 有了自己的服务器后，登陆进去，依次输入下面几条命令： 12345wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.shchmod +x shadowsocksR.sh./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log 运行成功后，会提示你设置你代理的密码、端口、协议等信息： 如提示（Please enter password for ShadowsocksR）：设置密码，自己设定 如提示（Please enter a port for ShadowsocksR [1-65535]）：设置服务器端口，如不设定会随机生成 如提示（Please select stream cipher for ShadowsocksR）：设置加密方式，建议 chacha20 如提示（Please select protocol for ShadowsocksR）：设置协议，默认为 origin 如提示（Please select obfs for ShadowsocksR）：选择混淆方式，建议选择 http_simple 至此所有配置已经设置完成，等待几分钟，配置成功会显示出所有配置信息，建议截图保存，以免遗忘]]></content>
   </entry>
   <entry>
     <title><![CDATA[两条单链表相交的问题]]></title>
