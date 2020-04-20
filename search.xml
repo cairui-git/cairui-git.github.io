@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[回来了]]></title>
+    <url>%2F2020%2F04%2F20%2F%E5%9B%9E%E6%9D%A5%E4%BA%86%2F</url>
+    <content type="text"><![CDATA[试试博客推送]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Linux-ping通ip但ping不通域名]]></title>
     <url>%2F2020%2F02%2F27%2FLinux-ping%E9%80%9Aip%E4%BD%86ping%E4%B8%8D%E9%80%9A%E5%9F%9F%E5%90%8D%2F</url>
     <content type="text"><![CDATA[原因：机器的域名解析有问题 解决方法：修改DNS配置 sudo vi /etc/resolv.conf 添加 nameserver 8.8.8.8]]></content>
@@ -473,14 +478,6 @@
       <tags>
         <tag>读书笔记</tag>
         <tag>设计模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[First Write]]></title>
-    <url>%2F2019%2F08%2F28%2FFirst%20Write%2F</url>
-    <content type="text"><![CDATA[2019年，终于毕业了，结束了学生生涯 这次搭建了自己的网站，我会花时间来慢慢丰富这个博客 记录自己的成长.]]></content>
-      <tags>
-        <tag>随笔</tag>
       </tags>
   </entry>
 </search>
