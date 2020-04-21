@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="对数器的作用是验证算法的正确性，前提是对该题目你已知一种完全正确的答案，才可以使用对数器。 对数器一般用来 优化算法,利用正确的但效率低下的算法来验证优化之后的算法的正确性。">
+<meta name="description" content="先写个大纲">
 <meta property="og:type" content="article">
-<meta property="og:title" content="对数器">
-<meta property="og:url" content="http://blog.cairui99.cn/2019/09/20/对数器/index.html">
+<meta property="og:title" content="java基础">
+<meta property="og:url" content="http://blog.cairui99.cn/2020/04/21/java基础/index.html">
 <meta property="og:site_name" content="CaiRui的博客">
-<meta property="og:description" content="对数器的作用是验证算法的正确性，前提是对该题目你已知一种完全正确的答案，才可以使用对数器。 对数器一般用来 优化算法,利用正确的但效率低下的算法来验证优化之后的算法的正确性。">
+<meta property="og:description" content="先写个大纲">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-29T03:51:40.918Z">
+<meta property="og:updated_time" content="2020-04-21T06:59:36.347Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="对数器">
-<meta name="twitter:description" content="对数器的作用是验证算法的正确性，前提是对该题目你已知一种完全正确的答案，才可以使用对数器。 对数器一般用来 优化算法,利用正确的但效率低下的算法来验证优化之后的算法的正确性。">
+<meta name="twitter:title" content="java基础">
+<meta name="twitter:description" content="先写个大纲">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.cairui99.cn/2019/09/20/对数器/">
+  <link rel="canonical" href="http://blog.cairui99.cn/2020/04/21/java基础/">
 
 
 
 
 
-  <title>对数器 | CaiRui的博客</title>
+  <title>java基础 | CaiRui的博客</title>
   
 
 
@@ -296,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2019/09/20/对数器/">
+    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2020/04/21/java基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CaiRui">
@@ -313,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">对数器</h1>
+          <h1 class="post-title" itemprop="name headline">java基础</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-20T15:04:04+08:00">
-                2019-09-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-21T10:42:01+08:00">
+                2020-04-21
               </time>
             
 
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -367,8 +367,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/20/对数器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/20/对数器/" itemprop="commentCount"></span>
+                <a href="/2020/04/21/java基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/21/java基础/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -401,23 +401,19 @@
       
 
       
-        <p>对数器的作用是验证算法的正确性，前提是对该题目你已知一种完全正确的答案，才可以使用对数器。</p>
-<p>对数器一般用来 <strong>优化算法</strong>,利用正确的但效率低下的算法来验证优化之后的算法的正确性。</p>
+        <p>先写个大纲</p>
 <a id="more"></a>
 
-<p>下面一个例子，是利用系统已有的排序函数(绝对正确的方法)来验证我自己写的排序函数mySort(正确性未知的,我们要验证的方法)的正确性：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SortTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取一个随机数组</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> length 数组最大长度,最小为0</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> min 最小值</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> max 最大值</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] getArray(<span class="keyword">int</span> length,<span class="keyword">int</span> min,<span class="keyword">int</span> max)&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[(<span class="keyword">int</span>)(<span class="number">0</span>+Math.random()*(length+<span class="number">1</span>))];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">			arr[i] = (<span class="keyword">int</span>)(min+Math.random()*(max-min+<span class="number">1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> arr;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//复制数组</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] copyArray(<span class="keyword">int</span>[] arr)&#123;</span><br><span class="line">		<span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[arr.length];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">			result[i] = arr[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//比较两个数组是否相等</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isEqualsArray</span><span class="params">(<span class="keyword">int</span>[] arr1,<span class="keyword">int</span>[] arr2)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(arr1.length!=arr2.length)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr1.length;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(arr1[i]!=arr2[i])&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//输出数组</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printArray</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> num : arr)&#123;</span><br><span class="line">			System.out.print(num+<span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">boolean</span> is_right = <span class="keyword">true</span>;</span><br><span class="line">		<span class="keyword">int</span>[] fail_array = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">		<span class="comment">//测试次数</span></span><br><span class="line">		<span class="keyword">int</span> test_num = <span class="number">100000</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;test_num;i++)&#123;</span><br><span class="line">			<span class="comment">//生成一个长度为 0~10，值为 1~20之间的随机数组,并生成两个复制来进行排序</span></span><br><span class="line">			<span class="keyword">int</span>[] arr = SortTest.getArray(<span class="number">10</span>, <span class="number">1</span>, <span class="number">20</span>);</span><br><span class="line">			<span class="keyword">int</span>[] arrA = SortTest.copyArray(arr1);</span><br><span class="line">			<span class="keyword">int</span>[] arrB = SortTest.copyArray(arr1);</span><br><span class="line">			<span class="comment">//执行排序</span></span><br><span class="line">			Arrays.sort(arrA);</span><br><span class="line">			MySort.mySort(arrB);</span><br><span class="line">            <span class="comment">//比较结果是否相等</span></span><br><span class="line">			<span class="keyword">if</span>(!SortTest.isEqualsArray(arrA, arrB))&#123;</span><br><span class="line">				is_right = <span class="keyword">false</span>;</span><br><span class="line">				fail_array = arr;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(is_right)&#123;</span><br><span class="line">			System.out.println(<span class="string">"Success!"</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"Fail!"</span>);</span><br><span class="line">			System.out.println();</span><br><span class="line">			System.out.print(<span class="string">"Fail Array:"</span>);</span><br><span class="line">			SortTest.printArray(fail_array);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>校验mySort步骤：</p>
-<ul>
-<li>生成一个长度随机，值也随机的数组</li>
-<li>获取两个刚刚随机生成的数组的复制，分别用正确的sort方法和待验证的mysort方法进行排序</li>
-<li>比较排好序的两个数组是否相等</li>
-<li>若不相等则说明算法是错的，把排序失败的数组打印出来，方便排查问题出在哪</li>
-<li>相等则说明该条测试用例可以通过，继续重复以上步骤，我这里重复了10万次，当然次数越多越好，这样几乎可以涵盖所有的可能，可以说明该算法是正确的</li>
-</ul>
-<p>对数器的好处在于测试用例不再需要自己设计了，通过随机生成的庞大样本量，就可以保证算法的正确性，自己想测试用例的话总会出现情况考虑不全的时候，到时程序出bug的话就得不偿失了。</p>
-
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="8中基本数据类型及转换"><a href="#8中基本数据类型及转换" class="headerlink" title="8中基本数据类型及转换"></a>8中基本数据类型及转换</h3><h3 id="运算符、流程控制语句"><a href="#运算符、流程控制语句" class="headerlink" title="运算符、流程控制语句"></a>运算符、流程控制语句</h3><h3 id="数组、排序"><a href="#数组、排序" class="headerlink" title="数组、排序"></a>数组、排序</h3><h3 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h3><h3 id="封装、继承和多态"><a href="#封装、继承和多态" class="headerlink" title="封装、继承和多态"></a>封装、继承和多态</h3><h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>存在于java.util包中，主要用于动态的存储数据（事先不知道数据的大小），在java.util.concurrent包中还提供了一些线程安全的集合类</p>
+<h3 id="Collection下集合类源码分析"><a href="#Collection下集合类源码分析" class="headerlink" title="Collection下集合类源码分析"></a>Collection下集合类源码分析</h3><p>每个位置只能保存一个元素，并按照某种规则进行存储</p>
+<h4 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h4><p>实现自Collection接口，是一个有序的，可重复的集合</p>
+<h5 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h5><h5 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h5><h5 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h5><h5 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h5><h4 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a>Set接口</h4><p>注重独一无二的性质，不会存入重复的元素</p>
+<h5 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h5><h5 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h5><h5 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h5><h3 id="Map下集合类源码分析"><a href="#Map下集合类源码分析" class="headerlink" title="Map下集合类源码分析"></a>Map下集合类源码分析</h3><p>保存的形式是“键值对”</p>
+<h4 id="HashMap-重要"><a href="#HashMap-重要" class="headerlink" title="HashMap(重要)"></a>HashMap(重要)</h4><h4 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h4><h4 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h4><h4 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h4><h4 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h4><h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p>“先进先出”</p>
+<h4 id="LinkedList-普通队列"><a href="#LinkedList-普通队列" class="headerlink" title="LinkedList(普通队列)"></a>LinkedList(普通队列)</h4><h4 id="ArrayBlockingQueue-阻塞队列"><a href="#ArrayBlockingQueue-阻塞队列" class="headerlink" title="ArrayBlockingQueue(阻塞队列)"></a>ArrayBlockingQueue(阻塞队列)</h4><h4 id="ConcurrentLinkedQueue-并发队列"><a href="#ConcurrentLinkedQueue-并发队列" class="headerlink" title="ConcurrentLinkedQueue(并发队列)"></a>ConcurrentLinkedQueue(并发队列)</h4><h3 id="使用场景分析"><a href="#使用场景分析" class="headerlink" title="使用场景分析"></a>使用场景分析</h3><h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><h3 id="java自动装箱、拆箱"><a href="#java自动装箱、拆箱" class="headerlink" title="java自动装箱、拆箱"></a>java自动装箱、拆箱</h3><h3 id="如何使用泛型，规则"><a href="#如何使用泛型，规则" class="headerlink" title="如何使用泛型，规则"></a>如何使用泛型，规则</h3><h3 id="泛型的类型擦除"><a href="#泛型的类型擦除" class="headerlink" title="泛型的类型擦除"></a>泛型的类型擦除</h3><h3 id="使用场景分析-1"><a href="#使用场景分析-1" class="headerlink" title="使用场景分析"></a>使用场景分析</h3><h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="反射机制原理"><a href="#反射机制原理" class="headerlink" title="反射机制原理"></a>反射机制原理</h3><h3 id="理解JVM-Class字节码和生命周期"><a href="#理解JVM-Class字节码和生命周期" class="headerlink" title="理解JVM Class字节码和生命周期"></a>理解JVM Class字节码和生命周期</h3><h3 id="java中9大内置Class实例和数组的Class实例"><a href="#java中9大内置Class实例和数组的Class实例" class="headerlink" title="java中9大内置Class实例和数组的Class实例"></a>java中9大内置Class实例和数组的Class实例</h3><h3 id="获取和操作构造器、方法、字段、注解"><a href="#获取和操作构造器、方法、字段、注解" class="headerlink" title="获取和操作构造器、方法、字段、注解"></a>获取和操作构造器、方法、字段、注解</h3><h3 id="使用场景分析-2"><a href="#使用场景分析-2" class="headerlink" title="使用场景分析"></a>使用场景分析</h3><h2 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h2><h3 id="线程管理、多线程"><a href="#线程管理、多线程" class="headerlink" title="线程管理、多线程"></a>线程管理、多线程</h3><h3 id="synchronized原理分析"><a href="#synchronized原理分析" class="headerlink" title="synchronized原理分析"></a>synchronized原理分析</h3><h3 id="volatile分析"><a href="#volatile分析" class="headerlink" title="volatile分析"></a>volatile分析</h3><h3 id="J-U-C包学习"><a href="#J-U-C包学习" class="headerlink" title="J.U.C包学习"></a>J.U.C包学习</h3><h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h3 id="注解的本质和原理"><a href="#注解的本质和原理" class="headerlink" title="注解的本质和原理"></a>注解的本质和原理</h3><h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><h3 id="使用场景分析-3"><a href="#使用场景分析-3" class="headerlink" title="使用场景分析"></a>使用场景分析</h3><h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><p>看&lt;&lt;深入理解Java虚拟机&gt;&gt;</p>
+<h3 id="内部结构"><a href="#内部结构" class="headerlink" title="内部结构"></a>内部结构</h3><h4 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h4><h4 id="运行时数据区"><a href="#运行时数据区" class="headerlink" title="运行时数据区"></a>运行时数据区</h4><h3 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h3><h4 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h4><h4 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h4><h4 id="GC收集器"><a href="#GC收集器" class="headerlink" title="GC收集器"></a>GC收集器</h4><h3 id="JVM调优"><a href="#JVM调优" class="headerlink" title="JVM调优"></a>JVM调优</h3><h2 id="网络IO编程"><a href="#网络IO编程" class="headerlink" title="网络IO编程"></a>网络IO编程</h2><h3 id="IO类型"><a href="#IO类型" class="headerlink" title="IO类型"></a>IO类型</h3><p>同步阻塞、同步非阻塞、多路复用、异步IO</p>
+<h3 id="Java-NIO"><a href="#Java-NIO" class="headerlink" title="Java NIO"></a>Java NIO</h3><p>java.nio 包</p>
+<h4 id="Buffer-缓冲区"><a href="#Buffer-缓冲区" class="headerlink" title="Buffer(缓冲区)"></a>Buffer(缓冲区)</h4><h4 id="Channel-通道"><a href="#Channel-通道" class="headerlink" title="Channel(通道)"></a>Channel(通道)</h4><h4 id="Selector-多路复用器"><a href="#Selector-多路复用器" class="headerlink" title="Selector(多路复用器)"></a>Selector(多路复用器)</h4>
       
     </div>
     
@@ -437,7 +433,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.cairui99.cn/2019/09/20/对数器/" title="对数器">http://blog.cairui99.cn/2019/09/20/对数器/</a>
+    <a href="http://blog.cairui99.cn/2020/04/21/java基础/" title="java基础">http://blog.cairui99.cn/2020/04/21/java基础/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -459,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/19/设计原则-里氏替换原则/" rel="next" title="里氏替换原则">
-                <i class="fa fa-chevron-left"></i> 里氏替换原则
+              <a href="/2020/04/20/回来了/" rel="next" title="回来了">
+                <i class="fa fa-chevron-left"></i> 回来了
               </a>
             
           </div>
@@ -468,10 +464,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/23/排序算法-选择排序/" rel="prev" title="选择排序">
-                选择排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -526,8 +518,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -596,6 +597,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础语法"><span class="nav-number">1.</span> <span class="nav-text">基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8中基本数据类型及转换"><span class="nav-number">1.1.</span> <span class="nav-text">8中基本数据类型及转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符、流程控制语句"><span class="nav-number">1.2.</span> <span class="nav-text">运算符、流程控制语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组、排序"><span class="nav-number">1.3.</span> <span class="nav-text">数组、排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类和对象"><span class="nav-number">1.4.</span> <span class="nav-text">类和对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装、继承和多态"><span class="nav-number">1.5.</span> <span class="nav-text">封装、继承和多态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合"><span class="nav-number">2.</span> <span class="nav-text">集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Collection下集合类源码分析"><span class="nav-number">2.1.</span> <span class="nav-text">Collection下集合类源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#List接口"><span class="nav-number">2.1.1.</span> <span class="nav-text">List接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ArrayList"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LinkedList"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">LinkedList</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Vector"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">Vector</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Stack"><span class="nav-number">2.1.1.4.</span> <span class="nav-text">Stack</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Set接口"><span class="nav-number">2.1.2.</span> <span class="nav-text">Set接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HashSet"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LinkedHashSet"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">LinkedHashSet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TreeSet"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">TreeSet</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map下集合类源码分析"><span class="nav-number">2.2.</span> <span class="nav-text">Map下集合类源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap-重要"><span class="nav-number">2.2.1.</span> <span class="nav-text">HashMap(重要)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedHashMap"><span class="nav-number">2.2.2.</span> <span class="nav-text">LinkedHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ConcurrentHashMap"><span class="nav-number">2.2.3.</span> <span class="nav-text">ConcurrentHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hashtable"><span class="nav-number">2.2.4.</span> <span class="nav-text">Hashtable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeMap"><span class="nav-number">2.2.5.</span> <span class="nav-text">TreeMap</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue"><span class="nav-number">2.3.</span> <span class="nav-text">Queue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList-普通队列"><span class="nav-number">2.3.1.</span> <span class="nav-text">LinkedList(普通队列)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayBlockingQueue-阻塞队列"><span class="nav-number">2.3.2.</span> <span class="nav-text">ArrayBlockingQueue(阻塞队列)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ConcurrentLinkedQueue-并发队列"><span class="nav-number">2.3.3.</span> <span class="nav-text">ConcurrentLinkedQueue(并发队列)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景分析"><span class="nav-number">2.4.</span> <span class="nav-text">使用场景分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型"><span class="nav-number">3.</span> <span class="nav-text">泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java自动装箱、拆箱"><span class="nav-number">3.1.</span> <span class="nav-text">java自动装箱、拆箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用泛型，规则"><span class="nav-number">3.2.</span> <span class="nav-text">如何使用泛型，规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛型的类型擦除"><span class="nav-number">3.3.</span> <span class="nav-text">泛型的类型擦除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景分析-1"><span class="nav-number">3.4.</span> <span class="nav-text">使用场景分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射"><span class="nav-number">4.</span> <span class="nav-text">反射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#反射机制原理"><span class="nav-number">4.1.</span> <span class="nav-text">反射机制原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解JVM-Class字节码和生命周期"><span class="nav-number">4.2.</span> <span class="nav-text">理解JVM Class字节码和生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java中9大内置Class实例和数组的Class实例"><span class="nav-number">4.3.</span> <span class="nav-text">java中9大内置Class实例和数组的Class实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取和操作构造器、方法、字段、注解"><span class="nav-number">4.4.</span> <span class="nav-text">获取和操作构造器、方法、字段、注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景分析-2"><span class="nav-number">4.5.</span> <span class="nav-text">使用场景分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发编程"><span class="nav-number">5.</span> <span class="nav-text">并发编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程管理、多线程"><span class="nav-number">5.1.</span> <span class="nav-text">线程管理、多线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#synchronized原理分析"><span class="nav-number">5.2.</span> <span class="nav-text">synchronized原理分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile分析"><span class="nav-number">5.3.</span> <span class="nav-text">volatile分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#J-U-C包学习"><span class="nav-number">5.4.</span> <span class="nav-text">J.U.C包学习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解"><span class="nav-number">6.</span> <span class="nav-text">注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注解的本质和原理"><span class="nav-number">6.1.</span> <span class="nav-text">注解的本质和原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义注解"><span class="nav-number">6.2.</span> <span class="nav-text">自定义注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景分析-3"><span class="nav-number">6.3.</span> <span class="nav-text">使用场景分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM"><span class="nav-number">7.</span> <span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内部结构"><span class="nav-number">7.1.</span> <span class="nav-text">内部结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类加载机制"><span class="nav-number">7.1.1.</span> <span class="nav-text">类加载机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行时数据区"><span class="nav-number">7.1.2.</span> <span class="nav-text">运行时数据区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GC"><span class="nav-number">7.2.</span> <span class="nav-text">GC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#垃圾回收算法"><span class="nav-number">7.2.1.</span> <span class="nav-text">垃圾回收算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分区"><span class="nav-number">7.2.2.</span> <span class="nav-text">分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GC收集器"><span class="nav-number">7.2.3.</span> <span class="nav-text">GC收集器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM调优"><span class="nav-number">7.3.</span> <span class="nav-text">JVM调优</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络IO编程"><span class="nav-number">8.</span> <span class="nav-text">网络IO编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IO类型"><span class="nav-number">8.1.</span> <span class="nav-text">IO类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-NIO"><span class="nav-number">8.2.</span> <span class="nav-text">Java NIO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Buffer-缓冲区"><span class="nav-number">8.2.1.</span> <span class="nav-text">Buffer(缓冲区)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Channel-通道"><span class="nav-number">8.2.2.</span> <span class="nav-text">Channel(通道)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Selector-多路复用器"><span class="nav-number">8.2.3.</span> <span class="nav-text">Selector(多路复用器)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
