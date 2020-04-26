@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode 每日一题]]></title>
+    <url>%2F2020%2F04%2F26%2FLeetCode-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[LeetCode活动：每日一题 合并K个排序链表1234567891011121314151617181920212223242526272829303132333435363738/** * 合并K个排序链表 * https://leetcode-cn.com/problems/merge-k-sorted-lists/ * @date 2020-04-26 */public class Solution &#123; public ListNode mergeKLists(ListNode[] lists) &#123; ListNode head = null; ListNode node = null; boolean is_end = false; while (!is_end) &#123; is_end = true; int index = 0; int min = Integer.MAX_VALUE; for (int i = 0; i &lt; lists.length; i++) &#123; ListNode listNode = lists[i]; if (listNode != null &amp;&amp; listNode.val &lt; min) &#123; is_end = false; min = listNode.val; index = i; &#125; &#125; if (!is_end) &#123; if (head == null) &#123; head = new ListNode(lists[index].val); node = head; &#125; else &#123; node.next = new ListNode(lists[index].val); node = node.next; &#125; lists[index] = lists[index].next; &#125; &#125; return head; &#125;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Linux-ping通ip但ping不通域名]]></title>
     <url>%2F2020%2F02%2F27%2FLinux-ping%E9%80%9Aip%E4%BD%86ping%E4%B8%8D%E9%80%9A%E5%9F%9F%E5%90%8D%2F</url>
     <content type="text"><![CDATA[原因：机器的域名解析有问题 解决方法：修改DNS配置 sudo vi /etc/resolv.conf 添加 nameserver 8.8.8.8]]></content>
