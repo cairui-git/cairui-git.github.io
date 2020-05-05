@@ -81,22 +81,22 @@
 
 
 
-<meta name="description" content="参考书籍：深入理解java虚拟机（第三版） JVMJava虚拟机简单来说就是Java的代码编译好之后，是跑在一台虚拟的机器（VM）上的，这台虚拟的机器负责分配内存和维护调用堆栈。 为什么要做成虚拟的机器这要从Java的一次编译到处执行来说。事实上一次编译到处执行是不可能的，因为每个机器不一样，所以传统上我们必须针对每一种机器编译代码，才能在这个机器上运行。而Java通过引入虚拟机（VM）的概念，让">
+<meta name="description" content="参考书籍：深入理解java虚拟机（第三版）">
 <meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java虚拟机">
 <meta property="og:url" content="http://blog.cairui99.cn/2020/05/03/Java虚拟机/index.html">
 <meta property="og:site_name" content="CaiRui的博客">
-<meta property="og:description" content="参考书籍：深入理解java虚拟机（第三版） JVMJava虚拟机简单来说就是Java的代码编译好之后，是跑在一台虚拟的机器（VM）上的，这台虚拟的机器负责分配内存和维护调用堆栈。 为什么要做成虚拟的机器这要从Java的一次编译到处执行来说。事实上一次编译到处执行是不可能的，因为每个机器不一样，所以传统上我们必须针对每一种机器编译代码，才能在这个机器上运行。而Java通过引入虚拟机（VM）的概念，让">
+<meta property="og:description" content="参考书籍：深入理解java虚拟机（第三版）">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s1.ax1x.com/2020/05/03/Ypykhd.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2020/05/05/YF73ZT.png">
 <meta property="og:image" content="https://s1.ax1x.com/2020/05/05/YFqeiD.png">
 <meta property="og:image" content="https://s1.ax1x.com/2020/05/05/YkMUV1.png">
-<meta property="og:updated_time" content="2020-05-05T14:31:10.734Z">
+<meta property="og:updated_time" content="2020-05-05T15:44:08.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机">
-<meta name="twitter:description" content="参考书籍：深入理解java虚拟机（第三版） JVMJava虚拟机简单来说就是Java的代码编译好之后，是跑在一台虚拟的机器（VM）上的，这台虚拟的机器负责分配内存和维护调用堆栈。 为什么要做成虚拟的机器这要从Java的一次编译到处执行来说。事实上一次编译到处执行是不可能的，因为每个机器不一样，所以传统上我们必须针对每一种机器编译代码，才能在这个机器上运行。而Java通过引入虚拟机（VM）的概念，让">
+<meta name="twitter:description" content="参考书籍：深入理解java虚拟机（第三版）">
 <meta name="twitter:image" content="https://s1.ax1x.com/2020/05/03/Ypykhd.jpg">
 
 
@@ -408,6 +408,8 @@
 
       
         <p>参考书籍：<strong>深入理解java虚拟机（第三版）</strong></p>
+<a id="more"></a>
+
 <h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><p>Java虚拟机简单来说就是Java的代码编译好之后，是跑在一台虚拟的机器（VM）上的，这台虚拟的机器负责分配内存和维护调用堆栈。</p>
 <p>为什么要做成虚拟的机器这要从Java的一次编译到处执行来说。事实上一次编译到处执行是不可能的，因为每个机器不一样，所以传统上我们必须针对每一种机器编译代码，才能在这个机器上运行。而Java通过引入虚拟机（VM）的概念，让编译后的代码直接跑在一台虚拟的机器上，无论最终的目标平台是什么，都在上面构建出一个虚拟的一致的虚拟机出来，就可以达到一次编译到处执行的效果了。</p>
 <h2 id="JVM内存模型与内存溢出异常"><a href="#JVM内存模型与内存溢出异常" class="headerlink" title="JVM内存模型与内存溢出异常"></a>JVM内存模型与内存溢出异常</h2><p>与C、C++不同，Java程序不再需要为每一个new操作去写配对的delete/free代码，在java中由JVM来帮忙管理、分配内存。</p>
