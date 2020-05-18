@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Java线程基础]]></title>
     <url>%2F2020%2F05%2F18%2FJava%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80%2F</url>
-    <content type="text"><![CDATA[线程基础参考书籍：Java并发编程之美 进程、线程讨论线程前必要先说下什么是进程，因为线程是进程中的一个实体，线程本身是不会独立存在的。 进程是代码在数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，线程则是进程的一个执行路径，一个进程中至少有一个线程，进程中的多个线程共享进程的资源。 操作系统在分配资源是是把资源分配给进程的，但是CPU资源比较特殊，它是分配给线程的，因为真正要占用CPU资源的是线程，所以也说 线程是CPU分配的基本单位 在Java中，当我们启动main函数时其实就是启动了一个JVM进程，而main函数所在的线程就是JVM进程中的一个线程，main函数线程也称为 主线程 可以看到图中一个进程中有多个线程，多个线程共享进程的堆和方法区资源，每个线程有自己的程序计数器和栈区域。 程序计数器是用来记录线程当前要执行的指令地址，那为什么要记录呢?前面说了线程是占用CPU执行的基本单位，而CPU一般是使用时间片轮转的方式让线程轮询占用的，所以当前占有CPU资源的线程CPU时间片用完后就要让出CPU资源，等到下次轮到自己时再继续执行，所以此时就需要程序计数器记录该线程让出CPU时的执行地址，等到下次可以继续执行。 另外每个线程都有自己的栈资源，用于存储该线程的局部变量，这些都是该线程私有的，其他线程访问不了，除此之外还有用来存放线程的调用栈帧。 堆是进程中最大的一块内存，是所有线程共享的，里面主要存放使用new操作创建的对象实例。 方法区则用来存放JVM加载的类信息、常量、静态变量等信息，也是线程共享的。 待更新。]]></content>
+    <content type="text"><![CDATA[线程基础参考书籍：Java并发编程之美 进程、线程讨论线程前必要先说下什么是进程，因为线程是进程中的一个实体，线程本身是不会独立存在的。 进程是代码在数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，线程则是进程的一个执行路径，一个进程中至少有一个线程，进程中的多个线程共享进程的资源。 操作系统在分配资源是是把资源分配给进程的，但是CPU资源比较特殊，它是分配给线程的，因为真正要占用CPU资源的是线程，所以也说 线程是CPU分配的基本单位 在Java中，当我们启动main函数时其实就是启动了一个JVM进程，而main函数所在的线程就是JVM进程中的一个线程，main函数线程也称为 主线程 可以看到图中一个进程中有多个线程，多个线程共享进程的堆和方法区资源，每个线程有自己的程序计数器和栈区域。 程序计数器是用来记录线程当前要执行的指令地址，那为什么要记录呢?前面说了线程是占用CPU执行的基本单位，而CPU一般是使用时间片轮转的方式让线程轮询占用的，所以当前占有CPU资源的线程CPU时间片用完后就要让出CPU资源，等到下次轮到自己时再继续执行，所以此时就需要程序计数器记录该线程让出CPU时的执行地址，等到下次可以继续执行。 另外每个线程都有自己的栈资源，用于存储该线程的局部变量，这些都是该线程私有的，其他线程访问不了，除此之外还有用来存放线程的调用栈帧。 堆是进程中最大的一块内存，是所有线程共享的，里面主要存放使用new操作创建的对象实例。 方法区则用来存放JVM加载的类信息、常量、静态变量等信息，也是线程共享的。 线程创建与运行线程的创建有三种方式： 继承Thread类，重写run方法 实现Runnable接口的run方法 实现Callable接口的call()方法 继承Thread类1234567891011121314151617public class TheadTest &#123; public static class MyThread extends Thread &#123; @Override public void run() &#123; System.out.println("I am a child thread"); &#125; &#125; public static void main(String[] args) &#123; MyThread thread = new MyThread(); thread.start(); &#125;&#125; 需要注意的是创建线程时线程并没有启动，只有调用start方法时线程才会启动 （调用start方法后线程会处于就绪状态，需要等待获取cpu资源后才会真正处于运行状态） ，当run方法执行完毕，线程会处于终止状态。 使用继承的好处：在run()方法中直接使用this就可以直接获取当前线程；缺点是java不支持多继承，继承Thread类后无法继承其他类。 实现Runnable接口1234567891011121314public static class RunableTask implements Runnable &#123; @Override public void run() &#123; System.out.println("I am a child thread"); &#125;&#125;public static void main(String[] args) &#123; RunableTask task = new RunableTask(); new Thread(task).start(); new Thread(task).start();&#125; 可以看到两个线程共用了一个task代码逻辑，如果需要可以给RunableTask添加参数进行任务区分，同时RunableTask也可以继承其他类。 但还是有一个问题，就是任务没有返回值，下面给出实现Callable接口的方式 实现Callable接口12345678910111213141516public static class CallerTask implements Callable&lt;String&gt; &#123; @Override public String call() throws Exception &#123; return "hello"; &#125;&#125;public static void main(String[] args) throws ExecutionException, InterruptedException &#123; FutureTask&lt;String&gt; futureTask = new FutureTask&lt;&gt;(new CallerTask()); new Thread(futureTask).start(); //异步获取返回值 String result = futureTask.get(); System.out.println(result);&#125; 总结使用继承方式的好处是方便传参，你可以在子类里面添加成员变 ，通过 set方法设置参数或者通过构造函数进行传递，而如果使用 Runnable 方式，则只能使用主线程里面被声明为 final 变量。不好的地方是 Java 不支持多继承，如果继承了 Thread 类，那么子类不能再继承其他类，而 Runable 则没有这个限制 。前两种方式都没办法拿到任务的返回结果，但是 Futuretask 方式可以。 待更新。]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -11,11 +11,6 @@
         <tag>并发编程</tag>
         <tag>线程</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[synchronized和lock]]></title>
-    <url>%2F2020%2F05%2F10%2Fsynchronized%E5%92%8Clock%2F</url>
-    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[Java虚拟机]]></title>
