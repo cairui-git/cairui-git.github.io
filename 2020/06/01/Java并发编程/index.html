@@ -90,7 +90,7 @@
 <meta property="og:description" content="什么是并发编程">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s1.ax1x.com/2020/06/01/tGHgzR.jpg">
-<meta property="og:updated_time" content="2020-06-03T12:18:25.986Z">
+<meta property="og:updated_time" content="2020-06-08T09:12:46.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程">
 <meta name="twitter:description" content="什么是并发编程">
@@ -450,9 +450,14 @@
 </ul>
 <p>只看api就可以看出，lock锁相对于synchronized来说使用是非常灵活的。</p>
 <h3 id="Java中的volatile关键字"><a href="#Java中的volatile关键字" class="headerlink" title="Java中的volatile关键字"></a>Java中的volatile关键字</h3><p>前面介绍了使用锁的方式来解决共享变量内存可见性问题，但是锁太笨重，会带来线程上下文切换的开销。因此对于内存可见性问题，Java还提供了一种弱形式的同步，就是 <strong>volatile</strong> 关键字。</p>
-<p>volatile关键字关键字的作用是，可以让被volatile修饰的共享变量的更新对其他线程马上可见。</p>
-<p>当一个变量被volatile修饰时，线程在修改变量值时不会把值更新在私有内存中，而是更新到主内存里；当其他线程读取共享变量时，也是直接从主内存中读取共享变量的值。</p>
+<p>volatile关键字关键字的作用是，可以让被volatile修饰的共享变量的更新对其他线程马上可见。当一个变量被volatile修饰时，线程在修改变量值时不会把值更新在私有内存中，而是更新到主内存里；当其他线程读取共享变量时，也是直接从主内存中读取共享变量的值。</p>
 <p>volatile的内存语义就是：当线程每次写入时都会刷新主内存中的值，线程每次读取都会先去同步主内存中的值。</p>
+<p>volatile虽然提供了可见性保证，但并不保证操作的原子性；一般在以下情况下考虑使用volatile关键字：</p>
+<ul>
+<li>修改变量时是直接修改的，而不是获取-计算-修改的这种过程的，因为volatile不能保证原子性</li>
+<li>读写变量时没有加锁的，加锁就已经保证了内存可见性，此时就不需要将变量声明为volatile了</li>
+</ul>
+<h3 id="Java中的原子性操作"><a href="#Java中的原子性操作" class="headerlink" title="Java中的原子性操作"></a>Java中的原子性操作</h3><p>原子性操作指在执行一系列操作时，这些操作要么全部执行，要么全部不执行，不允许存在只执行其中一部分的情况。</p>
 
       
     </div>
@@ -595,7 +600,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -617,7 +622,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -657,7 +662,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是并发编程"><span class="nav-number">1.</span> <span class="nav-text">什么是并发编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中的线程安全问题"><span class="nav-number">2.</span> <span class="nav-text">Java中的线程安全问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中共享变量的内存可见性问题"><span class="nav-number">3.</span> <span class="nav-text">Java中共享变量的内存可见性问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中的synchronized关键字"><span class="nav-number">4.</span> <span class="nav-text">Java中的synchronized关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized介绍"><span class="nav-number">4.1.</span> <span class="nav-text">synchronized介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized的内存语义"><span class="nav-number">4.2.</span> <span class="nav-text">synchronized的内存语义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中的Lock锁"><span class="nav-number">5.</span> <span class="nav-text">Java中的Lock锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized的缺点"><span class="nav-number">5.1.</span> <span class="nav-text">synchronized的缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lock锁概述"><span class="nav-number">5.2.</span> <span class="nav-text">Lock锁概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lock锁的Api"><span class="nav-number">5.3.</span> <span class="nav-text">Lock锁的Api</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中的volatile关键字"><span class="nav-number">6.</span> <span class="nav-text">Java中的volatile关键字</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是并发编程"><span class="nav-number">1.</span> <span class="nav-text">什么是并发编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中的线程安全问题"><span class="nav-number">2.</span> <span class="nav-text">Java中的线程安全问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中共享变量的内存可见性问题"><span class="nav-number">3.</span> <span class="nav-text">Java中共享变量的内存可见性问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中的synchronized关键字"><span class="nav-number">4.</span> <span class="nav-text">Java中的synchronized关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized介绍"><span class="nav-number">4.1.</span> <span class="nav-text">synchronized介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized的内存语义"><span class="nav-number">4.2.</span> <span class="nav-text">synchronized的内存语义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中的Lock锁"><span class="nav-number">5.</span> <span class="nav-text">Java中的Lock锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized的缺点"><span class="nav-number">5.1.</span> <span class="nav-text">synchronized的缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lock锁概述"><span class="nav-number">5.2.</span> <span class="nav-text">Lock锁概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lock锁的Api"><span class="nav-number">5.3.</span> <span class="nav-text">Lock锁的Api</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中的volatile关键字"><span class="nav-number">6.</span> <span class="nav-text">Java中的volatile关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中的原子性操作"><span class="nav-number">7.</span> <span class="nav-text">Java中的原子性操作</span></a></li></ol></div>
             
 
           </div>
