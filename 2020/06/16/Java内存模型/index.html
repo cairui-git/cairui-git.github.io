@@ -81,18 +81,23 @@
 
 
 
-<meta name="description" content="Synchronized底层语义原理">
+<meta name="description" content="Java内存模型(JMM)定义了Java虚拟机(JVM)在计算机内存中的工作方式。 Java对并发请求采用的是共享内存模型。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Synchronized 实现原理">
-<meta property="og:url" content="http://blog.cairui99.cn/2020/06/08/Synchronized-实现原理/index.html">
+<meta property="og:title" content="Java内存模型">
+<meta property="og:url" content="http://blog.cairui99.cn/2020/06/16/Java内存模型/index.html">
 <meta property="og:site_name" content="CaiRui的博客">
-<meta property="og:description" content="Synchronized底层语义原理">
+<meta property="og:description" content="Java内存模型(JMM)定义了Java虚拟机(JVM)在计算机内存中的工作方式。 Java对并发请求采用的是共享内存模型。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-09T02:29:15.005Z">
+<meta property="og:image" content="https://s1.ax1x.com/2020/06/17/NEOfKK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/06/17/NEjvNQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/06/17/NVFLzF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/06/17/NVJhyd.png">
+<meta property="og:updated_time" content="2020-06-17T11:32:29.492Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Synchronized 实现原理">
-<meta name="twitter:description" content="Synchronized底层语义原理">
+<meta name="twitter:title" content="Java内存模型">
+<meta name="twitter:description" content="Java内存模型(JMM)定义了Java虚拟机(JVM)在计算机内存中的工作方式。 Java对并发请求采用的是共享内存模型。">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/06/17/NEOfKK.png">
 
 
 
@@ -122,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.cairui99.cn/2020/06/08/Synchronized-实现原理/">
+  <link rel="canonical" href="http://blog.cairui99.cn/2020/06/16/Java内存模型/">
 
 
 
 
 
-  <title>Synchronized 实现原理 | CaiRui的博客</title>
+  <title>Java内存模型 | CaiRui的博客</title>
   
 
 
@@ -297,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2020/06/08/Synchronized-实现原理/">
+    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2020/06/16/Java内存模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CaiRui">
@@ -314,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Synchronized 实现原理</h1>
+          <h1 class="post-title" itemprop="name headline">Java内存模型</h1>
         
 
         <div class="post-meta">
@@ -327,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-08T17:13:18+08:00">
-                2020-06-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-16T15:15:55+08:00">
+                2020-06-16
               </time>
             
 
@@ -338,6 +343,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -346,8 +373,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/06/08/Synchronized-实现原理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/08/Synchronized-实现原理/" itemprop="commentCount"></span>
+                <a href="/2020/06/16/Java内存模型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/16/Java内存模型/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -380,7 +407,24 @@
       
 
       
-        <h3 id="Synchronized底层语义原理"><a href="#Synchronized底层语义原理" class="headerlink" title="Synchronized底层语义原理"></a>Synchronized底层语义原理</h3>
+        <p>Java内存模型(JMM)定义了Java虚拟机(JVM)在计算机内存中的工作方式。 <strong>Java对并发请求采用的是共享内存模型。</strong></p>
+<a id="more"></a>
+
+<h3 id="Java内存模型（JMM）"><a href="#Java内存模型（JMM）" class="headerlink" title="Java内存模型（JMM）"></a>Java内存模型（JMM）</h3><p>从抽象的角度来看，JMM定义了线程和主内存之间的抽象关系：线程之间的共享变量存储在主内存（Main Memory）中，每个线程都有一个私有的本地内存（Local Memory），本地内存中存储了该线程以读/写共享变量的副本。</p>
+<p><a href="https://imgchr.com/i/NEOfKK" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/06/17/NEOfKK.png" alt="NEOfKK.png"></a></p>
+<h4 id="JVM对Java内存模型的实现"><a href="#JVM对Java内存模型的实现" class="headerlink" title="JVM对Java内存模型的实现"></a>JVM对Java内存模型的实现</h4><p>在JVM内部，Java内存模型把内存分成了两部分：<strong>线程栈区和堆区</strong></p>
+<p><a href="https://imgchr.com/i/NEjvNQ" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/06/17/NEjvNQ.png" alt="NEjvNQ.png"></a></p>
+<p>JVM中运行的每个线程都拥有自己的线程栈，线程栈包含了当前线程执行的方法调用相关信息，我们也把它称作调用栈。随着代码的不断执行，调用栈会不断变化。所有原始类型(boolean,byte,short,char,int,long,float,double)的局部变量都直接保存在线程栈当中，对于它们的值各个线程之间都是独立的。对于原始类型的局部变量，一个线程可以传递一个副本给另一个线程，当它们之间是无法共享的。</p>
+<p>堆区包含了Java应用创建的所有对象信息，不管对象是哪个线程创建的，其中的对象包括原始类型的封装类（如Byte、Integer、Long等等）。不管对象是属于一个成员变量还是方法中的局部变量，它都会被存储在堆区。</p>
+<p>一个局部变量也有可能是一个对象的引用，这种情况下，这个本地引用会被存储到栈中，但是对象本身仍然存储在堆区。</p>
+<h3 id="Java内存模块存在的问题"><a href="#Java内存模块存在的问题" class="headerlink" title="Java内存模块存在的问题"></a>Java内存模块存在的问题</h3><p>在多线程环境下，只有当至少一个线程修改共享资源时才可能会存在线程安全问题</p>
+<h4 id="可见性问题"><a href="#可见性问题" class="headerlink" title="可见性问题"></a>可见性问题</h4><p><a href="https://imgchr.com/i/NVFLzF" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/06/17/NVFLzF.png" alt="NVFLzF.png"></a></p>
+<p>如图，线程A从主存中拷贝共享对象obj到它的CPU缓存，把对象obj的count变量改为2。但这个变更对运行在线程B中不可见，因为这个更改还没有flush到主存中</p>
+<p>要解决共享对象可见性这个问题，我们可以使用java volatile关键字或者是加锁</p>
+<h4 id="竞争现象"><a href="#竞争现象" class="headerlink" title="竞争现象"></a>竞争现象</h4><p><a href="https://imgchr.com/i/NVJhyd" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/06/17/NVJhyd.png" alt="NVJhyd.png"></a></p>
+<p>如图，线程A和线程B共享一个对象obj。假设线程A从主存读取Obj.count变量到自己的CPU缓存，同时，线程B也读取了Obj.count变量到它的CPU缓存，并且这两个线程都对Obj.count做了加1操作。此时，Obj.count加1操作被执行了两次，不过都在不同的CPU缓存中。如果这两个加1操作是串行执行的，那么Obj.count变量便会在原始值上加2，最终主存中的Obj.count的值会是3。然而下图中两个加1操作是并行的，不管是线程A还是线程B先flush计算结果到主存，最终主存中的Obj.count只会增加1次变成2，尽管一共有两次加1操作。</p>
+<p>要解决上面的问题我们可以使用java synchronized代码块。</p>
+
       
     </div>
     
@@ -400,7 +444,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.cairui99.cn/2020/06/08/Synchronized-实现原理/" title="Synchronized 实现原理">http://blog.cairui99.cn/2020/06/08/Synchronized-实现原理/</a>
+    <a href="http://blog.cairui99.cn/2020/06/16/Java内存模型/" title="Java内存模型">http://blog.cairui99.cn/2020/06/16/Java内存模型/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -428,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/04/算法题题解整理/" rel="next" title="算法题题解整理">
-                <i class="fa fa-chevron-left"></i> 算法题题解整理
+              <a href="/2020/06/09/什么是语法糖（syntactic-suger）/" rel="next" title="什么是语法糖（syntactic suger）">
+                <i class="fa fa-chevron-left"></i> 什么是语法糖（syntactic suger）
               </a>
             
           </div>
@@ -437,10 +481,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/06/09/Java中的Monitor/" rel="prev" title="Java中的Monitor">
-                Java中的Monitor <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -584,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Synchronized底层语义原理"><span class="nav-number">1.</span> <span class="nav-text">Synchronized底层语义原理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java内存模型（JMM）"><span class="nav-number">1.</span> <span class="nav-text">Java内存模型（JMM）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM对Java内存模型的实现"><span class="nav-number">1.1.</span> <span class="nav-text">JVM对Java内存模型的实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java内存模块存在的问题"><span class="nav-number">2.</span> <span class="nav-text">Java内存模块存在的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可见性问题"><span class="nav-number">2.1.</span> <span class="nav-text">可见性问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#竞争现象"><span class="nav-number">2.2.</span> <span class="nav-text">竞争现象</span></a></li></ol></li></ol></div>
             
 
           </div>
