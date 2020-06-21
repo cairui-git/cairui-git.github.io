@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.cairui99.cn/"/>
-  <updated>2020-06-18T09:52:05.512Z</updated>
+  <updated>2020-06-21T11:11:02.291Z</updated>
   <id>http://blog.cairui99.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>synchronized和Lock的区别</title>
+    <link href="http://blog.cairui99.cn/2020/06/21/synchronized%E5%92%8CLock%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://blog.cairui99.cn/2020/06/21/synchronized和Lock的区别/</id>
+    <published>2020-06-21T10:47:23.000Z</published>
+    <updated>2020-06-21T11:11:02.291Z</updated>
+    
+    <content type="html"><![CDATA[<p>synchronized与Lock都是Java中在多线程环境下解决线程安全的重要工具，它们的区别如下：</p><a id="more"></a><h3 id="synchronized和lock的区别"><a href="#synchronized和lock的区别" class="headerlink" title="synchronized和lock的区别"></a>synchronized和lock的区别</h3><ul><li><strong>来源：</strong> lock是一个接口，而synchronized是java的一个关键字，synchronized是内置的语言实现</li><li><strong>异常是否释放锁：</strong> synchronized在发生异常时候会自动释放占有的锁，因此不会出现死锁；而lock发生异常时候，不会主动释放占有的锁，必须手动unlock来释放锁，可能引起死锁的发生。（所以最好将同步代码块用try catch包起来，finally中写入unlock，避免死锁的发生。）</li><li><strong>是否响应中断：</strong> lock等待锁过程中可以用interrupt来中断等待，而synchronized只能等待锁的释放，不能响应中断；</li><li><strong>是否知道获取锁：</strong> Lock可以通过trylock来知道有没有获取锁，而synchronized不能</li><li>Lock可以提高多个线程进行读操作的效率。（可以通过readwritelock实现读写分离）</li><li>在性能上来说，如果竞争资源不激烈，两者的性能是差不多的，而当竞争资源非常激烈时（即有大量线程同时竞争），此时Lock的性能要远远优于synchronized。所以说，在具体使用时要根据适当情况选择。</li><li>synchronized使用Object对象本身的wait 、notify、notifyAll调度机制，而Lock可以使用Condition进行线程之间的调度</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Condition定义了等待/通知两种类型的方法</span></span><br><span class="line">Lock lock=<span class="keyword">new</span> ReentrantLock();</span><br><span class="line">Condition condition=lock.newCondition();</span><br><span class="line">...</span><br><span class="line">condition.await();</span><br><span class="line">...</span><br><span class="line">condition.signal();</span><br><span class="line">condition.signalAll();</span><br></pre></td></tr></table></figure><h3 id="两种锁的底层实现"><a href="#两种锁的底层实现" class="headerlink" title="两种锁的底层实现"></a>两种锁的底层实现</h3><ul><li><strong>synchronized：</strong> 底层使用指令码方式来控制锁的，映射成字节码指令就是增加来两个指令：monitorenter和monitorexit。当线程执行遇到monitorenter指令时会尝试获取内置锁，如果获取锁则锁计数器+1，如果没有获取锁则阻塞；当遇到monitorexit指令时锁计数器-1，如果计数器为0则释放锁。</li><li><strong>lock：</strong> 底层是CAS乐观锁，依赖AbstractQueuedSynchronizer类，把所有的请求线程构成一个CLH队列。而对该队列的操作均通过Lock-Free（CAS）操作。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;synchronized与Lock都是Java中在多线程环境下解决线程安全的重要工具，它们的区别如下：&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://blog.cairui99.cn/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://blog.cairui99.cn/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>解决xxx端口被占用问题</title>
@@ -454,30 +477,6 @@
     
     
       <category term="区块链" scheme="http://blog.cairui99.cn/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySql-使用explain分析sql</title>
-    <link href="http://blog.cairui99.cn/2019/11/14/MySql-%E4%BD%BF%E7%94%A8explain%E5%88%86%E6%9E%90sql/"/>
-    <id>http://blog.cairui99.cn/2019/11/14/MySql-使用explain分析sql/</id>
-    <published>2019-11-14T05:54:05.000Z</published>
-    <updated>2019-11-14T07:22:04.283Z</updated>
-    
-    <content type="html"><![CDATA[<p>在mysql中可以使用explain关键字来分析sql语句的执行效果，从而帮助我们选择出更好的索引和优化查询的方案，写出性能更高的语句。</p><p>Expliain语法：explain + sql语句</p><a id="more"></a><p>Expliain执行后包含以下信息：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+----+-------------+-------+------+---------------+-----+---------+-----+------+-------+</span><br><span class="line">| id | select_type | table | type | possible_keys | key | key_len | ref | rows | Extra |</span><br><span class="line">+----+-------------+-------+------+---------------+-----+---------+------+-----+-------+</span><br></pre></td></tr></table></figure><h4 id="id"><a href="#id" class="headerlink" title="id"></a>id</h4><p>sql的查询序列号，在分析的sql中包含子查询时会出现多条id，id表示了sql的执行顺序：</p><ul><li>id相同：执行顺序由上至下执行</li><li>id不同，按id由大到小执行</li></ul><h4 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h4><p>表示select的类型，包含以下几种：</p><table><thead><tr><th align="center">select_type</th><th align="center">含义</th></tr></thead><tbody><tr><td align="center">SIMPLE</td><td align="center">简单SELECT(不使用UNION或子查询等)</td></tr><tr><td align="center">PRIMARY</td><td align="center">最外层的 select 查询(使用到主键作为查询条件)</td></tr><tr><td align="center">UNION</td><td align="center">UNION中的第二个或后面的SELECT语句</td></tr><tr><td align="center">DEPENDENT UNION</td><td align="center">UNION中的第二个或后面的SELECT语句，取决于外面的查询</td></tr><tr><td align="center">UNION RESULT</td><td align="center">UNION的结果</td></tr><tr><td align="center">SUBQUERY</td><td align="center">子查询中的第一个SELECT,不依赖于外部查询的结果集</td></tr><tr><td align="center">DEPENDENT SUBQUERY</td><td align="center">子查询中的第一个select查询,依赖于外部查询的结果集</td></tr><tr><td align="center">DERIVED</td><td align="center">导出表的SELECT(FROM子句的子查询)</td></tr></tbody></table><h4 id="table"><a href="#table" class="headerlink" title="table"></a>table</h4><p>表示该条查询的表名</p><p>如果查询是使用了别名，显示的是别名</p><p>如果不涉及数据库表，显示NULL</p><p>如果显示结果别<derived n>这种形式，表示这是个临时表，N为查询序列号，表示临时表的结果来自于这个查询产生;&lt;derived M,N&gt;表示结果来自于一个UNION查询，查询id为M和N</derived></p><h4 id="type"><a href="#type" class="headerlink" title="type"></a>type</h4><p>type表示访问类型，是sql性能较为重要的一项制表，由好到坏依次是：system，const，eq_ref，ref，fulltext，ref_or_null，unique_subquery，index_subquery，range，index_merge，index，all,除了all之外的其他type都用到了索引。</p><p>常用的几个type： <strong>system&gt;const&gt;eq_ref&gt;ref&gt;range&gt;index&gt;all</strong> 一般情况下我们要保证你的sql至少达到range级别，最好达到ref。</p><table><thead><tr><th align="center">type</th><th align="center">含义</th></tr></thead><tbody><tr><td align="center">system</td><td align="center">表中只有一行数据或者是空表，且只能用于myisam和memory表。如果是Innodb引擎表，type列在这个情况通常都是all或者index</td></tr><tr><td align="center">const</td><td align="center">使用唯一索引或者主键，返回记录一定是1行记录的等值where条件时，通常type是const。其他数据库也叫做唯一索引扫描</td></tr><tr><td align="center">eq_ref</td><td align="center">出现在要连接过个表的查询计划中，驱动表只返回一行数据，且这行数据是第二个表的主键或者唯一索引，且必须为not null，唯一索引和主键是多列时，只有所有的列都用作比较时才会出现eq_ref</td></tr><tr><td align="center">ref</td><td align="center">不像eq_ref那样要求连接顺序，也没有主键和唯一索引的要求，只要使用相等条件检索时就可能出现，常见与辅助索引的等值查找。或者多列主键、唯一索引中，使用第一个列之外的列作为等值查找也会出现，总之，返回数据不唯一的等值查找就可能出现。</td></tr><tr><td align="center">fulltext</td><td align="center">全文索引检索，要注意，全文索引的优先级很高，若全文索引和普通索引同时存在时，mysql不管代价，优先选择使用全文索引</td></tr><tr><td align="center">ref_or_null</td><td align="center">与ref方法类似，只是增加了null值的比较。实际用的不多</td></tr><tr><td align="center">unique_subquery</td><td align="center">用于where中的in形式子查询，子查询返回不重复值唯一值</td></tr><tr><td align="center">index_subquery</td><td align="center">用于in形式子查询使用到了辅助索引或者in常数列表，子查询可能返回重复值，可以使用索引将子查询去重。</td></tr><tr><td align="center">range</td><td align="center">索引范围扫描，常见于使用&gt;,&lt;,is null,between ,in ,like等运算符的查询中。</td></tr><tr><td align="center">index_merge</td><td align="center">表示查询使用了两个以上的索引，最后取交集或者并集，常见and ，or的条件使用了不同的索引，官方排序这个在ref_or_null之后，但是实际上由于要读取所个索引，性能可能大部分时间都不如range</td></tr><tr><td align="center">index</td><td align="center">索引全表扫描，把索引从头到尾扫一遍，常见于使用索引列就可以处理不需要读取数据文件的查询、可以使用索引排序或者分组的查询。如explain select id from user</td></tr><tr><td align="center">all</td><td align="center">这个就是全表扫描数据文件，然后再在server层进行过滤返回符合要求的记录。</td></tr></tbody></table><h4 id="possible-keys"><a href="#possible-keys" class="headerlink" title="possible_keys"></a>possible_keys</h4><p>显出可能使用到的索引</p><h4 id="key"><a href="#key" class="headerlink" title="key"></a>key</h4><p>查询中实际使用到的索引</p><h4 id="key-len"><a href="#key-len" class="headerlink" title="key_len"></a>key_len</h4><p>key_len显示的值为索引字段的最大可能长度，并非实际使用长度</p><h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><p>显示使用哪个列或常数与key一起从表中选择行。</p><h4 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h4><p>显示MySQL认为它执行查询时必须检查的行数</p><h4 id="Extra"><a href="#Extra" class="headerlink" title="Extra"></a>Extra</h4><p>包含了MySQL解决查询的详细信息，也是关键参考项之一，可显示的信息多达几十种，这里不进行列举了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在mysql中可以使用explain关键字来分析sql语句的执行效果，从而帮助我们选择出更好的索引和优化查询的方案，写出性能更高的语句。&lt;/p&gt;
-&lt;p&gt;Expliain语法：explain + sql语句&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Mysql" scheme="http://blog.cairui99.cn/categories/Mysql/"/>
-    
-    
-      <category term="sql优化" scheme="http://blog.cairui99.cn/tags/sql%E4%BC%98%E5%8C%96/"/>
     
   </entry>
   

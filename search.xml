@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[synchronized和Lock的区别]]></title>
+    <url>%2F2020%2F06%2F21%2Fsynchronized%E5%92%8CLock%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[synchronized与Lock都是Java中在多线程环境下解决线程安全的重要工具，它们的区别如下： synchronized和lock的区别 来源： lock是一个接口，而synchronized是java的一个关键字，synchronized是内置的语言实现 异常是否释放锁： synchronized在发生异常时候会自动释放占有的锁，因此不会出现死锁；而lock发生异常时候，不会主动释放占有的锁，必须手动unlock来释放锁，可能引起死锁的发生。（所以最好将同步代码块用try catch包起来，finally中写入unlock，避免死锁的发生。） 是否响应中断： lock等待锁过程中可以用interrupt来中断等待，而synchronized只能等待锁的释放，不能响应中断； 是否知道获取锁： Lock可以通过trylock来知道有没有获取锁，而synchronized不能 Lock可以提高多个线程进行读操作的效率。（可以通过readwritelock实现读写分离） 在性能上来说，如果竞争资源不激烈，两者的性能是差不多的，而当竞争资源非常激烈时（即有大量线程同时竞争），此时Lock的性能要远远优于synchronized。所以说，在具体使用时要根据适当情况选择。 synchronized使用Object对象本身的wait 、notify、notifyAll调度机制，而Lock可以使用Condition进行线程之间的调度 12345678//Condition定义了等待/通知两种类型的方法Lock lock=new ReentrantLock();Condition condition=lock.newCondition();...condition.await();...condition.signal();condition.signalAll(); 两种锁的底层实现 synchronized： 底层使用指令码方式来控制锁的，映射成字节码指令就是增加来两个指令：monitorenter和monitorexit。当线程执行遇到monitorenter指令时会尝试获取内置锁，如果获取锁则锁计数器+1，如果没有获取锁则阻塞；当遇到monitorexit指令时锁计数器-1，如果计数器为0则释放锁。 lock： 底层是CAS乐观锁，依赖AbstractQueuedSynchronizer类，把所有的请求线程构成一个CLH队列。而对该队列的操作均通过Lock-Free（CAS）操作。]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[解决xxx端口被占用问题]]></title>
     <url>%2F2020%2F06%2F18%2F%E8%A7%A3%E5%86%B3xxx%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[通过控制台kill掉占用端口的进程： cmd打开控制台，执行命令 netstat -ano | findstr xxx(端口号) 此时可以看到进程的pid，执行命令 taskkill -pid xxx -f 终止该进程]]></content>
