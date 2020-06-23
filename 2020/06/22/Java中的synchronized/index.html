@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="并发编程,">
 
 
 
@@ -81,17 +81,24 @@
 
 
 
-<meta name="description" content="对数器的作用是验证算法的正确性，前提是对该题目你已知一种完全正确的答案，才可以使用对数器。 对数器一般用来 优化算法,利用正确的但效率低下的算法来验证优化之后的算法的正确性。">
+<meta name="description" content="概述synchronized块是Java提供的一种原子性内置锁，也叫监视器锁。">
+<meta name="keywords" content="并发编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="对数器">
-<meta property="og:url" content="http://blog.cairui99.cn/2019/09/20/对数器/index.html">
+<meta property="og:title" content="Java中的synchronized">
+<meta property="og:url" content="http://blog.cairui99.cn/2020/06/22/Java中的synchronized/index.html">
 <meta property="og:site_name" content="CaiRui的博客">
-<meta property="og:description" content="对数器的作用是验证算法的正确性，前提是对该题目你已知一种完全正确的答案，才可以使用对数器。 对数器一般用来 优化算法,利用正确的但效率低下的算法来验证优化之后的算法的正确性。">
+<meta property="og:description" content="概述synchronized块是Java提供的一种原子性内置锁，也叫监视器锁。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-29T03:51:40.918Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190310221443337.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODQ4MTk2Mw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190311182248435.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODQ4MTk2Mw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190310224348833.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190310225911793.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODQ4MTk2Mw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190325214918837.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0hlbGxvTXlfRnV0dXJl,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2020-06-23T12:02:27.069Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="对数器">
-<meta name="twitter:description" content="对数器的作用是验证算法的正确性，前提是对该题目你已知一种完全正确的答案，才可以使用对数器。 对数器一般用来 优化算法,利用正确的但效率低下的算法来验证优化之后的算法的正确性。">
+<meta name="twitter:title" content="Java中的synchronized">
+<meta name="twitter:description" content="概述synchronized块是Java提供的一种原子性内置锁，也叫监视器锁。">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190310221443337.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODQ4MTk2Mw==,size_16,color_FFFFFF,t_70">
 
 
 
@@ -121,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.cairui99.cn/2019/09/20/对数器/">
+  <link rel="canonical" href="http://blog.cairui99.cn/2020/06/22/Java中的synchronized/">
 
 
 
 
 
-  <title>对数器 | CaiRui的博客</title>
+  <title>Java中的synchronized | CaiRui的博客</title>
   
 
 
@@ -296,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2019/09/20/对数器/">
+    <link itemprop="mainEntityOfPage" href="http://blog.cairui99.cn/2020/06/22/Java中的synchronized/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CaiRui">
@@ -313,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">对数器</h1>
+          <h1 class="post-title" itemprop="name headline">Java中的synchronized</h1>
         
 
         <div class="post-meta">
@@ -326,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-20T15:04:04+08:00">
-                2019-09-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-22T10:35:58+08:00">
+                2020-06-22
               </time>
             
 
@@ -349,8 +356,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -367,8 +374,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/20/对数器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/20/对数器/" itemprop="commentCount"></span>
+                <a href="/2020/06/22/Java中的synchronized/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/22/Java中的synchronized/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -401,22 +408,101 @@
       
 
       
-        <p>对数器的作用是验证算法的正确性，前提是对该题目你已知一种完全正确的答案，才可以使用对数器。</p>
-<p>对数器一般用来 <strong>优化算法</strong>,利用正确的但效率低下的算法来验证优化之后的算法的正确性。</p>
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>synchronized块是Java提供的一种原子性内置锁，也叫监视器锁。</p>
 <a id="more"></a>
 
-<p>下面一个例子，是利用系统已有的排序函数(绝对正确的方法)来验证我自己写的排序函数mySort(正确性未知的,我们要验证的方法)的正确性：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SortTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取一个随机数组</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> length 数组最大长度,最小为0</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> min 最小值</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> max 最大值</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] getArray(<span class="keyword">int</span> length,<span class="keyword">int</span> min,<span class="keyword">int</span> max)&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[(<span class="keyword">int</span>)(<span class="number">0</span>+Math.random()*(length+<span class="number">1</span>))];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">			arr[i] = (<span class="keyword">int</span>)(min+Math.random()*(max-min+<span class="number">1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> arr;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//复制数组</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] copyArray(<span class="keyword">int</span>[] arr)&#123;</span><br><span class="line">		<span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[arr.length];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">			result[i] = arr[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//比较两个数组是否相等</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isEqualsArray</span><span class="params">(<span class="keyword">int</span>[] arr1,<span class="keyword">int</span>[] arr2)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(arr1.length!=arr2.length)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr1.length;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(arr1[i]!=arr2[i])&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//输出数组</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printArray</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> num : arr)&#123;</span><br><span class="line">			System.out.print(num+<span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">boolean</span> is_right = <span class="keyword">true</span>;</span><br><span class="line">		<span class="keyword">int</span>[] fail_array = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">		<span class="comment">//测试次数</span></span><br><span class="line">		<span class="keyword">int</span> test_num = <span class="number">100000</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;test_num;i++)&#123;</span><br><span class="line">			<span class="comment">//生成一个长度为 0~10，值为 1~20之间的随机数组,并生成两个复制来进行排序</span></span><br><span class="line">			<span class="keyword">int</span>[] arr = SortTest.getArray(<span class="number">10</span>, <span class="number">1</span>, <span class="number">20</span>);</span><br><span class="line">			<span class="keyword">int</span>[] arrA = SortTest.copyArray(arr1);</span><br><span class="line">			<span class="keyword">int</span>[] arrB = SortTest.copyArray(arr1);</span><br><span class="line">			<span class="comment">//执行排序</span></span><br><span class="line">			Arrays.sort(arrA);</span><br><span class="line">			MySort.mySort(arrB);</span><br><span class="line">            <span class="comment">//比较结果是否相等</span></span><br><span class="line">			<span class="keyword">if</span>(!SortTest.isEqualsArray(arrA, arrB))&#123;</span><br><span class="line">				is_right = <span class="keyword">false</span>;</span><br><span class="line">				fail_array = arr;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(is_right)&#123;</span><br><span class="line">			System.out.println(<span class="string">"Success!"</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"Fail!"</span>);</span><br><span class="line">			System.out.println();</span><br><span class="line">			System.out.print(<span class="string">"Fail Array:"</span>);</span><br><span class="line">			SortTest.printArray(fail_array);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>校验mySort步骤：</p>
+<p>synchronized的作用：</p>
 <ul>
-<li>生成一个长度随机，值也随机的数组</li>
-<li>获取两个刚刚随机生成的数组的复制，分别用正确的sort方法和待验证的mysort方法进行排序</li>
-<li>比较排好序的两个数组是否相等</li>
-<li>若不相等则说明算法是错的，把排序失败的数组打印出来，方便排查问题出在哪</li>
-<li>相等则说明该条测试用例可以通过，继续重复以上步骤，我这里重复了10万次，当然次数越多越好，这样几乎可以涵盖所有的可能，可以说明该算法是正确的</li>
+<li><strong>原子性：</strong> synchronized保证语句块内操作是原子的</li>
+<li><strong>可见性：</strong> synchronized保证可见性（通过“在执行unlock之前，必须先把此变量同步回主内存”实现）</li>
+<li><strong>有序性：</strong> synchronized保证有序性（通过“一个变量在同一时刻只允许一条线程对其进行lock操作”）</li>
 </ul>
-<p>对数器的好处在于测试用例不再需要自己设计了，通过随机生成的庞大样本量，就可以保证算法的正确性，自己想测试用例的话总会出现情况考虑不全的时候，到时程序出bug的话就得不偿失了。</p>
+<p>synchronized的使用：</p>
+<ul>
+<li>修饰实例方法，对当前实例对象加锁</li>
+<li>修饰静态方法，对当前类的Class对象加锁</li>
+<li>修饰代码块，对synchronized括号内的对象加锁</li>
+</ul>
+<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p><strong>jvm基于进入和退出Monitor对象来实现方法同步和代码块同步</strong></p>
+<ul>
+<li>synchronized是可重入的，所以不会自己把自己锁死</li>
+<li>synchronized锁一旦被一个线程持有，其他试图获取该锁的线程将被阻塞。</li>
+</ul>
+<h4 id="synchronized同步方法"><a href="#synchronized同步方法" class="headerlink" title="synchronized同步方法"></a>synchronized同步方法</h4><p>方法级的同步是隐式，即无需通过字节码指令来控制的，它实现在方法调用和返回操作之中。</p>
+<p>JVM可以从方法常量池中的方法表结构(method_info Structure) 中的 ACC_SYNCHRONIZED 访问标志区分一个方法是否同步方法。</p>
+<p>当方法调用时，调用指令将会 检查方法的 ACC_SYNCHRONIZED 访问标志是否被设置，如果设置了，执行线程将先持有monitor， 然后再执行方法，最后再方法完成(无论是正常完成还是非正常完成)时释放monitor。</p>
+<h4 id="synchronized同步代码块"><a href="#synchronized同步代码块" class="headerlink" title="synchronized同步代码块"></a>synchronized同步代码块</h4><p>代码块的同步是利用monitorenter和monitorexit这两个字节码指令。它们分别位于同步代码块的开始和结束位置。当jvm执行到monitorenter指令时，当前线程试图获取monitor对象的所有权，如果未加锁或者已经被当前线程所持有，就把锁的计数器+1；当执行monitorexit指令时，锁计数器-1；当锁计数器为0时，该锁就被释放了。如果获取monitor对象失败，该线程则会进入阻塞状态，直到其他线程释放锁。</p>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SynchronizedDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;    <span class="comment">//这个是同步方法</span></span><br><span class="line">        System.out.println(<span class="string">"Hello world"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">g</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>)&#123;		<span class="comment">//这个是同步代码块</span></span><br><span class="line">            System.out.println(<span class="string">"Hello world"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码经过反编译后得到：<br><img src="https://img-blog.csdnimg.cn/20190310221443337.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODQ4MTk2Mw==,size_16,color_FFFFFF,t_70" alt="NeuTFe.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190311182248435.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODQ4MTk2Mw==,size_16,color_FFFFFF,t_70" alt="NeuTFe.png"></p>
+<p>可以看到对于同步方法，反编译后得到ACC_SYNCHRONIZED 标志，对于同步代码块反编译后得到了monitorenter和monitorexit指令。</p>
+<h3 id="JVM对synchronized的锁优化"><a href="#JVM对synchronized的锁优化" class="headerlink" title="JVM对synchronized的锁优化"></a>JVM对synchronized的锁优化</h3><p>Synchronized是通过对象内部的一个叫做监视器锁（monitor）来实现的，监视器锁本质又是依赖于底层的操作系统的Mutex Lock（互斥锁）来实现的。而操作系统实现线程之间的切换需要从用户态转换到核心态，这个成本非常高，状态之间的转换需要相对比较长的时间，这就是为什么Synchronized效率低的原因。因此，这种依赖于操作系统Mutex Lock所实现的锁我们称之为“重量级锁”。</p>
+<p>Java SE 1.6为了减少获得锁和释放锁带来的性能消耗，引入了“偏向锁”和“轻量级锁”：</p>
+<p>锁一共有4种状态 <strong>(锁可以升级但不能降级)</strong>，级别从低到高依次是：</p>
+<ul>
+<li>无锁状态</li>
+<li>偏向锁状态</li>
+<li>轻量级锁状态</li>
+<li>重量级锁状态</li>
+</ul>
+<p>锁状态的改变是根据竞争激烈程度进行的，在几乎无竞争的条件下，会使用偏向锁，在轻度竞争的条件下，会由偏向锁升级为轻量级锁， 在重度竞争的情况下，会升级到重量级锁。</p>
+<h4 id="理解Java对象头"><a href="#理解Java对象头" class="headerlink" title="理解Java对象头"></a>理解Java对象头</h4><p>在JVM中，对象在内存中的布局分为三块区域：对象头、实例数据和对齐填充。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190310224348833.jpg" alt="NeuTFe.png"></p>
+<p><strong>实例变量：</strong> 存放类的属性数据信息，包括父类的属性信息，如果是数组的实例部分还包括数组的长度，这部分内存按4字节对齐。</p>
+<p><strong>填充数据：</strong> 由于虚拟机要求对象起始地址必须是8字节的整数倍。填充数据不是必须存在的，仅仅是为了字节对齐。</p>
+<p><strong>对象头：</strong> HotSpot虚拟机的对象头分为两部分:</p>
+<ul>
+<li>第一部分用于存储对象自身运行时的数据，如锁信息、哈希码、GC分代年龄等，官方称为Mark Word</li>
+<li>另一部分用于存储指向对象类型数据的指针</li>
+<li>如果是数组对象的话，还会有一个额外的部分存储数组长度</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>对象头结构</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mark Word</td>
+<td>存储对象的哈希码、GC分代年龄、锁信息等</td>
+</tr>
+<tr>
+<td>Class MetaData Address</td>
+<td>指向对象类型数据的指针</td>
+</tr>
+<tr>
+<td>数组长度</td>
+<td>如果是数组有这部分，否则没有</td>
+</tr>
+</tbody></table>
+<p>由于对象头的信息是与对象自身定义的数据没有关系的额外存储成本，因此考虑到JVM的空间效率，Mark Word 被设计成为一个非固定的数据结构，以便存储更多有效的数据，它会根据对象本身的状态复用自己的存储空间。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190310225911793.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODQ4MTk2Mw==,size_16,color_FFFFFF,t_70" alt="NeuTFe.png"></p>
+<h4 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h4><p>大多数情况下，锁不仅不存在多线程竞争，而且总是只有同一个线程多次获得，为了让线程获得锁的代价更低而引入了偏向锁。</p>
+<p>当一个线程访问同步块并获取锁时，会在 <strong>对象头Mark Word</strong> 和 <strong>栈帧锁记录</strong> 里存储 <strong>偏向锁的线程ID</strong>，以后该线程在进入和退出同步块时不需要进行CAS操作来加锁和解锁，只需简单地测试一下对象头的Mark Word里是否存储着指向当前线程的偏向锁：</p>
+<ul>
+<li>如果测试成功，表示线程已经获得了锁</li>
+<li>如果测试失败，再看Mark Word中偏向锁的标识是否设置成1（1表示锁当前状态是偏向锁）：<ul>
+<li>如果没设置为1，则使用CAS竞争锁</li>
+<li>如果设置了，则使用CAS将对象头的偏向锁指向当前线程</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>a线程获得锁，会在a线程的栈帧里创建lockRecord，在lockRecord里和锁对象的MarkWord里存储线程a的线程id.以后该线程的进入，就不需要cas操作，只需要判断是否是当前线程</li>
+<li>a线程获取锁，不会释放锁，知道出现b线程也要竞争该锁时，a线程才会释放锁</li>
+<li>偏向锁的释放：首先会暂停拥有偏向锁的线程，如果线程不处于活动状态，则将锁对象的MarkWord设置成无锁状态；如果线程处于活跃状态，拥有偏向锁的栈会被执行，栈帧中lockRecord和对象头MarkWord要么重新偏向其他线程，要么恢复到无锁，或者标记对象不适合使用偏向锁（锁升级），最后唤醒被暂停的线程</li>
+<li>关闭偏向锁：通过jvm的参数-XX:UseBiasedLocking=false,则默认会进入轻量级锁。</li>
+</ol>
+<p>一个对象刚开始实例化的时候，没有任何线程来访问它的时候。它是可偏向的，意味着，它现在认为只可能有一个线程来访问它，所以当第一个线程来访问它的时候，它会偏向这个线程，此时，对象持有偏向锁。偏向第一个线程，这个线程在修改对象头MarkWord成为偏向锁的时候使用CAS操作，并将对象头中的ThreadID改成自己的ID，之后再次访问这个对象时，只需要对比ID，不需要再使用CAS在进行操作。</p>
+<p><strong>偏向锁的升级：</strong>  一旦有第二个线程访问这个对象，因为偏向锁不会主动释放，所以第二个线程可以看到对象时偏向状态，这时表明在这个对象上已经存在竞争了，操作系统检查原来持有该对象锁的线程是否依然存活，如果挂了，则可以将对象变为无锁状态，然后重新偏向新的线程，如果原来的线程依然存活，则马上执行那个线程的操作栈，检查该对象的使用情况，如果仍然需要持有偏向锁，则偏向锁升级为轻量级锁（偏向锁就是这个时候升级为轻量级锁的）。如果不存在使用了，则可以将对象回复成无锁状态，然后重新偏向。</p>
+<h4 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h4><p>当线程获取偏向锁失败，会尝试使用轻量级锁进行操作。</p>
+<p>轻量级锁只是简单的将对象头部作为指针，指向持有锁的线程堆栈的内部，来判断一个线程是否持有对象锁。如果线程获得轻量级锁成功，则可以顺利进入临界区，如果轻量级锁获取失败，则表示其他线程抢先获得了锁，那么当前线程的轻量级锁就会升级为重量级锁。</p>
+<h4 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h4><p>轻量级锁升级为重量级锁后，虚拟机为了避免线程在操作系统层面被挂起，虚拟机会尝试使用自旋锁。</p>
+<p>由于当前线程暂时无法获得锁，但有可能在几个cpu周期之后就可以获得锁，因此虚拟机会让当前线程做几个空循环(自旋)，若经过几个循环过后线程获取到了锁，线程就会进入临界区；如果获取不到锁线程就会被系统真正的挂起，自此不会再恢复到轻量级锁。</p>
+<h4 id="重量级锁"><a href="#重量级锁" class="headerlink" title="重量级锁"></a>重量级锁</h4><p>重量级锁状态下，所有等待的线程都会进入阻塞状态，线程不会进行自旋，适用于多个线程同时请求进入临界区的情况。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190325214918837.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0hlbGxvTXlfRnV0dXJl,size_16,color_FFFFFF,t_70" alt="NeuTFe.png"></p>
 
       
     </div>
@@ -437,7 +523,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.cairui99.cn/2019/09/20/对数器/" title="对数器">http://blog.cairui99.cn/2019/09/20/对数器/</a>
+    <a href="http://blog.cairui99.cn/2020/06/22/Java中的synchronized/" title="Java中的synchronized">http://blog.cairui99.cn/2020/06/22/Java中的synchronized/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -450,6 +536,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/并发编程/" rel="tag"># 并发编程</a>
+          
+        </div>
+      
 
       
       
@@ -459,8 +551,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/19/设计原则-里氏替换原则/" rel="next" title="设计原则-里氏替换原则">
-                <i class="fa fa-chevron-left"></i> 设计原则-里氏替换原则
+              <a href="/2020/06/21/synchronized和Lock的区别/" rel="next" title="synchronized和Lock的区别">
+                <i class="fa fa-chevron-left"></i> synchronized和Lock的区别
               </a>
             
           </div>
@@ -468,10 +560,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/23/排序算法-选择排序/" rel="prev" title="选择排序">
-                选择排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -526,8 +614,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -596,6 +693,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现原理"><span class="nav-number">2.</span> <span class="nav-text">实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized同步方法"><span class="nav-number">2.1.</span> <span class="nav-text">synchronized同步方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized同步代码块"><span class="nav-number">2.2.</span> <span class="nav-text">synchronized同步代码块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">2.3.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM对synchronized的锁优化"><span class="nav-number">3.</span> <span class="nav-text">JVM对synchronized的锁优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#理解Java对象头"><span class="nav-number">3.1.</span> <span class="nav-text">理解Java对象头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏向锁"><span class="nav-number">3.2.</span> <span class="nav-text">偏向锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#轻量级锁"><span class="nav-number">3.3.</span> <span class="nav-text">轻量级锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自旋锁"><span class="nav-number">3.4.</span> <span class="nav-text">自旋锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重量级锁"><span class="nav-number">3.5.</span> <span class="nav-text">重量级锁</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
